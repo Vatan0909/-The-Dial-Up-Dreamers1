@@ -1,0 +1,75 @@
+<header class="site-header" id="main-header">
+  <div class="top-bar">
+    <div class="container top-bar-inner">
+      <a class="brand" href="index.html" aria-label="صفحه اصلی">
+        <div class="brand-logo-wrap">
+          <img
+            class="brand-logo"
+            src="assets/images/OmegaLogo.jpg"
+            alt="لوگوی فروشگاه"
+          />
+        </div>
+        <div class="brand-name" id="shop-name">فروشگاه الکتروصنعت امگا</div>
+        <div class="header-search">
+          <input type="text" placeholder="جستجوی محصولات..." />
+          <button type="submit">
+            <i class="bi bi-search"></i>
+          </button>
+        </div>
+      </a>
+
+      <div class="top-actions">
+        <a class="utility-btn" id="auth-link" href="#">
+          <span class="icon" aria-hidden="true"
+            ><i class="bi bi-person-circle"></i
+          ></span>
+          <span id="header-auth-text">ثبت نام / ورود</span>
+        </a>
+        <a class="utility-btn cart-btn" id="cart-link" href="#">
+          <span class="icon" aria-hidden="true"
+            ><i class="bi bi-cart3"></i
+          ></span>
+          <span id="header-cart-text">سبد خرید</span>
+          <span class="cart-count" id="cart-count">0</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="nav-bar">
+    <div class="container nav-inner">
+      <div class="category-dropdown" id="category-dropdown-wrap">
+        <button
+          class="category-toggle"
+          id="category-toggle"
+          type="button"
+          aria-expanded="false"
+        >
+          <span class="icon" aria-hidden="true"
+            ><i class="bi bi-grid-3x3-gap"></i
+          ></span>
+          <span id="header-menu-title">دسته بندی</span>
+          <span class="icon" aria-hidden="true"
+            ><i class="bi bi-chevron-down"></i
+          ></span>
+        </button>
+        <ul class="dropdown-menu" id="category-menu-list"></ul>
+      </div>
+
+      <nav class="desktop-nav" id="desktop-nav"></nav>
+
+      <button
+        class="mobile-menu-toggle"
+        id="mobile-menu-toggle"
+        type="button"
+        aria-label="باز کردن منو"
+      >
+        <i class="bi bi-list"></i>
+      </button>
+    </div>
+  </div>
+
+  <nav class="mobile-nav" id="mobile-nav" aria-label="دسته بندی موبایل">
+    <ul class="mobile-nav-list" id="mobile-category-list"></ul>
+  </nav>
+</header>

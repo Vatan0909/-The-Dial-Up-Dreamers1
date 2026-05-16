@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="180" height="180" viewBox="0 0 180 180">
+  <rect width="180" height="180" rx="18" fill="#f5f8fc" stroke="#b5c6d8" stroke-width="3"/>
+  <circle cx="90" cy="70" r="32" fill="#2b6cb0" opacity="0.12"/>
+  <path d="M60 76l18 18 42-42" fill="none" stroke="#2b6cb0" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="90" y="130" fill="#2b6cb0" font-size="20" font-family="Tahoma" text-anchor="middle">نماد اعتماد</text>
+</svg>

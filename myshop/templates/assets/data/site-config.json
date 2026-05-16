@@ -1,0 +1,69 @@
+{
+  "shop": {
+    "name": "فروشگاه الکتروصنعت امگا"
+  },
+  "header": {
+    "authText": "ثبت نام / ورود",
+    "cartText": "سبد خرید",
+    "menuTitle": "دسته بندی",
+    "categories": [
+      {
+        "label": "آیفون تصویری",
+        "page": "iphone-tasviri.html"
+      },
+      {
+        "label": "المنت",
+        "page": "element.html"
+      },
+      {
+        "label": "محافظ برق",
+        "page": "mohafez-bargh.html"
+      },
+      {
+        "label": "جک در پارکینگ",
+        "page": "jack-dar-parking.html"
+      }
+    ]
+  },
+  "contact": {
+    "aboutText": "فروشگاه الکتروصنعت امگا ارائه دهنده تجهیزات آیفون تصویری، المنت، محافظ برق و جک در پارکینگ با ارسال سریع و پشتیبانی فنی است.",
+    "phone": "32232340-034",
+    "email": "info@eso2000.ir",
+    "address": "کرمان، میدان قرنی، جنب سپهبد قرنی 5"
+  },
+  "footer": {
+    "rights": "تمامی حقوق این سایت برای فروشگاه الکتروصنعت امگا محفوظ است.",
+    "columns": [
+      {
+        "title": "دسترسی سریع",
+        "links": [
+          { "label": "صفحه اصلی", "href": "index.html" },
+          { "label": "آیفون تصویری", "href": "iphone-tasviri.html" },
+          { "label": "المنت", "href": "element.html" }
+        ]
+      },
+      {
+        "title": "خدمات",
+        "links": [
+          { "label": "محافظ برق", "href": "mohafez-bargh.html" },
+          { "label": "جک در پارکینگ", "href": "jack-dar-parking.html" },
+          { "label": "جزئیات محصول", "href": "product.html" }
+        ]
+      },
+      {
+        "title": "ارتباط",
+        "links": [
+          { "label": "تلفن: 32232340-034", "href": "#" },
+          { "label": "ایمیل: info@eso2000.ir", "href": "#" },
+          { "label": "پاسخگویی: شنبه تا پنجشنبه", "href": "#" }
+        ]
+      }
+    ],
+    "social": [
+      { "label": "اینستاگرام", "href": "https://instagram.com", "icon": "instagram" },
+      { "label": "تلگرام", "href": "https://t.me", "icon": "telegram" },
+      { "label": "واتساپ", "href": "https://wa.me", "icon": "whatsapp" },
+      { "label": "آپارات", "href": "https://aparat.com", "icon": "aparat" }
+    ]
+  }
+}
