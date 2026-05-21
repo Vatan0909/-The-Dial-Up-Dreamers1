@@ -43,7 +43,8 @@ INSTALLED_APPS = [
     'Cart',
     'Orders',
     'Recommender',
-    'Users'
+    'Users',
+    'ElementOrder',
     
 ]
 
