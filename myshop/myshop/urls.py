@@ -19,9 +19,15 @@ from django.contrib import admin
 from django.urls import path
 
 from myshop import settings
+from myshop.Views import home_page, contact_us_page, login_page, register_page, logout_page
 
 urlpatterns = [
     path("admin/", admin.site.urls),
+    path('', home_page, name='home'),
+    path('contact-us', contact_us_page, name='contact'),
+    path('login', login_page, name='login'),
+    path('register', register_page, name='register'),
+    path('logout', logout_page, name='logout'),
 ]
 
 if settings.DEBUG  :
