@@ -16,18 +16,15 @@ Including another URLconf
 """
 from django.conf.urls.static import static
 from django.contrib import admin
-from django.urls import path
+from django.urls import path,include
 
 from myshop import settings
-from myshop.Views import home_page, contact_us_page, login_page, register_page, logout_page
-
+from myshop.Views import home_page, contact_us_page
 urlpatterns = [
     path("admin/", admin.site.urls),
     path('', home_page, name='home'),
-    path('contact-us', contact_us_page, name='contact'),
-    path('login', login_page, name='login'),
-    path('register', register_page, name='register'),
-    path('logout', logout_page, name='logout'),
+    path("contact-us/", contact_us_page, name="contact"),
+    path("user/", include("Users.urls")),
 ]
 
 if settings.DEBUG  :

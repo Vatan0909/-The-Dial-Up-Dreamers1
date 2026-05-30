@@ -1,5 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.utils import timezone
+import random
 
 # Create your models here.
 class Profile(models.Model):
@@ -21,3 +23,20 @@ class Address(models.Model):
 
     def __str__(self):
         return f"{self.user.username} - {self.title}"
+
+
+class PhoneOTP(models.Model):
+    phone_number = models.CharField(max_length=15)
+    code = models.CharField(max_length=6)
+    created_at = models.DateTimeField(auto_now_add=True)
+    is_verified = models.BooleanField(default=False)
+
+    def is_expired(self):
+        return timezone.now() > self.created_at + timezone.timedelta(minutes=5)
+
+    @staticmethod
+    def generate_code():
+        return str(random.randint(100000, 999999))
+
+    def __str__(self):
+        return f"{self.phone_number} - {self.code}"
