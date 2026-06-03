@@ -1,22 +1,38 @@
 from django.db import models
-
+from django.core.exceptions import ValidationError
 # Create your models here
 
 class Category(models.Model):
     name = models.CharField(max_length=100)
     slug = models.SlugField(unique=True)
+    #برای اینکه زیر کتگوری داشته باشیم
+    parent = models.ForeignKey("self", on_delete=models.PROTECT,null = True,blank = True,related_name='children' )
 
+    def clean(self):
+        if self.parent == self:
+            raise ValidationError("یک دسته نمی‌تواند والد خودش باشد.")
     def __str__(self):
         return self.name
 
 class Product(models.Model):
-    category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='products')
+    category = models.ForeignKey(Category, on_delete=models.PROTECT, related_name='products')
     name = models.CharField(max_length=200)
     warranty_info = models.CharField(max_length=200)
     technical_specs = models.TextField( blank=True, null=True)
     additional_details = models.TextField( blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
-
+    #این لیست ها برای اضافه کردن generate variants هستن.
+    # میایم تمام حالت های موجود از محصول رو در این متغیر ها ذخیره میکنیم
+    # بعدا در فرانت هم برای نمایش گزینه های قابل انتخاب کاربر از این لیست استفاده میکنیم
+    models_available = models.JSONField(default=list, blank=True)   # ["M700","M701","M702"]مثل
+    colors_available = models.JSONField(default=list, blank=True)   # ["سفید","مشکی"]مثل
+    memories_available = models.JSONField(default=list, blank=True) # ["حافظه‌دار","بدون حافظه"]مثل
+    #برای اینکه محصولات به دسته بندی های کلی اضافه نشن در پنل ادمین
+    def clean(self):
+        if self.category.children.exists():
+            raise ValidationError(
+                "این دسته بندی خیلی کلی است. محصول را در زیردسته بندی مختص به خودش قرار بدید"
+            )
     def __str__(self):
         return self.name
     
@@ -27,7 +43,7 @@ class ProductFeature(models.Model):
     description = models.CharField(max_length=300)
 
     def __str__(self):
-        return f"{self.title}: {self.description}"
+        return f"{self.product.name} - {self.description}"
 
 # برای ویژگی های متغیر
 class ProductVariants(models.Model):
@@ -37,7 +53,7 @@ class ProductVariants(models.Model):
     memory = models.CharField(max_length=50, blank=True, null=True)
     model = models.CharField(max_length=50, blank=True, null=True)
     
-    price = models.PositiveIntegerField
+    price = models.PositiveIntegerField(default=0)
     stock = models.PositiveIntegerField(default=0)
     is_pack = models.BooleanField(default=False)
     def __str__(self):
