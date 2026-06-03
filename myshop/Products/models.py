@@ -39,7 +39,7 @@ class ProductVariants(models.Model):
     
     price = models.PositiveIntegerField
     stock = models.PositiveIntegerField(default=0)
-
+    is_pack = models.BooleanField(default=False)
     def __str__(self):
         # نمایش نام محصول، ویژگی‌ها، قیمت و موجودی در یک خط
         return f"{self.product.name} | {self.color or ''} {self.memory or ''} {self.model or ''} | {self.price:,} price |stock {self.stock}"
