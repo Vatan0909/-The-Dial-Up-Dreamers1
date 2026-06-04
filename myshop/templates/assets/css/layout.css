@@ -9,7 +9,7 @@
 .header-search {
   display: flex;
   align-items: center;
-  background: #fff;
+  background: #dae0e5;
   border: 1px solid var(--border-soft);
   border-radius: 12px;
   overflow: hidden;
@@ -30,21 +30,21 @@
 }
 
 .header-search input::placeholder {
-  color: #8a99ab;
+  color: #2f5482;
 }
 
 .header-search button {
   width: 48px;
   height: 100%;
   border: none;
-  background: #f4f8fc;
+  background: #a9bfd4;
   color: var(--brand-blue);
   cursor: pointer;
   transition: 0.2s ease;
 }
 
 .header-search button:hover {
-  background: #e8f1fb;
+  background: #09478e;
 }
 
 .header-search i {
@@ -106,7 +106,7 @@
   height: 1.1rem;
   border-radius: 999px;
   background: var(--brand-orange);
-  color: #fff;
+  color: #000000;
   font-size: 0.72rem;
   display: inline-flex;
   align-items: center;
@@ -175,7 +175,7 @@
 }
 
 .category-toggle {
-  border: 1px solid #c4d2e3;
+  border: 1px solid #80AFF9;
   background: #fff;
   color: #223041;
   padding: 0.5rem 0.85rem;
@@ -291,8 +291,8 @@
 
 .site-footer {
   margin-top: 2.8rem;
-  background: #e2eaf3;
-  border-top: 1px solid #ccdae9;
+  background: #e5b570;
+  border-top: 1px solid #1f3a57;
 }
 
 .footer-main {
@@ -471,4 +471,24 @@
   .footer-columns {
     grid-template-columns: 1fr;
   }
+}
+#auth-link {
+  background: #496eaa;
+  color: #ffffff;
+  border: 1px solid #94BBFA;
+}
+
+#cart-link {
+  background: #ed985c;
+  color: #ffffff;
+  border: 1px solid #FBA365;
+}
+#auth-link:hover {
+  background: #1b458f;
+  border-color: #7FAAF6;
+}
+
+#cart-link:hover {
+  background: #d6722b;
+  border-color: #F78E45;
 }
