@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>فروشگاه الکتروصنعت امگا | سبد خرید</title>
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/pages.css">
+  <link rel="stylesheet" href="assets/css/cart.css">
+  <link rel="stylesheet" href="bootstrap-pack/bootstrap-icons/bootstrap-icons.css">
+</head>
+<body data-page="cart">
+  <div id="site-header"></div>
+
+  <main class="page-shell">
+    <div class="container">
+
+      <!-- بردکرامب -->
+      <nav class="breadcrumb-nav" aria-label="مسیر صفحه">
+        <a href="index.html">خانه</a>
+        <i class="bi bi-chevron-left"></i>
+        <span>سبد خرید</span>
+      </nav>
+
+      <!-- محتوای اصلی -->
+      <div class="cart-layout" id="cart-layout">
+
+        <!-- ستون چپ: آیتم‌ها -->
+        <section class="cart-items-col" id="cart-items-col">
+          <div class="section-head">
+            <h1 class="cart-page-title">
+              <i class="bi bi-cart3"></i>
+              سبد خرید
+              <span class="cart-items-count" id="cart-items-count"></span>
+            </h1>
+          </div>
+          <div id="cart-items-list"></div>
+        </section>
+
+        <!-- ستون راست: خلاصه سفارش -->
+        <aside class="cart-summary-col" id="cart-summary-col">
+          <div class="cart-summary-box">
+            <h2 class="summary-title">خلاصه سفارش</h2>
+
+            <div class="summary-rows" id="summary-rows">
+              <div class="summary-row">
+                <span>جمع کالاها</span>
+                <span id="summary-subtotal">—</span>
+              </div>
+              <div class="summary-row">
+                <span>هزینه ارسال</span>
+                <span id="summary-shipping" class="summary-free">رایگان</span>
+              </div>
+              <div class="summary-row summary-total-row">
+                <span>مبلغ قابل پرداخت</span>
+                <span id="summary-total" class="summary-total-amount">—</span>
+              </div>
+            </div>
+
+            <!-- کد تخفیف -->
+            <div class="coupon-wrap">
+              <label class="coupon-label" for="coupon-input">کد تخفیف دارید؟</label>
+              <div class="coupon-row">
+                <input type="text" id="coupon-input" class="coupon-input" placeholder="کد تخفیف را وارد کنید">
+                <button class="coupon-btn" id="coupon-btn" type="button">اعمال</button>
+              </div>
+              <div id="coupon-msg" class="coupon-msg"></div>
+            </div>
+
+            <!-- دکمه پرداخت -->
+            <button class="checkout-btn" id="checkout-btn" type="button">
+              <i class="bi bi-credit-card"></i>
+              ادامه و پرداخت
+            </button>
+
+            <a href="index.html" class="continue-shopping-link">
+              <i class="bi bi-arrow-right"></i>
+              ادامه خرید
+            </a>
+          </div>
+        </aside>
+
+      </div>
+
+      <!-- حالت خالی -->
+      <div class="cart-empty" id="cart-empty" style="display:none">
+        <div class="cart-empty-inner">
+          <i class="bi bi-cart-x cart-empty-icon"></i>
+          <h2>سبد خرید شما خالی است</h2>
+          <p>هنوز محصولی به سبد خرید اضافه نکرده‌اید.</p>
+          <a href="index.html" class="btn-solid cart-empty-btn">
+            <i class="bi bi-shop"></i>
+            رفتن به فروشگاه
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <!-- مودال پرداخت -->
+  <div class="modal-overlay" id="payment-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" style="display:none">
+    <div class="modal-box">
+      <button class="modal-close" id="modal-close" aria-label="بستن">
+        <i class="bi bi-x-lg"></i>
+      </button>
+      <div id="modal-content">
+        <!-- مرحله ۱: اطلاعات -->
+        <div id="modal-step-1">
+          <h2 id="modal-title" class="modal-title">
+            <i class="bi bi-person-vcard"></i>
+            اطلاعات تحویل‌گیرنده
+          </h2>
+          <div class="modal-form">
+            <div class="form-group">
+              <label for="f-name">نام و نام‌خانوادگی</label>
+              <input type="text" id="f-name" placeholder="مثلاً: علی رضایی" autocomplete="name">
+            </div>
+            <div class="form-group">
+              <label for="f-phone">شماره موبایل</label>
+              <input type="tel" id="f-phone" placeholder="09xxxxxxxxx" autocomplete="tel" dir="ltr">
+            </div>
+            <div class="form-group">
+              <label for="f-address">آدرس کامل</label>
+              <textarea id="f-address" rows="3" placeholder="استان، شهر، خیابان، پلاک، واحد"></textarea>
+            </div>
+            <div class="form-group">
+              <label for="f-postal">کد پستی</label>
+              <input type="text" id="f-postal" placeholder="۱۰۰۰۰۰۰۰۰۰" maxlength="10" dir="ltr">
+            </div>
+            <div id="form-error" class="form-error" style="display:none"></div>
+            <button class="checkout-btn modal-submit" id="modal-step1-btn" type="button">
+              ادامه و انتخاب روش پرداخت
+              <i class="bi bi-arrow-left"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- مرحله ۲: روش پرداخت -->
+        <div id="modal-step-2" style="display:none">
+          <h2 class="modal-title">
+            <i class="bi bi-credit-card"></i>
+            روش پرداخت
+          </h2>
+          <div class="payment-methods">
+            <label class="payment-method active" id="pm-online">
+              <input type="radio" name="payment" value="online" checked hidden>
+              <i class="bi bi-globe2"></i>
+              <div>
+                <strong>پرداخت آنلاین</strong>
+                <span>درگاه بانکی امن</span>
+              </div>
+              <i class="bi bi-check-circle-fill pm-check"></i>
+            </label>
+            <label class="payment-method" id="pm-cod">
+              <input type="radio" name="payment" value="cod" hidden>
+              <i class="bi bi-cash-stack"></i>
+              <div>
+                <strong>پرداخت در محل</strong>
+                <span>هنگام تحویل کالا</span>
+              </div>
+              <i class="bi bi-check-circle-fill pm-check"></i>
+            </label>
+          </div>
+
+          <!-- خلاصه نهایی -->
+          <div class="modal-order-summary" id="modal-order-summary"></div>
+
+          <div class="modal-btn-row">
+            <button class="modal-back-btn" id="modal-back-btn" type="button">
+              <i class="bi bi-arrow-right"></i>
+              بازگشت
+            </button>
+            <button class="checkout-btn" id="modal-pay-btn" type="button">
+              <i class="bi bi-lock-fill"></i>
+              تأیید و پرداخت
+            </button>
+          </div>
+        </div>
+
+        <!-- مرحله ۳: موفق -->
+        <div id="modal-step-3" style="display:none">
+          <div class="success-state">
+            <div class="success-icon-wrap">
+              <i class="bi bi-check-lg"></i>
+            </div>
+            <h2>سفارش ثبت شد!</h2>
+            <p>سفارش شما با موفقیت ثبت شد. کد پیگیری به زودی برایتان ارسال می‌شود.</p>
+            <div class="success-order-code" id="success-order-code"></div>
+            <a href="index.html" class="checkout-btn" style="display:inline-flex; text-decoration:none; margin-top:1rem">
+              <i class="bi bi-house"></i>
+              بازگشت به صفحه اصلی
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="assets/js/data-service.js" defer></script>
+  <script src="assets/js/components.js" defer></script>
+  <script src="assets/js/layout-loader.js" defer></script>
+  <script src="assets/js/cart.js" defer></script>
+  <script src="assets/js/page-cart.js" defer></script>
+  <script src="assets/js/app.js" defer></script>
+</body>
+</html>
