@@ -194,9 +194,9 @@
 }
 
 .cart-summary-box {
-  border: 1px solid var(--border-soft);
+  border: 1px solid #ffa05c;
   border-radius: var(--radius-md);
-  background: var(--bg-surface);
+  background: #ffdfbd;
   padding: 1.1rem;
   display: grid;
   gap: 1rem;
