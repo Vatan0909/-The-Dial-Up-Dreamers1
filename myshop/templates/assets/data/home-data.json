@@ -1,21 +1,21 @@
 {
   "heroSlides": [
     {
-      "title": "پکیج کامل آیفون تصویری",
-      "subtitle": "انواع مانیتور، پنل و متعلقات نصب با قیمت به‌روز",
-      "image": "assets/images/hero-iphone.svg",
+      "title": "",
+      "subtitle": "",
+      "image": "assets/images/slideshow-intercome-new.png",
       "link": "iphone-tasviri.html"
     },
     {
-      "title": "محافظ برق و استابلایزر",
-      "subtitle": "راهکار کامل برای محافظت تجهیزات خانگی و صنعتی",
-      "image": "assets/images/hero-mohafez.svg",
+      "title": "",
+      "subtitle": "",
+      "image": "assets/images/slideshow-mohafez-new.png",
       "link": "mohafez-bargh.html"
     },
     {
-      "title": "تجهیزات المنت و جک پارکینگ",
-      "subtitle": "پیشنهادهای ویژه برای پروژه های نصب و نگهداری",
-      "image": "assets/images/hero-element.svg",
+      "title": "",
+      "subtitle": "",
+      "image": "assets/images/slideshow-jack-new.png",
       "link": "element.html"
     }
   ],
