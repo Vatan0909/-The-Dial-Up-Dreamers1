@@ -21,6 +21,7 @@ class Product(models.Model):
     technical_specs = models.TextField( blank=True, null=True)
     additional_details = models.TextField( blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
+    slug = models.SlugField(unique=True, null=True)
     #این لیست ها برای اضافه کردن generate variants هستن.
     # میایم تمام حالت های موجود از محصول رو در این متغیر ها ذخیره میکنیم
     # بعدا در فرانت هم برای نمایش گزینه های قابل انتخاب کاربر از این لیست استفاده میکنیم
