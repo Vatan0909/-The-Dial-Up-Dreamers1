@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 
 class ElementOrder(models.Model):
+
     # کاربر بدون لاگین هم میتونه سفارش ثبت کنه ولی شماره موبایل باید حتما وارد کنه
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='element_orders', null=True, blank=True)
     phone = models.CharField(max_length=15)
