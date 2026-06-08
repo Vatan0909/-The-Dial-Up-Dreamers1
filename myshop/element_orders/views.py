@@ -18,10 +18,10 @@ def element_order_create(request):
     else:
         form = ElementOrderForm()
 
-    return render(request, 'orders/element_order_form.html', {'form': form})
+    return render(request, 'element_orders/element_order_form.html', {'form': form})
 
 
 @login_required
 def element_order_success(request):
-    return render(request, 'orders/element_order_success.html')
+    return render(request, 'element_orders/element_order_success.html')
 

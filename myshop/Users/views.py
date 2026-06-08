@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout, get_user_model
 from .forms import PhoneForm, OTPVerifyForm, CompleteRegisterForm, LoginForm
-from Users.models import PhoneOTP
+from users.models import PhoneOTP
 
 User = get_user_model()
 
