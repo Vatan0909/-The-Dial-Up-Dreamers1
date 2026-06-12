@@ -25,6 +25,7 @@ urlpatterns = [
     path('', home_page, name='home'),
     path("contact-us/", contact_us_page, name="contact"),
     path("user/", include("users.urls")),
+    path("", include("products.urls")),
 ]
 
 if settings.DEBUG  :
