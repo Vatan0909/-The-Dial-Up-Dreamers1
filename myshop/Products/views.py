@@ -3,12 +3,19 @@ from django.http import HttpResponse
 from . import models
 from django.db.models import Prefetch, Min
 from django.http import JsonResponse
+from .forms import AddToCartForm
 
 # slug رو هم میدیم. تا بتونیم محصول را با اون پیدا کنیم از دیتابیس 
 # به جای id از slug استفاده میکنیم که از url میاد
 def product_detail(request, slug):
     product = get_object_or_404( models.Product.objects.prefetch_related("variants", "images", "features")
                                 , slug=slug)
+    form = AddToCartForm(
+        product=product,
+        initial={
+            "product_id": product.id
+        }
+    )
     # برای اینکه همه واریانت ها رو یکباره به صفحه بفرستیم تا با جاوا اسکریپت بتونیم قیمت های واریانت های مختلف رو ببینیم
     variants = product.variants.all()
      #  استخراج گزینه‌های موجود برای نمایش در دکمه‌ها
@@ -36,6 +43,8 @@ def product_detail(request, slug):
 
         #  برای اینکه اصولی تر باشه و استفاده در html راحت تر فقط product رو میفرستم
         'product' : product,
+        'form': form,
+
         # برای نمایش گزینه ها
         'product_colors' : available_colors,
         'product_memories' : available_storages,
