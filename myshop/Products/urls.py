@@ -6,7 +6,7 @@ app_name = "products"
 urlpatterns = [
 
     # صفحه اصلی سایت
-    path("", views.home_page, name="home"),
+    path("", views.home, name="home"),
 
     # صفحه محصول
     path("product/<slug:slug>/", views.product_detail, name="product_detail"),

@@ -96,6 +96,7 @@ def home(request):
             .filter(category_id__in=sub_ids)
             .annotate(min_price=Min("variants__price"))
             .prefetch_related("images")
+            #8 محصول به صورت تصادفی انتخاب میشه
             .order_by("?")[:8]
         )
         # خروجی دیکشنری ای از هر دسته بندی اصلی و محصولات درونش هست
