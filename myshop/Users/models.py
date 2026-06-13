@@ -5,7 +5,7 @@ import random
 
 # Create your models here.
 class Profile(models.Model):
-    # making one to one relationship between profile model and User model
+    # making one-to-one relationship between profile model and User model
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile')
     phone = models.CharField(max_length=11, null = False, blank = False, unique = True)
 
@@ -26,6 +26,8 @@ class Address(models.Model):
 
 
 class PhoneOTP(models.Model):
+    objects = models.Manager()
+
     phone_number = models.CharField(max_length=15)
     code = models.CharField(max_length=6)
     created_at = models.DateTimeField(auto_now_add=True)
