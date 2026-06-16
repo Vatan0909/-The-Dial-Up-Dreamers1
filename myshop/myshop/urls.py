@@ -26,6 +26,7 @@ urlpatterns = [
     path("contact-us/", contact_us_page, name="contact"),
     path("user/", include("users.urls")),
     path("element-order/", include("element_orders.urls")),
+    path("", include("products.urls")),
 ]
 
 if settings.DEBUG  :

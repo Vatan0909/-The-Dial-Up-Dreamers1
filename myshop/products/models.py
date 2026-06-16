@@ -23,10 +23,10 @@ class Product(models.Model):
     technical_specs = models.TextField( blank=True, null=True)
     additional_details = models.TextField( blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
+    slug = models.SlugField(unique=True, null=True)
     #این لیست ها برای اضافه کردن generate variants هستن.
     # میایم تمام حالت های موجود از محصول رو در این متغیر ها ذخیره میکنیم
     # بعدا در فرانت هم برای نمایش گزینه های قابل انتخاب کاربر از این لیست استفاده میکنیم
-    models_available = models.JSONField(default=list, blank=True)   # ["M700","M701","M702"]مثل
     colors_available = models.JSONField(default=list, blank=True)   # ["سفید","مشکی"]مثل
     memories_available = models.JSONField(default=list, blank=True) # ["حافظه‌دار","بدون حافظه"]مثل
     #برای اینکه محصولات به دسته بندی های کلی اضافه نشن در پنل ادمین
@@ -53,7 +53,6 @@ class ProductVariants(models.Model):
      # برای گزینه های متفاوتی از محصول که کاربر میتونه انتخاب کنه
     color = models.CharField(max_length=50, blank=True, null=True)
     memory = models.CharField(max_length=50, blank=True, null=True)
-    model = models.CharField(max_length=50, blank=True, null=True)
     
     price = models.PositiveIntegerField(default=0)
     stock = models.PositiveIntegerField(default=0)
