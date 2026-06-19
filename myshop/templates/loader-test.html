@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>Loader Test</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: #edf2f7; display: flex; align-items: center; justify-content: center; height: 100vh; }
+    #site-loader {
+      position: fixed;
+      inset: 0;
+      background: #edf2f7;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+    #site-loader.loaded { opacity: 0; visibility: hidden; pointer-events: none; }
+    .loader-spinner {
+      width: 40px;
+      height: 40px;
+      border: 3px solid #d4deea;
+      border-top-color: #2b6cb0;
+      border-radius: 50%;
+      animation: spin 0.75s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    button { margin-top: 20px; padding: 8px 24px; cursor: pointer; font-size: 1rem; }
+  </style>
+</head>
+<body>
+  <div id="site-loader"><div class="loader-spinner"></div></div>
+  <button onclick="replayLoader()">نمایش دوباره</button>
+  <script>
+    setTimeout(() => document.getElementById('site-loader').classList.add('loaded'), 1500);
+    function replayLoader() {
+      const l = document.getElementById('site-loader');
+      l.classList.remove('loaded');
+      setTimeout(() => l.classList.add('loaded'), 1500);
+    }
+  </script>
+</body>
+</html>

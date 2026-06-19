@@ -1,0 +1,754 @@
+{
+  "products": [
+    {
+      "id": "vt-monitor-01",
+      "name": "مانیتور آیفون تصویری 7 اینچ مدل M700",
+      "category": "iphone-tasviri",
+      "group": "monitor",
+      "type": "video-doorphone",
+      "screenSize": "7",
+      "hasMemory": true,
+      "unitType": "monitor-only",
+      "price": 15200000,
+      "image": "assets/images/products/iphone.svg",
+      "gallery": [
+        "assets/images/products/iphone.svg",
+        "assets/images/products/panel.svg",
+        "assets/images/products/accessory.svg"
+      ],
+      "description": [
+        "نمایشگر رنگی 7 اینچ با کیفیت بالا",
+        "پشتیبانی از اتصال به پنل دوم",
+        "دارای منوی فارسی و کاربری ساده"
+      ],
+      "modelOptions": ["M700", "M701", "M702"],
+      "colorOptions": ["سفید", "مشکی"],
+      "memoryOptions": ["حافظه‌دار", "بدون حافظه"],
+      "tabs": {
+        "گارانتی": "این محصول دارای 24 ماه گارانتی رسمی است.",
+        "جزئیات بیشتر": "مناسب ساختمان های مسکونی و اداری با قابلیت ارتباط داخلی.",
+        "مشخصات فنی": "ولتاژ ورودی 220، پنل لمسی، صدای دوطرفه و نویز کم."
+      }
+    },
+    {
+      "id": "vt-monitor-02",
+      "name": "مانیتور آیفون تصویری 4.3 اینچ مدل V430",
+      "category": "iphone-tasviri",
+      "group": "monitor",
+      "type": "video-doorphone",
+      "screenSize": "4.3",
+      "hasMemory": false,
+      "unitType": "monitor-only",
+      "price": 11900000,
+      "image": "assets/images/products/iphone.svg",
+      "gallery": [
+        "assets/images/products/iphone.svg",
+        "assets/images/products/package.svg"
+      ],
+      "description": [
+        "نمایشگر اقتصادی با کیفیت مناسب",
+        "قابلیت باز کردن درب از داخل واحد",
+        "بدنه مقاوم و نصب سریع"
+      ],
+      "modelOptions": ["V430", "V431"],
+      "colorOptions": ["سفید"],
+      "memoryOptions": ["حافظه‌دار", "بدون حافظه"],
+      "tabs": {
+        "گارانتی": "18 ماه گارانتی تعویض.",
+        "جزئیات بیشتر": "مناسب پروژه های اقتصادی و ساختمان های کم واحد.",
+        "مشخصات فنی": "صفحه 4.3 اینچ، صدای واضح، بدنه ABS."
+      }
+    },
+    {
+      "id": "vt-monitor-03",
+      "name": "مانیتور لمسی آیفون تصویری مدل Touch9",
+      "category": "iphone-tasviri",
+      "group": "monitor",
+      "type": "video-doorphone",
+      "screenSize": "9",
+      "hasMemory": true,
+      "unitType": "monitor-only",
+      "price": 19800000,
+      "image": "assets/images/products/iphone.svg",
+      "gallery": [
+        "assets/images/products/iphone.svg",
+        "assets/images/products/panel.svg",
+        "assets/images/products/package.svg"
+      ],
+      "description": [
+        "صفحه 9 اینچ لمسی تمام رنگی",
+        "طراحی مدرن مناسب دکورهای جدید",
+        "قابلیت ذخیره عکس مراجعه کننده"
+      ],
+      "modelOptions": ["Touch9", "Touch9 Pro"],
+      "colorOptions": ["سفید", "نقره ای"],
+      "memoryOptions": ["حافظه‌دار"],
+      "tabs": {
+        "گارانتی": "24 ماه گارانتی و 5 سال خدمات.",
+        "جزئیات بیشتر": "قابل اتصال به دوربین دوم و پنل دوم.",
+        "مشخصات فنی": "نمایشگر خازنی، بلندگوی HD، ذخیره سازی داخلی."
+      }
+    },
+    {
+      "id": "vt-panel-01",
+      "name": "پنل دم در آیفون تصویری تک واحدی P100",
+      "category": "iphone-tasviri",
+      "group": "panel",
+      "type": "generic",
+      "price": 6700000,
+      "image": "assets/images/products/panel.svg",
+      "gallery": [
+        "assets/images/products/panel.svg",
+        "assets/images/products/iphone.svg"
+      ],
+      "description": [
+        "مقاوم در برابر رطوبت و گرد و غبار",
+        "دید در شب قابل قبول",
+        "قابل نصب روی انواع ساختمان"
+      ],
+      "tabs": {
+        "گارانتی": "12 ماه گارانتی.",
+        "جزئیات بیشتر": "بدنه فلزی و کلید مکانیکی نرم.",
+        "مشخصات فنی": "دید در شب IR، بدنه آلومینیومی."
+      }
+    },
+    {
+      "id": "vt-panel-02",
+      "name": "پنل دم در چند واحدی P400",
+      "category": "iphone-tasviri",
+      "group": "panel",
+      "type": "generic",
+      "price": 9900000,
+      "image": "assets/images/products/panel.svg",
+      "gallery": [
+        "assets/images/products/panel.svg",
+        "assets/images/products/package.svg"
+      ],
+      "description": [
+        "پشتیبانی تا 8 واحد",
+        "کیفیت تصویر مناسب روز و شب",
+        "مناسب ساختمان های چند طبقه"
+      ],
+      "tabs": {
+        "گارانتی": "18 ماه گارانتی.",
+        "جزئیات بیشتر": "قابلیت ارتقا و توسعه برای واحدهای بیشتر.",
+        "مشخصات فنی": "ورودی کارتخوان اختیاری، دید در شب."
+      }
+    },
+    {
+      "id": "vt-accessory-01",
+      "name": "قفل بازکن آیفون تصویری مدل Lock12",
+      "category": "iphone-tasviri",
+      "group": "accessory",
+      "type": "generic",
+      "price": 1850000,
+      "image": "assets/images/products/accessory.svg",
+      "gallery": [
+        "assets/images/products/accessory.svg",
+        "assets/images/products/panel.svg"
+      ],
+      "description": [
+        "عملکرد سریع و بی صدا",
+        "مناسب برای انواع درب فلزی",
+        "طول عمر بالا"
+      ],
+      "tabs": {
+        "گارانتی": "12 ماه گارانتی.",
+        "جزئیات بیشتر": "قابل نصب با اکثر پنل های رایج.",
+        "مشخصات فنی": "ولتاژ 12V، بدنه فلزی."
+      }
+    },
+    {
+      "id": "vt-accessory-02",
+      "name": "ترانس تغذیه آیفون تصویری مدل T24",
+      "category": "iphone-tasviri",
+      "group": "accessory",
+      "type": "generic",
+      "price": 1420000,
+      "image": "assets/images/products/accessory.svg",
+      "gallery": [
+        "assets/images/products/accessory.svg",
+        "assets/images/products/iphone.svg"
+      ],
+      "description": [
+        "تامین ولتاژ پایدار پنل و مانیتور",
+        "کیفیت ساخت صنعتی",
+        "ایمنی مناسب در نوسان برق"
+      ],
+      "tabs": {
+        "گارانتی": "12 ماه گارانتی.",
+        "جزئیات بیشتر": "توصیه شده برای پروژه های چند واحدی.",
+        "مشخصات فنی": "خروجی 12 ولت، فیوز محافظ."
+      }
+    },
+    {
+      "id": "vt-package-01",
+      "name": "پکیج کامل آیفون تصویری مدل Pack-Start",
+      "category": "iphone-tasviri",
+      "group": "package",
+      "type": "video-doorphone",
+      "screenSize": "4.3",
+      "hasMemory": false,
+      "unitType": "pack-1",
+      "price": 21400000,
+      "image": "assets/images/products/package.svg",
+      "gallery": [
+        "assets/images/products/package.svg",
+        "assets/images/products/iphone.svg",
+        "assets/images/products/panel.svg"
+      ],
+      "description": [
+        "شامل مانیتور، پنل و متعلقات نصب",
+        "قیمت اقتصادی نسبت به خرید تکی",
+        "نصب سریع برای پروژه های کوچک"
+      ],
+      "modelOptions": ["Pack-Start", "Pack-Start Plus"],
+      "colorOptions": ["سفید"],
+      "memoryOptions": ["حافظه‌دار", "بدون حافظه"],
+      "tabs": {
+        "گارانتی": "24 ماه گارانتی.",
+        "جزئیات بیشتر": "مناسب برای واحدهای تک تا دو واحدی.",
+        "مشخصات فنی": "مانیتور 4.3 اینچ، پنل ضدآب."
+      }
+    },
+    {
+      "id": "vt-package-02",
+      "name": "پکیج کامل آیفون تصویری مدل Pack-Pro",
+      "category": "iphone-tasviri",
+      "group": "package",
+      "type": "video-doorphone",
+      "screenSize": "7",
+      "hasMemory": true,
+      "unitType": "pack-4",
+      "price": 28500000,
+      "image": "assets/images/products/package.svg",
+      "gallery": [
+        "assets/images/products/package.svg",
+        "assets/images/products/iphone.svg",
+        "assets/images/products/accessory.svg"
+      ],
+      "description": [
+        "پکیج حرفه ای برای چند واحد",
+        "شامل مانیتور لمسی و پنل چند واحدی",
+        "دارای تجهیزات کامل نصب"
+      ],
+      "modelOptions": ["Pack-Pro", "Pack-Pro X"],
+      "colorOptions": ["سفید", "مشکی"],
+      "memoryOptions": ["حافظه‌دار"],
+      "tabs": {
+        "گارانتی": "24 ماه گارانتی طلایی.",
+        "جزئیات بیشتر": "مناسب ساختمان های 4 تا 8 واحدی.",
+        "مشخصات فنی": "مانیتور لمسی، پنل ضدسرقت، ترانس صنعتی."
+      }
+    },
+    {
+      "id": "vt-monitor-04",
+      "name": "مانیتور آیفون تصویری 5 اینچ مدل M500",
+      "category": "iphone-tasviri",
+      "group": "monitor",
+      "type": "video-doorphone",
+      "screenSize": "5",
+      "hasMemory": false,
+      "unitType": "monitor-only",
+      "price": 13500000,
+      "image": "assets/images/products/iphone.svg",
+      "gallery": ["assets/images/products/iphone.svg", "assets/images/products/panel.svg"],
+      "description": ["نمایشگر ۵ اینچ با وضوح تصویر مناسب", "مناسب واحدهای میانی", "نصب آسان و کاربری ساده"],
+      "modelOptions": ["M500", "M501"],
+      "colorOptions": ["سفید", "مشکی"],
+      "memoryOptions": ["بدون حافظه"],
+      "tabs": { "گارانتی": "18 ماه گارانتی.", "جزئیات بیشتر": "مناسب آپارتمان‌های ۳ تا ۵ واحده.", "مشخصات فنی": "صفحه ۵ اینچ، فریم آلومینیوم." }
+    },
+    {
+      "id": "vt-monitor-05",
+      "name": "مانیتور آیفون تصویری 7 اینچ مدل M720 (بدون حافظه)",
+      "category": "iphone-tasviri",
+      "group": "monitor",
+      "type": "video-doorphone",
+      "screenSize": "7",
+      "hasMemory": false,
+      "unitType": "monitor-only",
+      "price": 14100000,
+      "image": "assets/images/products/iphone.svg",
+      "gallery": ["assets/images/products/iphone.svg"],
+      "description": ["نمایشگر ۷ اینچ اقتصادی", "بدون حافظه داخلی", "مناسب پروژه‌های اقتصادی"],
+      "modelOptions": ["M720"],
+      "colorOptions": ["سفید"],
+      "memoryOptions": ["بدون حافظه"],
+      "tabs": { "گارانتی": "18 ماه گارانتی.", "جزئیات بیشتر": "نسخه اقتصادی مدل ۷ اینچ.", "مشخصات فنی": "صفحه TFT ۷ اینچ." }
+    },
+    {
+      "id": "vt-package-03",
+      "name": "پکیج دو واحدی آیفون تصویری مدل Pack-Duo",
+      "category": "iphone-tasviri",
+      "group": "package",
+      "type": "video-doorphone",
+      "screenSize": "5",
+      "hasMemory": false,
+      "unitType": "pack-2",
+      "price": 34800000,
+      "image": "assets/images/products/package.svg",
+      "gallery": ["assets/images/products/package.svg", "assets/images/products/iphone.svg", "assets/images/products/panel.svg"],
+      "description": ["شامل ۲ مانیتور و یک پنل مشترک", "ایده‌آل برای دوبلکس و خانه‌های دو واحدی", "نصب یک‌بار، استفاده همیشگی"],
+      "modelOptions": ["Pack-Duo"],
+      "colorOptions": ["سفید"],
+      "memoryOptions": ["بدون حافظه"],
+      "tabs": { "گارانتی": "24 ماه گارانتی.", "جزئیات بیشتر": "مناسب خانه‌های ویلایی و دوبلکس.", "مشخصات فنی": "دو مانیتور ۵ اینچ، پنل یک واحدی." }
+    },
+    {
+      "id": "vt-package-04",
+      "name": "پکیج سه واحدی آیفون تصویری مدل Pack-Tri",
+      "category": "iphone-tasviri",
+      "group": "package",
+      "type": "video-doorphone",
+      "screenSize": "7",
+      "hasMemory": true,
+      "unitType": "pack-3",
+      "price": 52000000,
+      "image": "assets/images/products/package.svg",
+      "gallery": ["assets/images/products/package.svg", "assets/images/products/iphone.svg"],
+      "description": ["سه مانیتور کامل با یک پنل مشترک", "مناسب ساختمان‌های سه واحده", "گارانتی و پشتیبانی کامل"],
+      "modelOptions": ["Pack-Tri"],
+      "colorOptions": ["سفید", "مشکی"],
+      "memoryOptions": ["حافظه‌دار"],
+      "tabs": { "گارانتی": "24 ماه گارانتی طلایی.", "جزئیات بیشتر": "سه واحد مستقل با صدا و تصویر جداگانه.", "مشخصات فنی": "سه مانیتور ۷ اینچ، پنل چند واحدی." }
+    },
+    {
+      "id": "jack-01",
+      "name": "جک در پارکینگ مدل J450",
+      "category": "jack-dar-parking",
+      "group": "jack",
+      "type": "generic",
+      "price": 23800000,
+      "image": "assets/images/products/jack.svg",
+      "gallery": [
+        "assets/images/products/jack.svg",
+        "assets/images/products/accessory.svg"
+      ],
+      "description": [
+        "قدرت بالا برای درب های دو لنگه",
+        "عملکرد نرم و کم صدا",
+        "مناسب کاربری مسکونی"
+      ],
+      "tabs": {
+        "گارانتی": "18 ماه گارانتی.",
+        "جزئیات بیشتر": "دارای مرکز کنترل و دو بازو.",
+        "مشخصات فنی": "توان 280 وات، کورس بلند."
+      }
+    },
+    {
+      "id": "jack-02",
+      "name": "جک در پارکینگ مدل J600",
+      "category": "jack-dar-parking",
+      "group": "jack",
+      "type": "generic",
+      "price": 31900000,
+      "image": "assets/images/products/jack.svg",
+      "gallery": [
+        "assets/images/products/jack.svg",
+        "assets/images/products/panel.svg"
+      ],
+      "description": [
+        "مناسب درب های سنگین و پرتردد",
+        "دارای سیستم خلاص کن دستی",
+        "برد فرمان با امکانات کامل"
+      ],
+      "tabs": {
+        "گارانتی": "24 ماه گارانتی.",
+        "جزئیات بیشتر": "مناسب مجتمع های اداری و مسکونی پرتردد.",
+        "مشخصات فنی": "موتور پرقدرت، برد کنترل ضدنویز."
+      }
+    },
+    {
+      "id": "el-heater-01",
+      "name": "المنت گرمایشی مدل EH220",
+      "category": "element",
+      "group": "heater",
+      "type": "generic",
+      "price": 1980000,
+      "image": "assets/images/products/element.svg",
+      "gallery": [
+        "assets/images/products/element.svg",
+        "assets/images/products/accessory.svg"
+      ],
+      "description": [
+        "گرمایش یکنواخت با طول عمر بالا",
+        "مناسب مصارف خانگی",
+        "مصرف انرژی بهینه"
+      ],
+      "tabs": {
+        "گارانتی": "12 ماه گارانتی.",
+        "جزئیات بیشتر": "مناسب دستگاه های گرمایشی خانگی.",
+        "مشخصات فنی": "توان 2200 وات، جنس استیل."
+      }
+    },
+    {
+      "id": "el-heater-02",
+      "name": "المنت گرمایشی مدل EH300",
+      "category": "element",
+      "group": "heater",
+      "type": "generic",
+      "price": 2430000,
+      "image": "assets/images/products/element.svg",
+      "gallery": [
+        "assets/images/products/element.svg",
+        "assets/images/products/package.svg"
+      ],
+      "description": [
+        "مناسب برای دستگاه های صنعتی سبک",
+        "پاسخ سریع گرمایی",
+        "مقاوم در برابر خوردگی"
+      ],
+      "tabs": {
+        "گارانتی": "12 ماه گارانتی.",
+        "جزئیات بیشتر": "قابل استفاده در محیط های مرطوب.",
+        "مشخصات فنی": "توان 3000 وات، المنت لوله ای."
+      }
+    },
+    {
+      "id": "el-industrial-01",
+      "name": "المنت صنعتی مدل IND-01",
+      "category": "element",
+      "group": "industrial",
+      "type": "generic",
+      "price": 4280000,
+      "image": "assets/images/products/element.svg",
+      "gallery": [
+        "assets/images/products/element.svg",
+        "assets/images/products/mohafez.svg"
+      ],
+      "description": [
+        "مناسب خطوط تولید صنعتی",
+        "طراحی مقاوم برای کار مداوم",
+        "امکان سفارشی سازی توان"
+      ],
+      "tabs": {
+        "گارانتی": "18 ماه گارانتی.",
+        "جزئیات بیشتر": "قابل سفارش در ابعاد مختلف.",
+        "مشخصات فنی": "توان سفارشی، بدنه ضدزنگ."
+      }
+    },
+    {
+      "id": "el-industrial-02",
+      "name": "المنت صنعتی مدل IND-02",
+      "category": "element",
+      "group": "industrial",
+      "type": "generic",
+      "price": 5120000,
+      "image": "assets/images/products/element.svg",
+      "gallery": [
+        "assets/images/products/element.svg",
+        "assets/images/products/stabilizer.svg"
+      ],
+      "description": [
+        "مخصوص کاربری سنگین و دائم",
+        "دوام بالا در دمای زیاد",
+        "سازگار با تجهیزات صنعتی"
+      ],
+      "tabs": {
+        "گارانتی": "18 ماه گارانتی.",
+        "جزئیات بیشتر": "مناسب تجهیزات صنعتی و کارگاهی.",
+        "مشخصات فنی": "جنس اینکولوی، تحمل دمای بالا."
+      }
+    },
+    {
+      "id": "el-accessory-01",
+      "name": "بست و متعلقات المنت مدل AC-10",
+      "category": "element",
+      "group": "accessory",
+      "type": "generic",
+      "price": 850000,
+      "image": "assets/images/products/accessory.svg",
+      "gallery": [
+        "assets/images/products/accessory.svg",
+        "assets/images/products/element.svg"
+      ],
+      "description": [
+        "نصب آسان المنت در پروژه های مختلف",
+        "جنس مقاوم در برابر حرارت",
+        "مناسب سایزهای متنوع"
+      ],
+      "tabs": {
+        "گارانتی": "6 ماه گارانتی.",
+        "جزئیات بیشتر": "متعلقات ضروری برای نصب المنت.",
+        "مشخصات فنی": "فولاد آبکاری شده."
+      }
+    },
+    {
+      "id": "el-accessory-02",
+      "name": "ترمینال اتصال المنت مدل AC-20",
+      "category": "element",
+      "group": "accessory",
+      "type": "generic",
+      "price": 620000,
+      "image": "assets/images/products/accessory.svg",
+      "gallery": [
+        "assets/images/products/accessory.svg",
+        "assets/images/products/element.svg"
+      ],
+      "description": [
+        "اتصال ایمن کابل به المنت",
+        "مقاوم در برابر حرارت بالا",
+        "کاربری آسان"
+      ],
+      "tabs": {
+        "گارانتی": "6 ماه گارانتی.",
+        "جزئیات بیشتر": "مناسب پروژه های صنعتی و نیمه صنعتی.",
+        "مشخصات فنی": "سرامیکی با پیچ استیل."
+      }
+    },
+    {
+      "id": "mp-home-01",
+      "name": "محافظ برق وسایل خانگی مدل H100",
+      "category": "mohafez-bargh",
+      "group": "home-appliance",
+      "type": "generic",
+      "price": 1390000,
+      "image": "assets/images/products/mohafez.svg",
+      "gallery": [
+        "assets/images/products/mohafez.svg",
+        "assets/images/products/stabilizer.svg"
+      ],
+      "description": [
+        "مناسب تلویزیون و لوازم خانگی",
+        "قطع خودکار در نوسان شدید",
+        "نمایشگر وضعیت برق"
+      ],
+      "tabs": {
+        "گارانتی": "24 ماه گارانتی.",
+        "جزئیات بیشتر": "گزینه مناسب برای محافظت از تجهیزات خانگی.",
+        "مشخصات فنی": "تایمر تاخیر، توان مناسب."
+      }
+    },
+    {
+      "id": "mp-home-02",
+      "name": "محافظ برق چندراهی خانگی مدل H200",
+      "category": "mohafez-bargh",
+      "group": "home-appliance",
+      "type": "generic",
+      "price": 1650000,
+      "image": "assets/images/products/mohafez.svg",
+      "gallery": [
+        "assets/images/products/mohafez.svg",
+        "assets/images/products/accessory.svg"
+      ],
+      "description": [
+        "چندراهی محافظ با 4 خروجی",
+        "مناسب تجهیزات خانگی و اداری",
+        "طراحی ایمن و مقاوم"
+      ],
+      "tabs": {
+        "گارانتی": "24 ماه گارانتی.",
+        "جزئیات بیشتر": "مناسب نصب روی میز یا کنار تلویزیون.",
+        "مشخصات فنی": "توان 10 آمپر، کلید روشن/خاموش."
+      }
+    },
+    {
+      "id": "mp-audio-01",
+      "name": "محافظ لوازم صوتی و تصویری مدل AV10",
+      "category": "mohafez-bargh",
+      "group": "audio-visual",
+      "type": "generic",
+      "price": 1220000,
+      "image": "assets/images/products/mohafez.svg",
+      "gallery": [
+        "assets/images/products/mohafez.svg",
+        "assets/images/products/iphone.svg"
+      ],
+      "description": [
+        "مخصوص سینمای خانگی و رسیور",
+        "پایداری بالا در قطع و وصل برق",
+        "طراحی جمع و جور"
+      ],
+      "tabs": {
+        "گارانتی": "18 ماه گارانتی.",
+        "جزئیات بیشتر": "محافظت مناسب برای تجهیزات AV.",
+        "مشخصات فنی": "تاخیر هوشمند، توان خروجی استاندارد."
+      }
+    },
+    {
+      "id": "mp-audio-02",
+      "name": "محافظ گیرنده دیجیتال مدل AV20",
+      "category": "mohafez-bargh",
+      "group": "audio-visual",
+      "type": "generic",
+      "price": 980000,
+      "image": "assets/images/products/mohafez.svg",
+      "gallery": [
+        "assets/images/products/mohafez.svg",
+        "assets/images/products/panel.svg"
+      ],
+      "description": [
+        "ابعاد کوچک برای پشت میز تلویزیون",
+        "حفاظت از گیرنده و مودم",
+        "مصرف برق پایین"
+      ],
+      "tabs": {
+        "گارانتی": "18 ماه گارانتی.",
+        "جزئیات بیشتر": "مناسب فضاهای محدود.",
+        "مشخصات فنی": "خروجی استاندارد، بدنه مقاوم."
+      }
+    },
+    {
+      "id": "mp-refrigerator-01",
+      "name": "محافظ یخچال مدل RF100",
+      "category": "mohafez-bargh",
+      "group": "refrigerator",
+      "type": "generic",
+      "price": 1480000,
+      "image": "assets/images/products/mohafez.svg",
+      "gallery": [
+        "assets/images/products/mohafez.svg",
+        "assets/images/products/stabilizer.svg"
+      ],
+      "description": [
+        "مخصوص کمپرسور یخچال",
+        "تاخیر استاندارد برای جلوگیری از آسیب",
+        "کیفیت ساخت بالا"
+      ],
+      "tabs": {
+        "گارانتی": "24 ماه گارانتی.",
+        "جزئیات بیشتر": "پیشنهاد ویژه برای یخچال های خانگی.",
+        "مشخصات فنی": "تاخیر 4 دقیقه، توان بالا."
+      }
+    },
+    {
+      "id": "mp-refrigerator-02",
+      "name": "محافظ فریزر خانگی مدل RF120",
+      "category": "mohafez-bargh",
+      "group": "refrigerator",
+      "type": "generic",
+      "price": 1540000,
+      "image": "assets/images/products/mohafez.svg",
+      "gallery": [
+        "assets/images/products/mohafez.svg",
+        "assets/images/products/package.svg"
+      ],
+      "description": [
+        "مخصوص فریزر تک و دوقلو",
+        "حفاظت کامل در نوسانات برق",
+        "دوام طولانی"
+      ],
+      "tabs": {
+        "گارانتی": "24 ماه گارانتی.",
+        "جزئیات بیشتر": "سازگار با انواع فریزر خانگی.",
+        "مشخصات فنی": "بدنه نسوز، توان 16 آمپر."
+      }
+    },
+    {
+      "id": "mp-industrial-01",
+      "name": "محافظ یخچال صنعتی مدل IR300",
+      "category": "mohafez-bargh",
+      "group": "industrial-refrigerator",
+      "type": "generic",
+      "price": 3890000,
+      "image": "assets/images/products/stabilizer.svg",
+      "gallery": [
+        "assets/images/products/stabilizer.svg",
+        "assets/images/products/mohafez.svg"
+      ],
+      "description": [
+        "مخصوص یخچال های صنعتی فروشگاهی",
+        "تحمل جریان بالا",
+        "ایمنی کامل برای کمپرسور"
+      ],
+      "tabs": {
+        "گارانتی": "24 ماه گارانتی.",
+        "جزئیات بیشتر": "پیشنهاد برای فروشگاه ها و رستوران ها.",
+        "مشخصات فنی": "جریان بالا، تاخیر هوشمند."
+      }
+    },
+    {
+      "id": "mp-main-01",
+      "name": "محافظ کنتور کل ساختمان مدل MB500",
+      "category": "mohafez-bargh",
+      "group": "main-meter",
+      "type": "generic",
+      "price": 7240000,
+      "image": "assets/images/products/stabilizer.svg",
+      "gallery": [
+        "assets/images/products/stabilizer.svg",
+        "assets/images/products/mohafez.svg"
+      ],
+      "description": [
+        "حفاظت سراسری برای برق ساختمان",
+        "مناسب مجتمع های مسکونی",
+        "کنترل ولتاژ ورودی اصلی"
+      ],
+      "tabs": {
+        "گارانتی": "24 ماه گارانتی.",
+        "جزئیات بیشتر": "نصب در تابلو برق اصلی ساختمان.",
+        "مشخصات فنی": "توان بالا، رله صنعتی."
+      }
+    },
+    {
+      "id": "mp-main-02",
+      "name": "محافظ برق کلی ساختمان مدل MB700",
+      "category": "mohafez-bargh",
+      "group": "main-meter",
+      "type": "generic",
+      "price": 8450000,
+      "image": "assets/images/products/stabilizer.svg",
+      "gallery": [
+        "assets/images/products/stabilizer.svg",
+        "assets/images/products/accessory.svg"
+      ],
+      "description": [
+        "قابلیت کنترل ولتاژ در سطح کل ساختمان",
+        "مناسب مصرف سنگین",
+        "عملکرد پایدار و دقیق"
+      ],
+      "tabs": {
+        "گارانتی": "24 ماه گارانتی.",
+        "جزئیات بیشتر": "مناسب پروژه های ویلایی و آپارتمانی.",
+        "مشخصات فنی": "رله پرقدرت، نمایشگر دیجیتال."
+      }
+    },
+    {
+      "id": "mp-stabilizer-01",
+      "name": "استابلایزر خانگی مدل ST2000",
+      "category": "mohafez-bargh",
+      "group": "stabilizer",
+      "type": "generic",
+      "price": 11200000,
+      "image": "assets/images/products/stabilizer.svg",
+      "gallery": [
+        "assets/images/products/stabilizer.svg",
+        "assets/images/products/mohafez.svg"
+      ],
+      "description": [
+        "تنظیم ولتاژ دقیق برای تجهیزات حساس",
+        "مناسب لوازم خانگی و اداری",
+        "کاهش استهلاک دستگاه ها"
+      ],
+      "tabs": {
+        "گارانتی": "24 ماه گارانتی.",
+        "جزئیات بیشتر": "عملکرد پایدار در نوسان های شدید.",
+        "مشخصات فنی": "توان 2000VA، نمایشگر وضعیت."
+      }
+    },
+    {
+      "id": "mp-stabilizer-02",
+      "name": "استابلایزر صنعتی مدل ST6000",
+      "category": "mohafez-bargh",
+      "group": "stabilizer",
+      "type": "generic",
+      "price": 24800000,
+      "image": "assets/images/products/stabilizer.svg",
+      "gallery": [
+        "assets/images/products/stabilizer.svg",
+        "assets/images/products/package.svg"
+      ],
+      "description": [
+        "مناسب تجهیزات سنگین صنعتی",
+        "تحمل جریان بالا و مداوم",
+        "قابلیت استفاده در کارگاه و کارخانه"
+      ],
+      "tabs": {
+        "گارانتی": "24 ماه گارانتی.",
+        "جزئیات بیشتر": "راهکار حرفه ای برای خطوط صنعتی.",
+        "مشخصات فنی": "توان 6000VA، سیستم خنک کننده فعال."
+      }
+    }
+  ]
+}

@@ -12,14 +12,39 @@
   <link rel="stylesheet" href="bootstrap-pack/bootstrap-icons/bootstrap-icons.css">
 </head>
 <body data-page="category" data-category-page="iphone-tasviri">
+  {% include 'loader.html' %}
   <div id="site-header"></div>
 
   <main class="page-shell">
     <section class="page-intro container" id="category-intro"></section>
-    <section class="white-placeholder container">
-      <h2>تست هوشمند</h2>
-      <p>in progress...</p>
+
+    <!-- Wizard hero banner -->
+    <section class="wizard-hero container">
+      <div class="wizard-hero-content">
+        <div class="wizard-hero-text">
+          <span class="wizard-hero-tag"><i class="bi bi-cpu"></i> راهنمای خرید هوشمند</span>
+          <h1 class="wizard-hero-title">خرید آیفون تصویری</h1>
+          <p class="wizard-hero-desc">
+            نمی‌دونی چی بخری؟ ما کمکت می‌کنیم! با ۳ سوال ساده بهترین آیفون تصویری رو برات پیدا می‌کنیم.
+          </p>
+          <a class="wizard-hero-btn" id="wizard-start-btn" href="#wizard-root" data-wizard-start>
+            <i class="bi bi-play-circle-fill"></i> شروع کن
+          </a>
+        </div>
+        <div class="wizard-hero-img-wrap">
+          <img src="assets/images/iphone-char.png" alt="راهنمای آیفون تصویری" class="wizard-hero-img"
+               onerror="this.style.display='none'">
+          <div class="wizard-hero-float">
+            <i class="bi bi-stars"></i>
+            <span>۳ سوال کافیه!</span>
+          </div>
+        </div>
+      </div>
     </section>
+
+    <!-- Wizard steps -->
+    <section class="wizard-section wizard-section--collapsed container" id="wizard-root" aria-hidden="true"></section>
+
     <section class="category-sections container" id="category-sections"></section>
   </main>
 
@@ -32,6 +57,8 @@
   <script src="assets/js/page-home.js" defer></script>
   <script src="assets/js/page-category.js" defer></script>
   <script src="assets/js/page-product.js" defer></script>
+  <script src="assets/js/wizard.js" defer></script>
+  <script src="assets/js/animate.js" defer></script>
   <script src="assets/js/app.js" defer></script>
 </body>
 </html>

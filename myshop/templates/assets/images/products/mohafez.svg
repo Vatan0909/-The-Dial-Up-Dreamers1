@@ -1,7 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="720" height="540" viewBox="0 0 720 540">
-  <rect width="720" height="540" fill="#eef3f9"/>
-  <rect x="250" y="120" width="220" height="300" rx="16" fill="#ffffff" stroke="#bfd1e3" stroke-width="8"/>
-  <rect x="290" y="180" width="140" height="120" rx="10" fill="#2b6cb0" opacity="0.2"/>
-  <circle cx="360" cy="350" r="24" fill="#ed8936"/>
-  <text x="360" y="500" text-anchor="middle" fill="#274257" font-size="34" font-family="Tahoma">محافظ برق</text>
-</svg>

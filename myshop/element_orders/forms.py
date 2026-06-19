@@ -8,9 +8,9 @@ class ElementOrderForm(forms.ModelForm):
 
     class Meta:
         model = ElementOrder
-        fields = ['size', 'watt', 'phone']
+        fields = ['size_cm', 'watt', 'phone']
         widgets = {
-            'size': forms.NumberInput(attrs={
+            'size_cm': forms.NumberInput(attrs={
                 'class': 'form-control',
                 'placeholder': 'e.g. 30',
                 'min': 1,
@@ -29,7 +29,7 @@ class ElementOrderForm(forms.ModelForm):
 
         }
         labels = {
-            'size': 'Size (cm)',
+            'size_cm': 'Size (cm)',
             'watt': 'Power (W)',
             'phone': 'phone number',
         }

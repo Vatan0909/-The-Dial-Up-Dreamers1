@@ -1,11 +1,12 @@
-{% extends "base/base.html" %}
-
-{% load static %}
-{% block context %}
-    <form class="form-horizontal" method="post">
-    {% csrf_token %}
-    {{ register_form }}
-    <input type="submit" value="enter" class="btn btn-primary">
-</form>
-{% endblock %}
-
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="refresh" content="0; url=auth.html">
+  <title>ثبت‌نام | در حال انتقال...</title>
+</head>
+<body>
+  <p>در حال انتقال به صفحه ثبت‌نام...</p>
+  <script>window.location.replace('auth.html');</script>
+</body>
+</html>

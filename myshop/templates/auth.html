@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ورود / ثبت‌نام | فروشگاه الکتروصنعت امگا</title>
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/css/auth.css">
+  <link rel="stylesheet" href="bootstrap-pack/bootstrap-icons/bootstrap-icons.css">
+</head>
+<body class="auth-page">
+  <div class="auth-bg-shape auth-bg-shape--one"></div>
+  <div class="auth-bg-shape auth-bg-shape--two"></div>
+  <main class="auth-shell" id="auth-shell" data-auth-mode="register">
+
+  <!-- ══ Brand Panel ═══════════════════════════════════════════ -->
+  <aside class="auth-panel-brand">
+    <!-- Floating decoration rings -->
+    <div class="auth-deco-ring auth-deco-ring--1"></div>
+    <div class="auth-deco-ring auth-deco-ring--2"></div>
+    <div class="auth-deco-ring auth-deco-ring--3"></div>
+
+    <!-- Logo + Name -->
+    <div class="auth-brand-head">
+      <div class="auth-brand-logo">
+        <img src="assets/images/OmegaLogo.jpg" alt="لوگو امگا">
+      </div>
+      <div class="auth-brand-name">فروشگاه <span>الکتروصنعت امگا</span></div>
+      <p class="auth-brand-tagline">تجهیزات برق، امنیت و صوت‌تصویر<br>با پشتیبانی فنی و ارسال سریع</p>
+    </div>
+
+    <div class="auth-brand-showcase">
+      <div class="auth-showcase-copy">
+        <span>راهنمای خرید</span>
+        <strong>برای انتخاب مطمئن، کنار شما هستیم.</strong>
+      </div>
+      <img src="assets/images/iphone-char.png" alt="راهنمای خرید امگا" class="auth-showcase-img">
+      <div class="auth-showcase-pill auth-showcase-pill--bottom">
+        <i class="bi bi-shield-check-fill"></i>
+        <span>خرید مطمئن</span>
+      </div>
+    </div>
+
+    <!-- Product category highlights -->
+    <div class="auth-features">
+      <div class="auth-feature-card">
+        <div class="afc-icon afc-blue"><i class="bi bi-camera-video-fill"></i></div>
+        <div class="afc-body">
+          <strong>آیفون تصویری</strong>
+          <span>مانیتور، پنل، پکیج کامل</span>
+        </div>
+      </div>
+      <div class="auth-feature-card">
+        <div class="afc-icon afc-orange"><i class="bi bi-lightning-charge-fill"></i></div>
+        <div class="afc-body">
+          <strong>المنت گرمایشی</strong>
+          <span>صنعتی، خانگی، هوشمند</span>
+        </div>
+      </div>
+      <div class="auth-feature-card">
+        <div class="afc-icon afc-purple"><i class="bi bi-shield-check-fill"></i></div>
+        <div class="afc-body">
+          <strong>محافظ برق</strong>
+          <span>استابلایزر، کنتور اصلی</span>
+        </div>
+      </div>
+      <div class="auth-feature-card">
+        <div class="afc-icon afc-green"><i class="bi bi-door-open-fill"></i></div>
+        <div class="afc-body">
+          <strong>جک پارکینگ</strong>
+          <span>اتوماتیک، ریموت، بازویی</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Social proof badge -->
+    <div class="auth-social-proof">
+      <div class="auth-proof-avatars">
+        <div class="auth-proof-av" style="background:#2b6cb0">ا</div>
+        <div class="auth-proof-av" style="background:#ed8936">م</div>
+        <div class="auth-proof-av" style="background:#2f855a">ر</div>
+      </div>
+      <span>بیش از ۱۰۰۰ مشتری از ما خرید کردن</span>
+    </div>
+
+    <!-- Stats row -->
+    <div class="auth-stats">
+      <div class="auth-stat">
+        <strong>+۵۰۰</strong>
+        <span>محصول</span>
+      </div>
+      <div class="auth-stat-div"></div>
+      <div class="auth-stat">
+        <strong>+۵</strong>
+        <span>سال تجربه</span>
+      </div>
+      <div class="auth-stat-div"></div>
+      <div class="auth-stat">
+        <strong>+۱۰۰۰</strong>
+        <span>مشتری راضی</span>
+      </div>
+    </div>
+
+    <!-- Trust badges -->
+    <div class="auth-trust">
+      <div class="auth-trust-item">
+        <i class="bi bi-truck"></i>
+        <span>ارسال سریع</span>
+      </div>
+      <div class="auth-trust-item">
+        <i class="bi bi-patch-check-fill"></i>
+        <span>ضمانت اصالت</span>
+      </div>
+      <div class="auth-trust-item">
+        <i class="bi bi-headset"></i>
+        <span>پشتیبانی فنی</span>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ══ Form Panel ════════════════════════════════════════════ -->
+  <div class="auth-panel-form">
+    <div class="auth-card">
+      <div class="auth-card-head">
+        <span class="auth-mode-badge" id="auth-mode-badge">حساب جدید</span>
+        <h1 id="auth-mode-title">ثبت‌نام در امگا</h1>
+        <p id="auth-mode-subtitle">شماره موبایل را وارد کنید تا حساب شما با کد تایید ساخته شود.</p>
+      </div>
+
+      <!-- Sliding door switch -->
+      <div class="auth-door-switch" id="auth-door-switch" data-mode="register">
+        <button class="auth-door-target auth-door-target--register active" type="button" data-tab="register" onclick="switchTab('register')">
+          ثبت‌نام
+        </button>
+        <button class="auth-door-target auth-door-target--login" type="button" data-tab="login" onclick="switchTab('login')">
+          ورود
+        </button>
+        <button class="auth-door" id="auth-door" type="button" onclick="toggleDoor()" aria-label="تغییر فرم">
+          <i class="bi bi-door-open-fill" id="auth-door-icon"></i>
+          <span id="auth-door-text">ثبت‌نام</span>
+        </button>
+      </div>
+
+      <div class="auth-flow-frame">
+
+      <!-- ══ REGISTER FLOW ══════════════════════════════════════ -->
+      <div id="register-flow">
+
+        <!-- Step 1: Phone -->
+        <div class="auth-step active" id="reg-step-1">
+          <div class="step-progress">
+            <div class="step-dot active"></div>
+            <div class="step-line"></div>
+            <div class="step-dot"></div>
+            <div class="step-line"></div>
+            <div class="step-dot"></div>
+          </div>
+          <h2 class="auth-step-title">ایجاد حساب کاربری</h2>
+          <p class="auth-step-sub">شماره موبایل خود را وارد کنید تا کد تایید برایتان ارسال شود</p>
+
+          <div class="phone-field">
+            <label class="phone-field-label" for="reg-phone">شماره موبایل</label>
+            <div class="phone-input-wrap">
+              <div class="phone-flag" aria-hidden="true">
+                <span class="flag-emoji">🇮🇷</span>
+                <span class="phone-prefix">+98</span>
+              </div>
+              <input class="phone-input-field" id="reg-phone" type="tel" maxlength="11"
+                placeholder="912 345 6789" inputmode="numeric" autocomplete="tel">
+            </div>
+            <div class="phone-field-hint">شماره را بدون صفر اول وارد کنید</div>
+          </div>
+
+          <button class="auth-btn" onclick="sendRegOTP()">
+            <i class="bi bi-send-fill"></i> دریافت کد تایید
+          </button>
+
+          <p class="auth-note">با ثبت‌نام، <a href="#">قوانین و مقررات</a> را می‌پذیرید.</p>
+        </div>
+
+        <!-- Step 2: OTP -->
+        <div class="auth-step" id="reg-step-2">
+          <div class="step-progress">
+            <div class="step-dot done"></div>
+            <div class="step-line done"></div>
+            <div class="step-dot active"></div>
+            <div class="step-line"></div>
+            <div class="step-dot"></div>
+          </div>
+          <button class="auth-back" onclick="goRegStep(1)">
+            <i class="bi bi-chevron-right"></i> بازگشت
+          </button>
+          <h2 class="auth-step-title">تایید شماره موبایل</h2>
+          <p class="auth-step-sub">کد ۶ رقمی ارسال شده را وارد کنید</p>
+
+          <div id="reg-otp-hint" class="otp-toast" style="display:none;">
+            <i class="bi bi-info-circle-fill"></i>
+            کد آزمایشی: <strong id="reg-otp-code">------</strong>
+          </div>
+
+          <div class="otp-wrapper">
+            <div class="otp-boxes" id="reg-otp-boxes">
+              <input class="otp-box" maxlength="1" inputmode="numeric" type="text">
+              <input class="otp-box" maxlength="1" inputmode="numeric" type="text">
+              <input class="otp-box" maxlength="1" inputmode="numeric" type="text">
+              <input class="otp-box" maxlength="1" inputmode="numeric" type="text">
+              <input class="otp-box" maxlength="1" inputmode="numeric" type="text">
+              <input class="otp-box" maxlength="1" inputmode="numeric" type="text">
+            </div>
+            <div class="otp-check" id="reg-otp-check">
+              <i class="bi bi-check-lg"></i>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 3: Password -->
+        <div class="auth-step" id="reg-step-3">
+          <div class="step-progress">
+            <div class="step-dot done"></div>
+            <div class="step-line done"></div>
+            <div class="step-dot done"></div>
+            <div class="step-line done"></div>
+            <div class="step-dot active"></div>
+          </div>
+          <h2 class="auth-step-title">تعیین رمز عبور</h2>
+          <p class="auth-step-sub">یک رمز عبور قوی برای حساب خود انتخاب کنید</p>
+
+          <div class="auth-input-wrap">
+            <i class="bi bi-lock-fill auth-input-icon"></i>
+            <input class="auth-input" id="reg-pass" type="password" placeholder="رمز عبور (حداقل ۶ کاراکتر)">
+          </div>
+          <div class="auth-input-wrap">
+            <i class="bi bi-lock auth-input-icon"></i>
+            <input class="auth-input" id="reg-pass2" type="password" placeholder="تکرار رمز عبور">
+          </div>
+
+          <button class="auth-btn auth-btn--green" onclick="completeRegister()">
+            <i class="bi bi-person-check-fill"></i> ثبت‌نام و ورود به فروشگاه
+          </button>
+        </div>
+      </div>
+
+      <!-- ══ LOGIN FLOW ═══════════════════════════════════════ -->
+      <div id="login-flow" style="display:none;">
+
+        <div class="login-method-toggle" id="login-method-toggle">
+          <button class="method-btn active" data-method="otp" onclick="setLoginMethod('otp')">
+            <i class="bi bi-phone-fill"></i> کد تایید
+          </button>
+          <button class="method-btn" data-method="password" onclick="setLoginMethod('password')">
+            <i class="bi bi-key-fill"></i> رمز عبور
+          </button>
+        </div>
+
+        <div class="auth-step active" id="login-step-1">
+          <h2 class="auth-step-title">خوش برگشتید!</h2>
+          <p class="auth-step-sub" id="login-step-sub">شماره موبایل خود را وارد کنید</p>
+
+          <div class="phone-field">
+            <label class="phone-field-label" for="login-phone">شماره موبایل</label>
+            <div class="phone-input-wrap">
+              <div class="phone-flag" aria-hidden="true">
+                <span class="flag-emoji">🇮🇷</span>
+                <span class="phone-prefix">+98</span>
+              </div>
+              <input class="phone-input-field" id="login-phone" type="tel" maxlength="11"
+                placeholder="912 345 6789" inputmode="numeric">
+            </div>
+            <div class="phone-field-hint">شماره را بدون صفر اول وارد کنید</div>
+          </div>
+
+          <div id="login-pass-field" style="display:none;">
+            <div class="auth-input-wrap">
+              <i class="bi bi-lock-fill auth-input-icon"></i>
+              <input class="auth-input" id="login-pass" type="password" placeholder="رمز عبور">
+            </div>
+          </div>
+
+          <button class="auth-btn" id="login-main-btn" onclick="loginAction()">
+            <i class="bi bi-box-arrow-in-right"></i> ادامه
+          </button>
+        </div>
+
+        <div class="auth-step" id="login-step-2">
+          <button class="auth-back" onclick="goLoginStep(1)">
+            <i class="bi bi-chevron-right"></i> بازگشت
+          </button>
+          <h2 class="auth-step-title">کد تایید</h2>
+          <p class="auth-step-sub">کد ۶ رقمی ارسال شده را وارد کنید</p>
+
+          <div id="login-otp-hint" class="otp-toast" style="display:none;">
+            <i class="bi bi-info-circle-fill"></i>
+            کد آزمایشی: <strong id="login-otp-code">------</strong>
+          </div>
+
+          <div class="otp-wrapper">
+            <div class="otp-boxes" id="login-otp-boxes">
+              <input class="otp-box" maxlength="1" inputmode="numeric" type="text">
+              <input class="otp-box" maxlength="1" inputmode="numeric" type="text">
+              <input class="otp-box" maxlength="1" inputmode="numeric" type="text">
+              <input class="otp-box" maxlength="1" inputmode="numeric" type="text">
+              <input class="otp-box" maxlength="1" inputmode="numeric" type="text">
+              <input class="otp-box" maxlength="1" inputmode="numeric" type="text">
+            </div>
+            <div class="otp-check" id="login-otp-check">
+              <i class="bi bi-check-lg"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- end login-flow -->
+
+      </div>
+
+    </div>
+    <!-- end auth-card -->
+
+    <!-- Footer note -->
+    <div class="auth-footer-note">
+      <a href="index.html"><i class="bi bi-arrow-right"></i> بازگشت به فروشگاه</a>
+    </div>
+  </div>
+  </main>
+
+  <script src="assets/js/auth.js"></script>
+</body>
+</html>

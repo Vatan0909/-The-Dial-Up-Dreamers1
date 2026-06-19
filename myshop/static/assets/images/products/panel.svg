@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="540" viewBox="0 0 720 540">
+  <rect width="720" height="540" fill="#eef3f9"/>
+  <rect x="285" y="70" width="150" height="400" rx="14" fill="#33495f"/>
+  <circle cx="360" cy="150" r="30" fill="#9fb7d0"/>
+  <rect x="320" y="220" width="80" height="120" rx="10" fill="#e2eaf3"/>
+  <circle cx="360" cy="390" r="16" fill="#ed8936"/>
+  <text x="360" y="510" text-anchor="middle" fill="#274257" font-size="34" font-family="Tahoma">پنل دم در</text>
+</svg>

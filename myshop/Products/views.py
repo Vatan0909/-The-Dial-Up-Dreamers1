@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
 from . import models
-from django.db.models import Prefetch, Min
+from django.db.models import Prefetch, Min, Q
 from django.http import JsonResponse
 from .forms import AddToCartForm
 
@@ -59,7 +59,7 @@ def product_detail(request, slug):
         'features': product.features.all(),
         
     }
-    return render(request, '', context)
+    return render(request, 'product.html', context)
 
 def category_products(request, slug):
 
@@ -87,7 +87,13 @@ def category_products(request, slug):
         "subcategories": subcategories
     }
 
-    return render(request, "", context)
+    template_map = {
+        "iphone-tasviri": "iphone-tasviri.html",
+        "jack-dar-parking": "jack-dar-parking.html",
+        "element": "element.html",
+        "mohafez-bargh": "mohafez-bargh.html",
+    }
+    return render(request, template_map.get(slug, "index.html"), context)
 
 def home(request):
 
@@ -143,5 +149,37 @@ def variant_price(request):
 
 
 def search(request):
+    query = (request.GET.get("q") or "").strip()
+    products = models.Product.objects.none()
 
-    return
+    if query:
+        products = (
+            models.Product.objects
+            .filter(
+                Q(name__icontains=query) |
+                Q(warranty_info__icontains=query) |
+                Q(technical_specs__icontains=query) |
+                Q(additional_details__icontains=query)
+            )
+            .annotate(min_price=Min("variants__price"))
+            .prefetch_related("images", "variants")[:24]
+        )
+
+    if request.headers.get("x-requested-with") == "XMLHttpRequest" or request.GET.get("format") == "json":
+        return JsonResponse({
+            "query": query,
+            "results": [
+                {
+                    "name": product.name,
+                    "slug": product.slug,
+                    "price": product.min_price,
+                    "url": f"/product/{product.slug}/" if product.slug else "#",
+                }
+                for product in products
+            ],
+        })
+
+    return render(request, "search.html", {
+        "query": query,
+        "products": products,
+    })
