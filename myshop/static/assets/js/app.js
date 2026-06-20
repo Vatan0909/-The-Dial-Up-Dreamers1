@@ -10,6 +10,7 @@
     await window.PageCategory.init();
     await window.PageProduct.init();
     if (window.WizardInit) await window.WizardInit();
+    if (window.ElementWizardInit) await window.ElementWizardInit();
     setTimeout(hideLoader, 300);
   }
 

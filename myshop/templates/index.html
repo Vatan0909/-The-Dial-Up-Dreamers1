@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="assets/css/main.css" />
     <link rel="stylesheet" href="assets/css/layout.css" />
     <link rel="stylesheet" href="assets/css/components.css" />
-    <link rel="stylesheet" href="assets/css/pages.css" />
+    <link rel="stylesheet" href="assets/css/pages.css?v=20260620-2" />
     <link
       rel="stylesheet"
       href="bootstrap-pack/bootstrap-icons/bootstrap-icons.css"
@@ -25,47 +25,57 @@
       ></section>
       <div class="container" id="trust-strip-mount"></div>
 
-      <!-- CTA: iPhone Tasviri recommender -->
-      <section class="wizard-hero container">
-        <div class="wizard-hero-content">
-          <div class="wizard-hero-text">
-            <span class="wizard-hero-tag"
-              ><i class="bi bi-cpu"></i> راهنمای خرید هوشمند</span
-            >
-            <h1 class="wizard-hero-title">خرید آیفون تصویری</h1>
-            <p class="wizard-hero-desc">
-              نمی‌دونی چی بخری؟ ما کمکت می‌کنیم! با ۳ سوال ساده بهترین آیفون
-              تصویری رو برات پیدا می‌کنیم.
-            </p>
-            <a
-              class="wizard-hero-btn"
-              id="wizard-start-btn"
-              href="#wizard-root"
-              data-wizard-start
-            >
-              <i class="bi bi-play-circle-fill"></i> شروع کن
-            </a>
-          </div>
-          <div class="wizard-hero-img-wrap">
-            <img
-              src="assets/images/iphone-char.png"
-              alt="راهنمای آیفون تصویری"
-              class="wizard-hero-img"
-              onerror="this.style.display = 'none'"
-            />
-            <div class="wizard-hero-float">
-              <i class="bi bi-stars"></i>
-              <span>۳ سوال کافیه!</span>
-            </div>
-          </div>
-        </div>
-      </section>
-
       <section class="hero-section container" id="hero-section">
         <div class="hero-slider" id="hero-slider"></div>
         <div class="hero-dots" id="hero-dots"></div>
       </section>
 
+      <section class="product-guides container" aria-labelledby="product-guides-title">
+        <div class="product-guides-heading">
+          <h2 id="product-guides-title">قدم‌به‌قدم تا چیزی که می‌خوای</h2>
+          <p>کنارت هستیم تا راحت‌تر انتخاب کنی و دقیقاً به محصول مناسب نیازت برسی.</p>
+        </div>
+
+        <div class="product-guides-grid">
+          <article class="product-guide-card product-guide-card--iphone">
+            <div class="product-guide-visual">
+              <img
+                src="assets/images/iphone_tasviri_home.png"
+                data-fallback="assets/images/iphone-char.png"
+                onerror="this.onerror=null;this.src=this.dataset.fallback"
+                alt="راهنمای انتخاب آیفون تصویری"
+              />
+            </div>
+            <div class="product-guide-copy">
+              <span class="product-guide-kicker">راهنمای انتخاب <strong><span class="product-name-accent">آیفون</span> تصویری</strong></span>
+              <h3><span class="product-name-accent">آیفون</span> تصویری مناسب خونه‌ات رو انتخاب کن</h3>
+              <p>به چند سوال کوتاه جواب بده تا گزینه‌های مناسب رو بهت پیشنهاد بدیم.</p>
+              <a class="product-guide-btn" href="iphone-tasviri.html#wizard-root">
+                شروع انتخاب <i class="bi bi-arrow-left"></i>
+              </a>
+            </div>
+          </article>
+
+          <article class="product-guide-card product-guide-card--element">
+            <div class="product-guide-visual">
+              <img
+                src="assets/images/element.png"
+                data-fallback="assets/images/products/element.svg"
+                onerror="this.onerror=null;this.src=this.dataset.fallback"
+                alt="راهنمای سفارش المنت سفارشی"
+              />
+            </div>
+            <div class="product-guide-copy">
+              <span class="product-guide-kicker">سفارش‌ساز <strong><span class="product-name-accent">المنت</span> اختصاصی</strong></span>
+              <h3><span class="product-name-accent">المنت</span> مناسب کارت رو سفارشی کن</h3>
+              <p>از المنت مورد نظرت عکس بگیر و برامون بفرست؛ مشابهش رو برات می‌سازیم.</p>
+              <a class="product-guide-btn" href="element.html#element-wizard-root">
+                شروع سفارش <i class="bi bi-arrow-left"></i>
+              </a>
+            </div>
+          </article>
+        </div>
+      </section>
       <section class="home-sections container" id="home-sections"></section>
 
       <section class="contact-section container" id="home-contact"></section>
