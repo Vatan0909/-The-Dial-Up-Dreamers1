@@ -2,9 +2,9 @@
 
   var CATEGORY_META = {
     'iphone-tasviri':  { icon: 'bi-camera-video-fill',  color: '#2b6cb0', label: 'آیفون تصویری' },
-    'jack-dar-parking':{ icon: 'bi-door-open-fill',      color: '#2d6a4f', label: 'جک در پارکینگ' },
+    'jack-dar-parking':{ icon: 'bi-door-open-fill',      color: '#b5451b', label: 'جک در پارکینگ' },
     'element':         { icon: 'bi-lightning-charge-fill',color: '#b5451b', label: 'المنت' },
-    'mohafez-bargh':   { icon: 'bi-shield-check-fill',   color: '#6b46c1', label: 'محافظ برق' }
+    'mohafez-bargh':   { icon: 'bi-shield-check-fill',   color: '#2b6cb0', label: 'محافظ برق' }
   };
 
   function byCategory(allProducts, categoryKey) {

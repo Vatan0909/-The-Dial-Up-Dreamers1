@@ -6,7 +6,7 @@
     {
       key: 'length',
       question: 'طول المنت رو چند سانتی‌متر می‌خوای؟',
-      hint: 'یکی از اندازه‌های آماده رو انتخاب کن یا اندازه دقیق خودت رو بنویس.',
+      hint: 'اندازه دقیق المنت مدنظرت را تایپ کن.',
       icon: 'bi-rulers',
       image: 'assets/images/wizard/wizard-element-length.png',
       fallback: 'assets/images/products/element.svg',
@@ -23,8 +23,8 @@
     },
     {
       key: 'notes',
-      question: 'توضیحات تکمیلی',
-      hint: 'شکل، محل استفاده، نوع اتصال یا هر نکته مهم دیگه رو اینجا بنویس.',
+      question: 'توضیحات تکمیلی و شماره موبایل',
+      hint: ' علاوه بر شماره موبایل، شکل، محل استفاده، نوع اتصال یا هر نکته مهم دیگه رو اینجا بنویس.',
       icon: 'bi-chat-square-text-fill',
       image: 'assets/images/wizard/wizard-element-notes.png',
       fallback: 'assets/images/products/accessory.svg',
@@ -42,7 +42,7 @@
     {
       key: 'summary',
       question: 'سفارش اختصاصی شما آماده‌ست',
-      hint: 'این خلاصه رو دانلود یا کپی کن و برای ما بفرست تا ساخت المنت رو هماهنگ کنیم.',
+      hint: ' ',
       icon: 'bi-check2-circle',
       image: 'assets/images/wizard/wizard-element-summary.png',
       fallback: 'assets/images/products/element.svg',
@@ -120,9 +120,6 @@
   function buildLengthControls() {
     const customValue = answerMode.length === 'custom' && answers.length ? answers.length : '';
     return `
-      <div class="wizard-options wizard-options--presets">
-        ${buildPresetOptions(LENGTH_PRESETS, 'سانتی‌متر', 'length')}
-      </div>
       <div class="element-custom-field ${answerMode.length === 'custom' ? 'is-active' : ''}">
         <label for="element-custom-length">اندازه دلخواه</label>
         <div class="element-input-wrap">
@@ -131,7 +128,7 @@
                  placeholder="مثلاً 75" aria-describedby="element-length-help element-wiz-error">
           <span>cm</span>
         </div>
-        <small id="element-length-help">حداقل 1 و حداکثر 100,000 سانتی‌متر (1 کیلومتر)</small>
+        <small id="element-length-help">حداقل 30 و حداکثر 100 سانتی‌متر</small>
       </div>`;
   }
 
@@ -146,7 +143,6 @@
   function buildNotesControls() {
     return `
       <div class="element-notes-field">
-        <label for="element-order-notes">توضیحات تکمیلی</label>
         <textarea id="element-order-notes" maxlength="500" rows="6"
                   placeholder="مثلاً المنت حلقه‌ای برای دستگاه بسته‌بندی، با سیم اتصال 30 سانتی‌متری...">${escapeHtml(answers.notes)}</textarea>
         <div class="element-notes-meta">
@@ -164,7 +160,6 @@
          </div>`
       : '<div class="element-upload-empty"><i class="bi bi-image"></i><span>هنوز تصویری انتخاب نشده</span></div>';
     return `
-      <p class="element-upload-message">از المنت مورد نظرت عکس بگیر و برای ما ارسال کن؛ ما مشابه اون رو برات می‌سازیم.</p>
       <div class="element-upload-field">
         <span class="element-upload-label">تصویر المنت مورد نظر</span>
         <label class="element-upload-control" for="element-order-image">
@@ -199,7 +194,7 @@
       </div>
       <p class="element-summary-help">
         <i class="bi bi-info-circle"></i>
-        تصویر یا متن این سفارش رو از یکی از راه‌های زیر برای ما ارسال کن.
+        کارشناسان فروش به زودی برای نهایی کردن سفارشتان با شما تماس خواهند گرفت.
       </p>
       <div class="element-summary-actions">
         <button type="button" class="element-action-btn element-action-btn--primary" id="element-download-summary">

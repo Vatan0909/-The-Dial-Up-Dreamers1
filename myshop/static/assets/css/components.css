@@ -162,7 +162,7 @@
 }
 .trust-item:nth-child(2) .trust-icon { background: rgba(237,137,54,.1); color: var(--brand-orange); }
 .trust-item:nth-child(3) .trust-icon { background: rgba(47,133,90,.1); color: #2f855a; }
-.trust-item:nth-child(4) .trust-icon { background: rgba(107,70,193,.1); color: #6b46c1; }
+.trust-item:nth-child(4) .trust-icon { background: rgba(107,70,193,.1); color: #2b6cb0; }
 
 .trust-text {
   display: grid;

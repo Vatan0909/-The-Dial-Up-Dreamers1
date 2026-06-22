@@ -1107,7 +1107,7 @@
 }
 .hc-item:nth-child(2) > i { background: rgba(237,137,54,.1); color: var(--brand-orange); }
 .hc-item:nth-child(3) > i { background: rgba(47,133,90,.1); color: #2f855a; }
-.hc-item:nth-child(4) > i { background: rgba(107,70,193,.1); color: #6b46c1; }
+.hc-item:nth-child(4) > i { background: rgba(107,70,193,.1); color: #2b6cb0; }
 
 .hc-item > div {
   display: grid;
@@ -1311,12 +1311,12 @@
 
 .product-guide-card--element {
   --guide-color: #c34f1f;
-  --guide-color-deep: #8f3514;
-  --guide-dark: #7f2f10;
+  --guide-color-deep: #c84a1c;
+  --guide-dark: #ab4218;
   --guide-highlight: #fff0c7;
   --guide-circle-one: rgba(255, 214, 102, 0.24);
   --guide-circle-two: rgba(113, 216, 255, 0.16);
-  --guide-circle-three: rgba(255, 255, 255, 0.12);
+  --guide-circle-three: rgba(249, 163, 106, 0.592);
 }
 
 .product-guide-card::before,
