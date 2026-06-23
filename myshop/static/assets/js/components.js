@@ -187,7 +187,7 @@
       items.forEach(function (item, i) {
         item.classList.remove('si-visible', 'si-in-next', 'si-in-prev');
         if (i >= start && i < start + perPage) {
-          item.style.display = '';
+          item.style.display = 'block';
           pageItems.push(item);
         } else {
           item.style.display = 'none';

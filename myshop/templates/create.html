@@ -1,0 +1,25 @@
+
+
+{% block title %}تکمیل سفارش{% endblock %}
+
+{% block content %}
+  <h1>تکمیل سفارش</h1>
+  <div class="order-info">
+    <h3>سفارش شما</h3>
+    <ul>
+      {% for item in cart %}
+        <li>
+          {{ item.quantity }}x {{ item.product.name }}
+          <span>${{ item.total_price }}</span>
+        </li>
+      {% endfor %}
+    </ul>
+    <p>جمع کل: ${{ cart.get_total_price }}</p>
+  </div>
+
+  <form method="post" class="order-form">
+    {{ form.as_p }}
+    {% csrf_token %}
+    <p><input type="submit" value="ثبت سفارش" class="btn btn-primary"></p>
+  </form>
+{% endblock %}

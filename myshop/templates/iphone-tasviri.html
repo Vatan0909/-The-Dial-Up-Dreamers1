@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="assets/css/main.css">
   <link rel="stylesheet" href="assets/css/layout.css">
   <link rel="stylesheet" href="assets/css/components.css">
-  <link rel="stylesheet" href="assets/css/pages.css">
+  <link rel="stylesheet" href="assets/css/pages.css?v=20260620-3">
   <link rel="stylesheet" href="bootstrap-pack/bootstrap-icons/bootstrap-icons.css">
 </head>
 <body data-page="category" data-category-page="iphone-tasviri">
@@ -18,7 +18,6 @@
   <main class="page-shell">
     <section class="page-intro container" id="category-intro"></section>
 
-    <!-- Wizard hero banner -->
     <section class="wizard-hero container">
       <div class="wizard-hero-content">
         <div class="wizard-hero-text">
@@ -27,13 +26,15 @@
           <p class="wizard-hero-desc">
             نمی‌دونی چی بخری؟ ما کمکت می‌کنیم! با ۳ سوال ساده بهترین آیفون تصویری رو برات پیدا می‌کنیم.
           </p>
-          <a class="wizard-hero-btn" id="wizard-start-btn" href="#wizard-root" data-wizard-start>
+          <a class="wizard-hero-btn" href="#wizard-root" data-wizard-start>
             <i class="bi bi-play-circle-fill"></i> شروع کن
           </a>
         </div>
         <div class="wizard-hero-img-wrap">
-          <img src="assets/images/iphone-char.png" alt="راهنمای آیفون تصویری" class="wizard-hero-img"
-               onerror="this.style.display='none'">
+          <img src="assets/images/iphone_tasviri_home.png"
+               data-fallback="assets/images/iphone-char.png"
+               alt="راهنمای آیفون تصویری" class="wizard-hero-img"
+               onerror="this.onerror=null;this.src=this.dataset.fallback">
           <div class="wizard-hero-float">
             <i class="bi bi-stars"></i>
             <span>۳ سوال کافیه!</span>
@@ -42,7 +43,6 @@
       </div>
     </section>
 
-    <!-- Wizard steps -->
     <section class="wizard-section wizard-section--collapsed container" id="wizard-root" aria-hidden="true"></section>
 
     <section class="category-sections container" id="category-sections"></section>
@@ -57,7 +57,7 @@
   <script src="assets/js/page-home.js" defer></script>
   <script src="assets/js/page-category.js" defer></script>
   <script src="assets/js/page-product.js" defer></script>
-  <script src="assets/js/wizard.js" defer></script>
+  <script src="assets/js/wizard.js?v=20260620-3" defer></script>
   <script src="assets/js/animate.js" defer></script>
   <script src="assets/js/app.js" defer></script>
 </body>
