@@ -10,22 +10,23 @@
           />
         </div>
         <div class="brand-name" id="shop-name">فروشگاه الکتروصنعت امگا</div>
-        <div class="header-search">
-          <input type="text" placeholder="جستجوی محصولات..." />
-          <button type="submit">
-            <i class="bi bi-search"></i>
-          </button>
-        </div>
       </a>
 
+      <div class="header-search">
+        <input type="text" placeholder="جستجوی محصولات..." />
+        <button type="button">
+          <i class="bi bi-search"></i>
+        </button>
+      </div>
+
       <div class="top-actions">
-        <a class="utility-btn" id="auth-link" href="#">
+        <a class="utility-btn" id="auth-link" href="auth.html">
           <span class="icon" aria-hidden="true"
             ><i class="bi bi-person-circle"></i
           ></span>
           <span id="header-auth-text">ثبت نام / ورود</span>
         </a>
-        <a class="utility-btn cart-btn" id="cart-link" href="#">
+        <a class="utility-btn cart-btn" id="cart-link" href="cart.html">
           <span class="icon" aria-hidden="true"
             ><i class="bi bi-cart3"></i
           ></span>
@@ -72,4 +73,20 @@
   <nav class="mobile-nav" id="mobile-nav" aria-label="دسته بندی موبایل">
     <ul class="mobile-nav-list" id="mobile-category-list"></ul>
   </nav>
+
+  <!-- Story circles -->
+  <div class="story-bar" id="story-bar" style="display:none;">
+    <div class="container story-bar-inner" id="story-circles"></div>
+  </div>
 </header>
+
+<!-- Video Story Modal -->
+<div class="story-modal" id="story-modal" style="display:none;" onclick="closeStoryModal(event)">
+  <button class="story-modal-close" onclick="closeStoryModal()" aria-label="بستن">
+    <i class="bi bi-x-lg"></i>
+  </button>
+  <div class="story-modal-inner">
+    <div class="story-modal-title" id="story-modal-title"></div>
+    <div class="story-modal-video" id="story-modal-video"></div>
+  </div>
+</div>

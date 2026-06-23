@@ -1,3 +1,4 @@
+
 from django.contrib import admin
 from django.contrib import admin
 from .models import Order, OrderItem
@@ -17,4 +18,5 @@ class OrderAdmin(admin.ModelAdmin):
 
 
     raw_id_fields = ('user',)
+
 

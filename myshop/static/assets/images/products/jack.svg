@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="540" viewBox="0 0 720 540">
+  <rect width="720" height="540" fill="#eef3f9"/>
+  <rect x="140" y="220" width="440" height="80" rx="12" fill="#2d3f50"/>
+  <rect x="160" y="260" width="200" height="40" rx="8" fill="#ed8936"/>
+  <rect x="420" y="200" width="140" height="130" rx="8" fill="#4f6781"/>
+  <text x="360" y="500" text-anchor="middle" fill="#274257" font-size="34" font-family="Tahoma">جک پارکینگ</text>
+</svg>

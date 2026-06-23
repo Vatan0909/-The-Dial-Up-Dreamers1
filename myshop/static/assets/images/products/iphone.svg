@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="540" viewBox="0 0 720 540">
+  <rect width="720" height="540" fill="#eef3f9"/>
+  <rect x="230" y="90" width="260" height="360" rx="24" fill="#ffffff" stroke="#b8c9db" stroke-width="8"/>
+  <rect x="260" y="140" width="200" height="190" rx="10" fill="#2b6cb0" opacity="0.17"/>
+  <circle cx="360" cy="370" r="22" fill="#ed8936"/>
+  <text x="360" y="500" text-anchor="middle" fill="#274257" font-size="34" font-family="Tahoma">آیفون تصویری</text>
+</svg>

@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="540" viewBox="0 0 720 540">
+  <rect width="720" height="540" fill="#eef3f9"/>
+  <path d="M240 170h240v60H240z" fill="#506983"/>
+  <path d="M270 230h180v120H270z" fill="#ed8936" opacity="0.78"/>
+  <path d="M310 350h100v50H310z" fill="#506983"/>
+  <text x="360" y="500" text-anchor="middle" fill="#274257" font-size="34" font-family="Tahoma">المنت</text>
+</svg>

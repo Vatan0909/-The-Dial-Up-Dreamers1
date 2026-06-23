@@ -1,10 +1,177 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fa" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <title>contact us page</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>تماس با ما | فروشگاه الکتروصنعت امگا</title>
+  <link rel="stylesheet" href="assets/css/cart.css">
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/pages.css">
+  <link rel="stylesheet" href="assets/css/contact.css">
+  <link rel="stylesheet" href="bootstrap-pack/bootstrap-icons/bootstrap-icons.css">
 </head>
-<body>
+<body data-page="contact">
+  {% include 'loader.html' %}
+  <div id="site-header"></div>
 
+  <main class="page-shell">
+    <div class="container">
+
+      <!-- Page hero -->
+      <div class="contact-hero anim-up">
+        <div class="contact-hero-text">
+          <h1><i class="bi bi-headset"></i> تماس با ما</h1>
+          <p>پشتیبانی فنی و فروش فروشگاه الکتروصنعت امگا — شنبه تا پنجشنبه ۸ تا ۱۷</p>
+        </div>
+      </div>
+
+      <!-- Info + Map grid -->
+      <div class="contact-grid">
+
+        <!-- Info cards -->
+        <div class="contact-info-col">
+
+          <div class="contact-info-card anim-up">
+            <div class="cinfo-icon"><i class="bi bi-telephone-fill"></i></div>
+            <div class="cinfo-body">
+              <span class="cinfo-label">تلفن</span>
+              <a class="cinfo-value" href="tel:03432232340" dir="ltr">034-32232340</a>
+            </div>
+          </div>
+
+          <div class="contact-info-card">
+            <div class="cinfo-icon cinfo-orange"><i class="bi bi-envelope-fill"></i></div>
+            <div class="cinfo-body">
+              <span class="cinfo-label">ایمیل</span>
+              <a class="cinfo-value" href="mailto:info@eso2000.ir" dir="ltr">info@eso2000.ir</a>
+            </div>
+          </div>
+
+          <div class="contact-info-card">
+            <div class="cinfo-icon cinfo-green"><i class="bi bi-geo-alt-fill"></i></div>
+            <div class="cinfo-body">
+              <span class="cinfo-label">آدرس</span>
+              <span class="cinfo-value">کرمان، میدان قرنی، جنب سپهبد قرنی ۵</span>
+            </div>
+          </div>
+
+          <div class="contact-info-card">
+            <div class="cinfo-icon cinfo-purple"><i class="bi bi-clock-fill"></i></div>
+            <div class="cinfo-body">
+              <span class="cinfo-label">ساعت کاری</span>
+              <span class="cinfo-value">شنبه تا پنجشنبه — ۸:۰۰ تا ۱۷:۰۰</span>
+            </div>
+          </div>
+
+          <!-- Social links -->
+          <div class="contact-socials">
+            <span class="contact-socials-label">ما را دنبال کنید</span>
+            <div class="contact-social-row">
+              <a href="https://instagram.com" target="_blank" rel="noopener" class="csocial-btn instagram" aria-label="اینستاگرام">
+                <i class="bi bi-instagram"></i>
+              </a>
+              <a href="https://t.me" target="_blank" rel="noopener" class="csocial-btn telegram" aria-label="تلگرام">
+                <i class="bi bi-telegram"></i>
+              </a>
+              <a href="https://wa.me" target="_blank" rel="noopener" class="csocial-btn whatsapp" aria-label="واتساپ">
+                <i class="bi bi-whatsapp"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Map -->
+        <div class="contact-map-col">
+          <div class="contact-map-wrap">
+            <div class="contact-map-placeholder">
+              <i class="bi bi-map"></i>
+              <span>نقشه موقعیت مکانی</span>
+              <small>کرمان، میدان قرنی</small>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Contact form -->
+      <div class="contact-form-section anim-up">
+        <div class="contact-form-head">
+          <h2><i class="bi bi-chat-text"></i> ارسال پیام</h2>
+          <p>سوال یا پیشنهادی دارید؟ پیامتون رو بفرستید.</p>
+        </div>
+
+        <form class="contact-form" id="contact-form" onsubmit="return submitContactForm(event)">
+          <div class="cform-row">
+            <div class="cform-group">
+              <label class="cform-label" for="cf-name">نام و نام خانوادگی</label>
+              <div class="cform-input-wrap">
+                <i class="bi bi-person cform-icon"></i>
+                <input class="cform-input" id="cf-name" type="text" placeholder="علی رضایی" required>
+              </div>
+            </div>
+            <div class="cform-group">
+              <label class="cform-label" for="cf-phone">شماره موبایل</label>
+              <div class="cform-input-wrap">
+                <i class="bi bi-phone cform-icon"></i>
+                <input class="cform-input" id="cf-phone" type="tel" placeholder="09123456789" inputmode="numeric">
+              </div>
+            </div>
+          </div>
+
+          <div class="cform-group">
+            <label class="cform-label" for="cf-subject">موضوع</label>
+            <div class="cform-input-wrap">
+              <i class="bi bi-tag cform-icon"></i>
+              <input class="cform-input" id="cf-subject" type="text" placeholder="موضوع پیام شما" required>
+            </div>
+          </div>
+
+          <div class="cform-group">
+            <label class="cform-label" for="cf-message">پیام</label>
+            <textarea class="cform-textarea" id="cf-message" rows="5" placeholder="پیام خود را اینجا بنویسید..." required></textarea>
+          </div>
+
+          <button type="submit" class="cform-submit" id="cform-submit-btn">
+            <i class="bi bi-send"></i>
+            ارسال پیام
+          </button>
+
+          <div class="cform-success" id="cform-success" style="display:none;">
+            <i class="bi bi-check-circle-fill"></i>
+            پیام شما با موفقیت ارسال شد. به زودی پاسخ می‌دهیم.
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script src="assets/js/cart.js" defer></script>
+  <script src="assets/js/data-service.js" defer></script>
+  <script src="assets/js/components.js" defer></script>
+  <script src="assets/js/layout-loader.js" defer></script>
+  <script src="assets/js/page-home.js" defer></script>
+  <script src="assets/js/page-category.js" defer></script>
+  <script src="assets/js/page-product.js" defer></script>
+  <script src="assets/js/animate.js" defer></script>
+  <script src="assets/js/app.js" defer></script>
+  <script>
+    function submitContactForm(e) {
+      e.preventDefault();
+      const btn = document.getElementById('cform-submit-btn');
+      const success = document.getElementById('cform-success');
+      btn.disabled = true;
+      btn.innerHTML = '<span class="cform-spin"></span> در حال ارسال...';
+      setTimeout(function () {
+        btn.style.display = 'none';
+        success.style.display = 'flex';
+        document.getElementById('contact-form').reset();
+      }, 1200);
+      return false;
+    }
+  </script>
 </body>
 </html>

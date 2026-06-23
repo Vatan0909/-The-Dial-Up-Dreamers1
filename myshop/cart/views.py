@@ -1,3 +1,4 @@
+
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
@@ -34,4 +35,5 @@ def cart_detail(request):
             'override': True
         })
     return render(request, 'cart.html', {'cart': cart})
+
 

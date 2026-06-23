@@ -1,7 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="720" height="540" viewBox="0 0 720 540">
-  <rect width="720" height="540" fill="#eef3f9"/>
-  <rect x="220" y="180" width="280" height="170" rx="18" fill="#ffffff" stroke="#bfd0e2" stroke-width="8"/>
-  <circle cx="280" cy="265" r="34" fill="#2b6cb0" opacity="0.2"/>
-  <rect x="350" y="230" width="110" height="70" rx="8" fill="#ed8936" opacity="0.6"/>
-  <text x="360" y="500" text-anchor="middle" fill="#274257" font-size="34" font-family="Tahoma">متعلقات</text>
-</svg>
