@@ -140,3 +140,4 @@ STATIC_ROOT=os.path.join(BASE_DIR, 'static-files','static_main')
 MEDIA_URL = "/media/"
 MEDIA_ROOT = os.path.join(BASE_DIR, 'static-files','media_root')
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+CART_SESSION_ID = 'cart'

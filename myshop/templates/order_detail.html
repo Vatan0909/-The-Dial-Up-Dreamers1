@@ -1,0 +1,41 @@
+
+
+{% block title %}جزئیات سفارش {{ order.id }}{% endblock %}
+
+{% block content %}
+  <div class="order-detail-container">
+    <h1>سفارش شماره {{ order.id }}</h1>
+    <p><strong>تاریخ ثبت:</strong> {{ order.created_at|date:"Y/m/d H:i" }}</p>
+    <p><strong>وضعیت سفارش:</strong> {{ order.get_status_display }}</p>
+    <p><strong>آدرس ارسال:</strong> {{ order.address }}</p>
+    <p><strong>شماره تماس:</strong> {{ order.phone }}</p>
+
+    <h2>آیتم‌های سفارش</h2>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>محصول (تنوع)</th>
+          <th>قیمت واحد</th>
+          <th>تعداد</th>
+          <th>قیمت کل آیتم</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- پیمایش روی آیتم‌های متصل به این سفارش -->
+        {% for item in order.orderitem_set.all %}
+          <tr>
+            <td>{{ item.variant }}</td>
+            <td>{{ item.price }} تومان</td>
+            <td>{{ item.quantity }}</td>
+            <!-- در تمپلیت تگ‌های ریاضی نداریم، اما منطق آن $price \times quantity$ است -->
+            <td>{% widthratio item.price 1 item.quantity %} تومان</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+    <div class="order-total">
+      <h3>مبلغ کل پرداختی: {{ order.total_price }} تومان</h3>
+    </div>
+  </div>
+{% endblock %}
