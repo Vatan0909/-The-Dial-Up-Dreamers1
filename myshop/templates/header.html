@@ -1,32 +1,33 @@
+{% load static %}
 <header class="site-header" id="main-header">
   <div class="top-bar">
     <div class="container top-bar-inner">
-      <a class="brand" href="index.html" aria-label="صفحه اصلی">
+      <a class="brand" href="{% url 'products:home' %}" aria-label="صفحه اصلی">
         <div class="brand-logo-wrap">
           <img
             class="brand-logo"
-            src="assets/images/OmegaLogo.jpg"
+            src="{% static 'assets/images/OmegaLogo.jpg' %}"
             alt="لوگوی فروشگاه"
           />
         </div>
         <div class="brand-name" id="shop-name">فروشگاه الکتروصنعت امگا</div>
       </a>
 
-      <div class="header-search">
-        <input type="text" placeholder="جستجوی محصولات..." />
-        <button type="button">
+      <form class="header-search" action="{% url 'products:search' %}" method="get">
+        <input type="text" name="q" placeholder="جستجوی محصولات..." />
+        <button type="submit">
           <i class="bi bi-search"></i>
         </button>
-      </div>
+      </form>
 
       <div class="top-actions">
-        <a class="utility-btn" id="auth-link" href="auth.html">
+        <a class="utility-btn" id="auth-link" href="#">
           <span class="icon" aria-hidden="true"
             ><i class="bi bi-person-circle"></i
           ></span>
           <span id="header-auth-text">ثبت نام / ورود</span>
         </a>
-        <a class="utility-btn cart-btn" id="cart-link" href="cart.html">
+        <a class="utility-btn cart-btn" id="cart-link" href="#">
           <span class="icon" aria-hidden="true"
             ><i class="bi bi-cart3"></i
           ></span>
@@ -74,10 +75,32 @@
     <ul class="mobile-nav-list" id="mobile-category-list"></ul>
   </nav>
 
-  <!-- Story circles -->
-  <div class="story-bar" id="story-bar" style="display:none;">
-    <div class="container story-bar-inner" id="story-circles"></div>
+  {% if stories %}
+  <div class="story-bar" id="story-bar">
+    <div class="container story-bar-inner" id="story-circles">
+      {% for story in stories %}
+        <button
+          class="story-circle"
+          type="button"
+          aria-label="{{ story.title }}"
+          data-story-title="{{ story.title }}"
+          {% if story.video %}data-story-video="{{ story.video.url }}"{% endif %}
+          {% if story.image %}data-story-image="{{ story.image.url }}"{% endif %}
+          {% if story.link %}data-story-link="{{ story.link }}"{% endif %}
+        >
+          <span class="story-ring">
+            {% if story.image %}
+              <img src="{{ story.image.url }}" alt="{{ story.title }}">
+            {% else %}
+              <span class="story-video-thumb"><i class="bi bi-play-fill"></i></span>
+            {% endif %}
+          </span>
+          <span class="story-label">{{ story.title }}</span>
+        </button>
+      {% endfor %}
+    </div>
   </div>
+  {% endif %}
 </header>
 
 <!-- Video Story Modal -->

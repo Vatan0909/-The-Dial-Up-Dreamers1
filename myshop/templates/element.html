@@ -1,66 +1,49 @@
-<!DOCTYPE html>
-<html lang="fa" dir="rtl">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>المنت | فروشگاه الکتروصنعت امگا</title>
-  <link rel="stylesheet" href="assets/css/cart.css">
-  <link rel="stylesheet" href="assets/css/main.css">
-  <link rel="stylesheet" href="assets/css/layout.css">
-  <link rel="stylesheet" href="assets/css/components.css">
-  <link rel="stylesheet" href="assets/css/pages.css?v=20260620-3">
-  <link rel="stylesheet" href="bootstrap-pack/bootstrap-icons/bootstrap-icons.css">
-</head>
-<body data-page="category" data-category-page="element">
-  {% include 'loader.html' %}
-  <div id="site-header"></div>
+{% extends 'base/base.html' %}
+{% load static %}
 
-  <main class="page-shell">
-    <section class="page-intro container" id="category-intro"></section>
+{% block title %}المنت | فروشگاه الکتروصنعت امگا{% endblock %}
+{% block body_attrs %}data-page="category" data-category-page="element"{% endblock %}
 
-    <section class="wizard-hero wizard-hero--element container">
-      <div class="wizard-hero-content">
-        <div class="wizard-hero-text">
-          <span class="wizard-hero-tag"><i class="bi bi-lightning-charge-fill"></i> ساخت سفارشی المنت</span>
-          <h1 class="wizard-hero-title">المنت دقیقاً برای نیاز شما</h1>
-          <p class="wizard-hero-desc">
-            از المنت مورد نظرت عکس بگیر و برامون بفرست؛ مشابهش رو برات می‌سازیم.
-          </p>
-          <a class="wizard-hero-btn" href="#element-wizard-root" data-element-wizard-start>
-            <i class="bi bi-sliders"></i> شروع سفارش
-          </a>
-        </div>
-        <div class="wizard-hero-img-wrap">
-          <img src="assets/images/wizard/wizard-home-element.png"
-               data-fallback="assets/images/products/element.svg"
-               alt="سفارش المنت سفارشی" class="wizard-hero-img"
-               onerror="this.onerror=null;this.src=this.dataset.fallback">
-          <div class="wizard-hero-float">
-            <i class="bi bi-rulers"></i>
-            <span>ساخته‌شده برای شما</span>
-          </div>
+{% block content %}
+<main class="page-shell">
+  <section class="page-intro container" id="category-intro"></section>
+
+  <section class="wizard-hero wizard-hero--element container">
+    <div class="wizard-hero-content">
+      <div class="wizard-hero-text">
+        <span class="wizard-hero-tag"><i class="bi bi-lightning-charge-fill"></i> ساخت سفارشی المنت</span>
+        <h1 class="wizard-hero-title">المنت دقیقاً برای نیاز شما</h1>
+        <p class="wizard-hero-desc">
+          از المنت مورد نظرت عکس بگیر و برامون بفرست؛ مشابهش رو برات می‌سازیم.
+        </p>
+        <a class="wizard-hero-btn" href="#element-wizard-root" data-element-wizard-start>
+          <i class="bi bi-sliders"></i> شروع سفارش
+        </a>
+      </div>
+      <div class="wizard-hero-img-wrap">
+        <img src="{% static 'assets/images/wizard/wizard-home-element.png' %}"
+             data-fallback="{% static 'assets/images/products/element.svg' %}"
+             alt="سفارش المنت سفارشی" class="wizard-hero-img"
+             onerror="this.onerror=null;this.src=this.dataset.fallback">
+        <div class="wizard-hero-float">
+          <i class="bi bi-rulers"></i>
+          <span>ساخته‌شده برای شما</span>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section class="wizard-section wizard-section--collapsed container"
-             id="element-wizard-root" aria-hidden="true"></section>
+  <section class="wizard-section wizard-section--collapsed container"
+           id="element-wizard-root" aria-hidden="true"></section>
 
-    <section class="category-sections container" id="category-sections"></section>
-    <section class="all-products container" id="all-products"></section>
-  </main>
+  <section class="category-sections container" id="category-sections" data-server-rendered="true">
+    {% for subcategory in subcategories %}
+      {% include 'products/_product_slider.html' with title=subcategory.name products=subcategory.products.all section_id=subcategory.slug %}
+    {% endfor %}
+  </section>
+</main>
+{% endblock %}
 
-  <div id="site-footer"></div>
-  <script src="assets/js/cart.js" defer></script>
-
-  <script src="assets/js/data-service.js" defer></script>
-  <script src="assets/js/components.js" defer></script>
-  <script src="assets/js/layout-loader.js" defer></script>
-  <script src="assets/js/page-home.js" defer></script>
-  <script src="assets/js/page-category.js" defer></script>
-  <script src="assets/js/page-product.js" defer></script>
-  <script src="assets/js/element-wizard.js?v=20260620-3" defer></script>
-  <script src="assets/js/animate.js" defer></script>
-  <script src="assets/js/app.js" defer></script>
-</body>
-</html>
+{% block extra_scripts %}
+<script src="{% static 'assets/js/element-wizard.js' %}?v=20260620-3" defer></script>
+{% endblock %}

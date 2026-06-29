@@ -67,3 +67,23 @@ class ProductImage(models.Model):
 
     def __str__(self):
         return f"Image for {self.product.name}"
+
+
+class Story(models.Model):
+    title = models.CharField(max_length=100)
+    image = models.ImageField(upload_to='stories/images/', blank=True, null=True)
+    video = models.FileField(upload_to='stories/videos/', blank=True, null=True)
+    link = models.URLField(blank=True, null=True)
+    order = models.PositiveIntegerField(default=0)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ("order", "-created_at")
+        verbose_name_plural = "Stories"
+
+    def clean(self):
+        if not self.image and not self.video:
+            raise ValidationError("برای استوری باید تصویر یا ویدیو انتخاب شود.")
+
+    def __str__(self):
+        return self.title

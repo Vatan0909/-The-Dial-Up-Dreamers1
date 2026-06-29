@@ -1,0 +1,42 @@
+{% with image=product.images.first %}
+<article class="product-card anim-up">
+  <div class="product-img-wrap">
+    {% if image %}
+      <img class="product-image" src="{{ image.image.url }}" alt="{{ product.name }}" loading="lazy">
+    {% else %}
+      <div class="product-image"></div>
+    {% endif %}
+    <div class="card-overlay">
+      {% if product.slug %}
+        <a href="{% url 'products:product_detail' product.slug %}" class="card-overlay-btn">
+          <i class="bi bi-eye"></i> مشاهده
+        </a>
+      {% endif %}
+    </div>
+  </div>
+  <div class="product-body">
+    <h4 class="product-title">{{ product.name }}</h4>
+    <div class="product-price-wrap">
+      <div class="price-label">قیمت</div>
+      <div class="price-amount">
+        {% if product.min_price %}
+          <span class="price-num">{{ product.min_price }}</span>
+          <span class="price-cur">تومان</span>
+        {% else %}
+          <span class="price-num">تماس بگیرید</span>
+        {% endif %}
+      </div>
+    </div>
+    <div class="product-actions">
+      {% if product.slug %}
+        <a class="btn-outline" href="{% url 'products:product_detail' product.slug %}">
+          <i class="bi bi-eye"></i><span>جزئیات</span>
+        </a>
+      {% endif %}
+      <button class="btn-solid" type="button">
+        <i class="bi bi-cart-plus"></i><span>سبد</span>
+      </button>
+    </div>
+  </div>
+</article>
+{% endwith %}

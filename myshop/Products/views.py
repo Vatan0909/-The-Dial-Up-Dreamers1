@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
 from . import models
+from .models import Category, Product
 from django.db.models import Prefetch, Min, Q
 from django.http import JsonResponse
 from .forms import AddToCartForm
@@ -73,6 +74,7 @@ def category_products(request, slug):
         models.Product.objects
         .prefetch_related("images", "variants")
         .annotate(min_price=Min("variants__price"))
+        .order_by("name")
     )
 
     subcategories = category.children.prefetch_related(
@@ -80,7 +82,7 @@ def category_products(request, slug):
             "products",
             queryset=products_queryset
         )
-    )
+    ).order_by("name")
 
     context = {
         "category": category,
@@ -97,7 +99,7 @@ def category_products(request, slug):
 
 def home(request):
 
-    main_categories = models.Category.objects.filter(parent__isnull=True)
+    main_categories = models.Category.objects.filter(parent__isnull=True).order_by("name")
 
     home_sections = []
 
@@ -111,8 +113,7 @@ def home(request):
             .filter(category_id__in=sub_ids)
             .annotate(min_price=Min("variants__price"))
             .prefetch_related("images")
-            #8 محصول به صورت تصادفی انتخاب میشه
-            .order_by("?")[:8]
+            .order_by("name")
         )
         # خروجی دیکشنری ای از هر دسته بندی اصلی و محصولات درونش هست
         home_sections.append({
@@ -148,22 +149,103 @@ def variant_price(request):
     return JsonResponse({"error": "variant not found"})
 
 
+# def search(request):
+#     query = (request.GET.get("q") or "").strip()
+#     products = models.Product.objects.none()
+
+#     if query:
+#         products = (
+#             models.Product.objects
+#             .filter(
+#                 Q(name__icontains=query) |
+#                 Q(warranty_info__icontains=query) |
+#                 Q(technical_specs__icontains=query) |
+#                 Q(additional_details__icontains=query)
+#             )
+#             .annotate(min_price=Min("variants__price"))
+#             .prefetch_related("images", "variants")[:24]
+#         )
+
+#     if request.headers.get("x-requested-with") == "XMLHttpRequest" or request.GET.get("format") == "json":
+#         return JsonResponse({
+#             "query": query,
+#             "results": [
+#                 {
+#                     "name": product.name,
+#                     "slug": product.slug,
+#                     "price": product.min_price,
+#                     "url": f"/product/{product.slug}/" if product.slug else "#",
+#                 }
+#                 for product in products
+#             ],
+#         })
+
+#     return render(request, "search.html", {
+#         "query": query,
+#         "products": products,
+#     })
+
+
+def _csv_values(queryset, field_name):
+    values = set()
+    for raw_value in queryset.exclude(**{field_name: []}).values_list(field_name, flat=True):
+        if isinstance(raw_value, list):
+            values.update(item for item in raw_value if item)
+    return sorted(values)
+
+
 def search(request):
     query = (request.GET.get("q") or "").strip()
-    products = models.Product.objects.none()
+    category_slug = (request.GET.get("category") or "").strip()
+    pack_filter = (request.GET.get("pack") or "").strip()
+    memory_filter = (request.GET.get("memory") or "").strip()
+    color_filter = (request.GET.get("color") or "").strip()
+    min_price = request.GET.get("min_price")
+    max_price = request.GET.get("max_price")
+
+    products = (
+        models.Product.objects
+        .select_related("category", "category__parent")
+        .prefetch_related("images", "variants")
+        .annotate(min_price=Min("variants__price"))
+        .distinct()
+    )
 
     if query:
-        products = (
-            models.Product.objects
-            .filter(
-                Q(name__icontains=query) |
-                Q(warranty_info__icontains=query) |
-                Q(technical_specs__icontains=query) |
-                Q(additional_details__icontains=query)
-            )
-            .annotate(min_price=Min("variants__price"))
-            .prefetch_related("images", "variants")[:24]
+        products = products.filter(
+            Q(name__icontains=query) |
+            Q(warranty_info__icontains=query) |
+            Q(technical_specs__icontains=query) |
+            Q(additional_details__icontains=query)
         )
+
+    if category_slug:
+        products = products.filter(
+            Q(category__slug=category_slug, category__parent__isnull=True) |
+            Q(category__parent__slug=category_slug)
+        )
+
+    if pack_filter == "pack":
+        products = products.filter(variants__is_pack=True)
+    elif pack_filter == "single":
+        products = products.exclude(variants__is_pack=True)
+
+    if memory_filter:
+        products = products.filter(variants__memory=memory_filter)
+
+    if color_filter:
+        products = products.filter(variants__color=color_filter)
+
+    if min_price:
+        products = products.filter(variants__price__gte=min_price)
+    if max_price:
+        products = products.filter(variants__price__lte=max_price)
+
+    products = products.distinct().order_by("name")[:48]
+    parent_categories = models.Category.objects.filter(parent__isnull=True).order_by("name")
+    all_products = models.Product.objects.prefetch_related("variants")
+    colors = _csv_values(all_products, "colors_available")
+    memories = _csv_values(all_products, "memories_available")
 
     if request.headers.get("x-requested-with") == "XMLHttpRequest" or request.GET.get("format") == "json":
         return JsonResponse({
@@ -182,4 +264,15 @@ def search(request):
     return render(request, "search.html", {
         "query": query,
         "products": products,
+        "parent_categories": parent_categories,
+        "colors": colors,
+        "memories": memories,
+        "filters": {
+            "category": category_slug,
+            "pack": pack_filter,
+            "memory": memory_filter,
+            "color": color_filter,
+            "min_price": min_price or "",
+            "max_price": max_price or "",
+        },
     })
