@@ -1,6 +1,6 @@
 from django.contrib import admin
 from itertools import product
-from .models import Category, Product, ProductFeature, ProductVariants, ProductImage
+from .models import Category, Product, ProductFeature, ProductVariants, ProductImage, Story
 
 
 class ProductFeatureInline(admin.TabularInline):
@@ -55,4 +55,13 @@ class CategoryAdmin(admin.ModelAdmin):
     list_display = ("name", "slug", "parent")
     search_fields = ("name",)
     prepopulated_fields = {"slug": ("name",)}
+
+
+@admin.register(Story)
+class StoryAdmin(admin.ModelAdmin):
+    list_display = ("title", "order", "link", "created_at")
+    list_editable = ("order",)
+    search_fields = ("title",)
+    ordering = ("order", "-created_at")
+    fields = ("title", "image", "video", "link", "order")
 

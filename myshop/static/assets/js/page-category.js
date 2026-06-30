@@ -7,26 +7,11 @@
     'mohafez-bargh':   { icon: 'bi-shield-check-fill',   color: '#2b6cb0', label: 'محافظ برق' }
   };
 
-  function byCategory(allProducts, categoryKey) {
-    return allProducts.filter(function (item) { return item.category === categoryKey; });
-  }
-
-  function byGroup(allProducts, categoryKey, groupKey, limit) {
-    var items = allProducts.filter(function (item) {
-      return item.category === categoryKey && item.group === groupKey;
-    });
-    if (limit) items = items.slice(0, limit);
-    return items;
-  }
-
   async function init() {
     if (document.body.dataset.page !== "category") return;
 
     var pageKey = document.body.dataset.categoryPage;
-    var [pagesData, productsData] = await Promise.all([
-      window.SiteDataService.request("assets/data/pages-data.json"),
-      window.SiteDataService.request("assets/data/products.json")
-    ]);
+    var pagesData = await window.SiteDataService.request("assets/data/pages-data.json");
 
     var pageConfig = pagesData.pages && pagesData.pages[pageKey];
     if (!pageConfig) return;
@@ -43,7 +28,7 @@
           '</div>' +
           '<div class="cat-intro-text">' +
             '<div class="cat-breadcrumb">' +
-              '<a href="index.html">صفحه اصلی</a>' +
+              '<a href="/">صفحه اصلی</a>' +
               '<i class="bi bi-chevron-left"></i>' +
               '<span>' + pageConfig.title + '</span>' +
             '</div>' +
@@ -53,30 +38,6 @@
         '</div>';
     }
 
-    /* Slider groups */
-    var sectionMount = document.getElementById("category-sections");
-    if (sectionMount) {
-      sectionMount.innerHTML = "";
-      (pageConfig.sliderGroups || []).forEach(function (group) {
-        var products = byGroup(productsData.products || [], pageKey, group.key, group.limit);
-        window.SiteComponents.renderProductSlider(sectionMount, {
-          title: group.title,
-          products: products,
-          sectionId: group.sectionId || "",
-          seeAll: group.seeAll || null
-        });
-      });
-    }
-
-    /* All products grid */
-    if (pageConfig.showAllProducts) {
-      var allProductsMount = document.getElementById("all-products");
-      if (allProductsMount) {
-        allProductsMount.innerHTML = "";
-        var allItems = byCategory(productsData.products || [], pageKey);
-        window.SiteComponents.renderProductGrid(allProductsMount, "همه محصولات", allItems);
-      }
-    }
   }
 
   window.PageCategory = { init };

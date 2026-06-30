@@ -1,59 +1,108 @@
-<!DOCTYPE html>
-<html lang="fa" dir="rtl">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>جستجو | فروشگاه الکتروصنعت امگا</title>
-  <link rel="stylesheet" href="/assets/css/cart.css">
-  <link rel="stylesheet" href="/assets/css/main.css">
-  <link rel="stylesheet" href="/assets/css/layout.css">
-  <link rel="stylesheet" href="/assets/css/components.css">
-  <link rel="stylesheet" href="/assets/css/pages.css">
-  <link rel="stylesheet" href="/bootstrap-pack/bootstrap-icons/bootstrap-icons.css">
-</head>
-<body data-page="search">
-  {% include 'loader.html' %}
-  <div id="site-header"></div>
+{% extends 'base/base.html' %}
 
-  <main class="page-shell">
-    <section class="page-intro container">
-      <h1>نتایج جستجو</h1>
-      <p>{% if query %}برای «{{ query }}»{% else %}عبارت مورد نظر خود را جستجو کنید.{% endif %}</p>
-    </section>
+{% block title %}جستجو | فروشگاه الکتروصنعت امگا{% endblock %}
+{% block body_attrs %}data-page="search"{% endblock %}
 
-    <section class="all-products container">
-      {% if query and products %}
+{% block content %}
+<main class="page-shell">
+  <section class="page-intro container">
+    <h1>جستجوی محصولات</h1>
+    <p>{% if query %}نتایج برای «{{ query }}»{% else %}نام محصول یا ویژگی مورد نظر را وارد و فیلترها را تنظیم کنید.{% endif %}</p>
+  </section>
+
+  <section class="search-page container">
+    <form class="search-filters" action="{% url 'products:search' %}" method="get">
+      <div class="search-field search-field--wide">
+        <label for="search-q">جستجو</label>
+        <input id="search-q" type="text" name="q" value="{{ query }}" placeholder="مثلاً آیفون تصویری، محافظ برق...">
+      </div>
+
+      <div class="search-field">
+        <label for="search-category">دسته‌بندی اصلی</label>
+        <select id="search-category" name="category">
+          <option value="">همه دسته‌ها</option>
+          {% for category in parent_categories %}
+            <option value="{{ category.slug }}" {% if filters.category == category.slug %}selected{% endif %}>{{ category.name }}</option>
+          {% endfor %}
+        </select>
+      </div>
+
+      <div class="search-field">
+        <label for="search-pack">نوع محصول</label>
+        <select id="search-pack" name="pack">
+          <option value="">همه</option>
+          <option value="pack" {% if filters.pack == 'pack' %}selected{% endif %}>پک</option>
+          <option value="single" {% if filters.pack == 'single' %}selected{% endif %}>غیر پک</option>
+        </select>
+      </div>
+
+      <div class="search-field">
+        <label for="search-memory">حافظه / نوع ذخیره‌سازی</label>
+        <select id="search-memory" name="memory">
+          <option value="">همه</option>
+          {% for memory in memories %}
+            <option value="{{ memory }}" {% if filters.memory == memory %}selected{% endif %}>{{ memory }}</option>
+          {% endfor %}
+        </select>
+      </div>
+
+      <div class="search-field">
+        <label for="search-color">رنگ</label>
+        <select id="search-color" name="color">
+          <option value="">همه</option>
+          {% for color in colors %}
+            <option value="{{ color }}" {% if filters.color == color %}selected{% endif %}>{{ color }}</option>
+          {% endfor %}
+        </select>
+      </div>
+
+      <div class="search-field">
+        <label for="search-min-price">حداقل قیمت</label>
+        <input id="search-min-price" type="number" min="0" name="min_price" value="{{ filters.min_price }}" placeholder="از">
+      </div>
+
+      <div class="search-field">
+        <label for="search-max-price">حداکثر قیمت</label>
+        <input id="search-max-price" type="number" min="0" name="max_price" value="{{ filters.max_price }}" placeholder="تا">
+      </div>
+
+      <div class="search-actions">
+        <button class="btn-solid" type="submit"><i class="bi bi-search"></i><span>اعمال فیلتر</span></button>
+        <a class="btn-outline" href="{% url 'products:search' %}"><i class="bi bi-x-circle"></i><span>حذف فیلترها</span></a>
+      </div>
+    </form>
+
+    <section class="all-products">
+      <div class="section-head">
+        <div class="section-head-left">
+          <h3>نتایج</h3>
+        </div>
+      </div>
+
+      {% if products %}
         <div class="backend-product-list">
           {% for product in products %}
             <article class="backend-product-card">
+              {% with image=product.images.first %}
+                {% if image %}
+                  <img class="search-result-img" src="{{ image.image.url }}" alt="{{ product.name }}">
+                {% endif %}
+              {% endwith %}
               <h3>{{ product.name }}</h3>
               <p>{{ product.warranty_info }}</p>
               {% if product.min_price %}
                 <strong>{{ product.min_price }} تومان</strong>
               {% endif %}
               {% if product.slug %}
-                <a href="/product/{{ product.slug }}/">مشاهده محصول</a>
+                <a href="{% url 'products:product_detail' product.slug %}">مشاهده محصول</a>
               {% endif %}
             </article>
           {% endfor %}
         </div>
-      {% elif query %}
-        <div class="empty-state">محصولی برای این جستجو پیدا نشد.</div>
       {% else %}
-        <div class="empty-state">از کادر جستجوی بالای سایت استفاده کنید.</div>
+        <div class="empty-state">محصولی با این معیارها پیدا نشد.</div>
       {% endif %}
     </section>
-  </main>
-
-  <div id="site-footer"></div>
-  <script src="/assets/js/cart.js" defer></script>
-  <script src="/assets/js/data-service.js" defer></script>
-  <script src="/assets/js/components.js" defer></script>
-  <script src="/assets/js/layout-loader.js" defer></script>
-  <script src="/assets/js/page-home.js" defer></script>
-  <script src="/assets/js/page-category.js" defer></script>
-  <script src="/assets/js/page-product.js" defer></script>
-  <script src="/assets/js/animate.js" defer></script>
-  <script src="/assets/js/app.js" defer></script>
-</body>
-</html>
+  </section>
+</main>
+{% endblock %}

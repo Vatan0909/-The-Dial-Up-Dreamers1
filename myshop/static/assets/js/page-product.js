@@ -1,9 +1,9 @@
 (function () {
   const categoryPageMap = {
-    "iphone-tasviri": "iphone-tasviri.html",
-    "jack-dar-parking": "jack-dar-parking.html",
-    element: "element.html",
-    "mohafez-bargh": "mohafez-bargh.html"
+    "iphone-tasviri": "/category/iphone-tasviri/",
+    "jack-dar-parking": "/category/jack-dar-parking/",
+    element: "/category/element/",
+    "mohafez-bargh": "/category/mohafez-bargh/"
   };
 
   function createOptionBlock(title, values) {
@@ -36,7 +36,7 @@
     const mainWrap = document.createElement("div");
     mainWrap.className = "product-gallery-main";
     const mainImage = document.createElement("img");
-    mainImage.src = product.image;
+    mainImage.src = window.SiteComponents.assetUrl(product.image);
     mainImage.alt = product.name;
     mainWrap.appendChild(mainImage);
     box.appendChild(mainWrap);
@@ -48,9 +48,9 @@
       const btn = document.createElement("button");
       btn.type = "button";
       btn.className = "thumb-btn" + (index === 0 ? " active" : "");
-      btn.innerHTML = '<img src="' + imgSrc + '" alt="' + product.name + '">';
+      btn.innerHTML = '<img src="' + window.SiteComponents.assetUrl(imgSrc) + '" alt="' + product.name + '">';
       btn.addEventListener("click", function () {
-        mainImage.src = imgSrc;
+        mainImage.src = window.SiteComponents.assetUrl(imgSrc);
         thumbRow.querySelectorAll(".thumb-btn").forEach(function (n) {
           n.classList.remove("active");
         });
@@ -196,7 +196,7 @@
       window.SiteComponents.renderProductSlider(suggestedMount, {
         title: "محصولات پیشنهادی",
         products: suggestions,
-        seeAll: { label: "مشاهده همه", href: categoryPageMap[product.category] || "index.html" }
+        seeAll: { label: "مشاهده همه", href: categoryPageMap[product.category] || "/" }
       });
     }
   }

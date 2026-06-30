@@ -26,6 +26,24 @@
     return new Intl.NumberFormat("fa-IR").format(value);
   }
 
+  function assetUrl(url) {
+    if (window.SiteDataService && window.SiteDataService.resolveUrl) {
+      return window.SiteDataService.resolveUrl(url || "");
+    }
+    return url || "";
+  }
+
+  function pageUrl(url) {
+    var map = {
+      "index.html": "/",
+      "iphone-tasviri.html": "/category/iphone-tasviri/",
+      "element.html": "/category/element/",
+      "mohafez-bargh.html": "/category/mohafez-bargh/",
+      "jack-dar-parking.html": "/category/jack-dar-parking/"
+    };
+    return map[url] || url || "#";
+  }
+
   /* ── Section Head ────────────────────────────────────────── */
   function createSectionHead(title, seeAll) {
     var head = document.createElement("div");
@@ -60,7 +78,7 @@
 
     var img = document.createElement("img");
     img.className = "product-image";
-    img.src = product.image;
+    img.src = assetUrl(product.image);
     img.alt = product.name;
     img.loading = "lazy";
     imgWrap.appendChild(img);
@@ -78,7 +96,7 @@
     var overlay = document.createElement("div");
     overlay.className = "card-overlay";
     var quickLink = document.createElement("a");
-    quickLink.href = "product.html?id=" + encodeURIComponent(product.id);
+    quickLink.href = product.slug ? "/product/" + encodeURIComponent(product.slug) + "/" : "product.html?id=" + encodeURIComponent(product.id);
     quickLink.className = "card-overlay-btn";
     quickLink.innerHTML = '<i class="bi bi-eye"></i> مشاهده';
     overlay.appendChild(quickLink);
@@ -112,7 +130,7 @@
 
     var detailsLink = document.createElement("a");
     detailsLink.className = "btn-outline";
-    detailsLink.href = "product.html?id=" + encodeURIComponent(product.id);
+    detailsLink.href = product.slug ? "/product/" + encodeURIComponent(product.slug) + "/" : "product.html?id=" + encodeURIComponent(product.id);
     detailsLink.innerHTML = '<i class="bi bi-eye"></i><span>جزئیات</span>';
     actions.appendChild(detailsLink);
 
@@ -361,14 +379,14 @@
       var item = document.createElement("article");
       item.className = "hero-slide" + (index === 0 ? " active" : "");
       item.innerHTML =
-        '<img src="' + withHeroCacheBust(slide.image) + '" alt="' + (slide.title || "اسلاید") + '">' +
+        '<img src="' + withHeroCacheBust(assetUrl(slide.image)) + '" alt="' + (slide.title || "اسلاید") + '">' +
         (slide.title || slide.subtitle
           ? '<div class="hero-content">' +
             (slide.title ? '<h2>' + slide.title + '</h2>' : '') +
             (slide.subtitle ? '<p>' + slide.subtitle + '</p>' : '') +
-            '<a class="hero-link" href="' + (slide.link || '#') + '">مشاهده محصولات <i class="bi bi-arrow-left"></i></a>' +
+            '<a class="hero-link" href="' + pageUrl(slide.link) + '">مشاهده محصولات <i class="bi bi-arrow-left"></i></a>' +
             '</div>'
-          : '<a class="hero-slide-link" href="' + (slide.link || '#') + '" aria-label="مشاهده"></a>');
+          : '<a class="hero-slide-link" href="' + pageUrl(slide.link) + '" aria-label="مشاهده"></a>');
       mount.appendChild(item);
 
       var dot = document.createElement("button");
@@ -459,10 +477,10 @@
     (items || []).forEach(function (item, idx) {
       var anchor = document.createElement("a");
       anchor.className = "shortcut-item anim-up";
-      anchor.href = item.link || "#";
+      anchor.href = pageUrl(item.link);
       anchor.style.transitionDelay = (idx * 65) + "ms";
       anchor.innerHTML =
-        '<span class="shortcut-circle"><img src="' + item.icon + '" alt="' + item.label + '"></span>' +
+        '<span class="shortcut-circle"><img src="' + assetUrl(item.icon) + '" alt="' + item.label + '"></span>' +
         '<span class="shortcut-label">' + item.label + '</span>';
       list.appendChild(anchor);
     });
@@ -513,6 +531,7 @@
   window.SiteComponents = {
     formatPrice,
     createProductCard,
+    setupPagedSlider,
     renderProductSlider,
     renderProductGrid,
     renderHero,
@@ -520,6 +539,8 @@
     renderShortcuts,
     renderTrustStrip,
     renderSocialLinks,
-    createEmptyState
+    createEmptyState,
+    assetUrl,
+    pageUrl
   };
 })();
