@@ -61,6 +61,7 @@ class ProductVariants(models.Model):
         # نمایش نام محصول، ویژگی‌ها، قیمت و موجودی در یک خط
         return f"{self.product.name} | {self.color or ''} {self.memory or ''} {self.model or ''} | {self.price:,} price |stock {self.stock}"
 
+
 class ProductImage(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='images')
     image = models.ImageField(upload_to='products/%Y/%m/%d/')

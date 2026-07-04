@@ -15,17 +15,21 @@
 </head>
 <body {% block body_attrs %}{% endblock %}>
   {% include 'loader.html' %}
+
   {% block site_header %}
   <div id="site-header">{% include 'header.html' %}</div>
   {% endblock %}
+
 
   {% block content %}
     {% block context %}{% endblock %}
   {% endblock %}
 
+
   {% block site_footer %}
   <div id="site-footer">{% include 'footer.html' %}</div>
   {% endblock %}
+
   <script>
     window.STATIC_URL = "{% static '' %}";
   </script>
