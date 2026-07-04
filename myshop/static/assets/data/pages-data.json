@@ -2,45 +2,19 @@
   "pages": {
     "iphone-tasviri": {
       "title": "آیفون تصویری",
-      "subtitle": "مدل های مختلف مانیتور، پنل دم در، متعلقات و پکیج کامل",
-      "showAllProducts": false,
-      "sliderGroups": [
-        { "key": "monitor", "title": "مانیتور", "sectionId": "monitor" },
-        { "key": "panel", "title": "پنل دم در", "sectionId": "panel" },
-        { "key": "accessory", "title": "متعلقات", "sectionId": "accessory" },
-        { "key": "package", "title": "پکیج کامل آیفون", "sectionId": "package" }
-      ]
+      "subtitle": "مدل های مختلف مانیتور، پنل دم در، متعلقات و پکیج کامل"
     },
     "jack-dar-parking": {
       "title": "جک در پارکینگ",
-      "subtitle": "دو مدل اصلی جک برای پروژه های مسکونی و اداری",
-      "showAllProducts": false,
-      "sliderGroups": [
-        { "key": "jack", "title": "انواع جک در پارکینگ", "limit": 2, "sectionId": "jack-main" }
-      ]
+      "subtitle": "دو مدل اصلی جک برای پروژه های مسکونی و اداری"
     },
     "element": {
       "title": "المنت",
-      "subtitle": "مشاهده همه محصولات المنت با نمایش اسلاید و لیست کامل",
-      "showAllProducts": true,
-      "sliderGroups": [
-        { "key": "heater", "title": "المنت های گرمایشی", "sectionId": "heater" },
-        { "key": "industrial", "title": "المنت صنعتی", "sectionId": "industrial" },
-        { "key": "accessory", "title": "متعلقات المنت", "sectionId": "element-accessory" }
-      ]
+      "subtitle": "مشاهده همه محصولات المنت با نمایش اسلاید و لیست کامل"
     },
     "mohafez-bargh": {
       "title": "محافظ برق",
-      "subtitle": "محافظ و استابلایزر برای مصارف خانگی، صوتی تصویری و صنعتی",
-      "showAllProducts": false,
-      "sliderGroups": [
-        { "key": "home-appliance", "title": "وسایل خانگی", "sectionId": "home-appliance" },
-        { "key": "audio-visual", "title": "محافظ لوازم صوتی و تصویری", "sectionId": "audio-visual" },
-        { "key": "refrigerator", "title": "محافظ یخچال", "sectionId": "refrigerator" },
-        { "key": "industrial-refrigerator", "title": "یخچال صنعتی", "sectionId": "industrial-refrigerator" },
-        { "key": "main-meter", "title": "محافظ کنتور / کل ساختمان", "sectionId": "main-meter" },
-        { "key": "stabilizer", "title": "استابلایزر", "sectionId": "stabilizer" }
-      ]
+      "subtitle": "محافظ و استابلایزر برای مصارف خانگی، صوتی تصویری و صنعتی"
     }
   }
 }

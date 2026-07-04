@@ -4,6 +4,9 @@
     if (!target) {
       return;
     }
+    if (target.innerHTML.trim()) {
+      return;
+    }
     const html = await window.SiteDataService.request(filePath);
     target.innerHTML = html;
   }
@@ -15,7 +18,14 @@
 
   function createMenuLink(item, currentPage) {
     const a = document.createElement("a");
-    a.href = item.page;
+    const djangoCategoryMap = {
+      "iphone-tasviri.html": "/category/iphone-tasviri/",
+      "element.html": "/category/element/",
+      "mohafez-bargh.html": "/category/mohafez-bargh/",
+      "jack-dar-parking.html": "/category/jack-dar-parking/",
+      "index.html": "/"
+    };
+    a.href = djangoCategoryMap[item.page] || item.page;
     a.className = "menu-link";
     a.textContent = item.label;
     if (currentPage === item.page) {
@@ -166,6 +176,9 @@
   }
 
   function fillStories(config) {
+    if (document.querySelector("#story-circles .story-circle")) {
+      return;
+    }
     const stories = config.stories || [];
     const bar = document.getElementById('story-bar');
     const mount = document.getElementById('story-circles');
@@ -176,7 +189,7 @@
       btn.type = 'button';
       btn.className = 'story-circle';
       btn.setAttribute('aria-label', story.label);
-      btn.innerHTML = '<div class="story-ring"><img src="' + story.thumb + '" alt="' + story.label + '"></div>' +
+      btn.innerHTML = '<div class="story-ring"><img src="' + window.SiteDataService.resolveUrl(story.thumb) + '" alt="' + story.label + '"></div>' +
                       '<span class="story-label">' + story.label + '</span>';
       btn.addEventListener('click', function () {
         openStoryModal(story);
@@ -200,12 +213,35 @@
       } else {
         videoEl.innerHTML = '<video src="' + story.videoUrl + '" controls autoplay playsinline></video>';
       }
+    } else if (story.imageUrl) {
+      const imageMarkup = '<img src="' + story.imageUrl + '" alt="' + story.label + '">';
+      videoEl.innerHTML = story.link
+        ? '<a class="story-image-link" href="' + story.link + '">' + imageMarkup + '</a>'
+        : imageMarkup;
     } else {
       videoEl.innerHTML = '<div class="story-no-video"><i class="bi bi-camera-video-off"></i><p>ویدیو در دسترس نیست</p></div>';
     }
     modal.style.display = 'flex';
     document.body.style.overflow = 'hidden';
   };
+
+  function setupServerStories() {
+    document.querySelectorAll("#story-circles .story-circle").forEach(function (button) {
+      button.addEventListener("click", function () {
+        if (button.dataset.storyLink) {
+          window.location.href = button.dataset.storyLink;
+          return;
+        }
+        const story = {
+          label: button.dataset.storyTitle || button.getAttribute("aria-label") || "",
+          videoUrl: button.dataset.storyVideo || "",
+          imageUrl: button.dataset.storyImage || "",
+          link: ""
+        };
+        openStoryModal(story);
+      });
+    });
+  }
 
   window.closeStoryModal = function (e) {
     if (e && e.target !== document.getElementById('story-modal') && !e.target.closest('.story-modal-close')) return;
@@ -225,6 +261,7 @@
       fillFooter(config);
       fillStories(config);
       setupHeaderInteractions();
+      setupServerStories();
       return config;
     } catch (error) {
       const target = document.querySelector("#site-header");

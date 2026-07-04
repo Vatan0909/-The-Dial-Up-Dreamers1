@@ -35,31 +35,5 @@
       "icon": "assets/images/products/mohafez.svg",
       "link": "#home-mohafez"
     }
-  ],
-  "featuredSections": [
-    {
-      "title": "پیشنهادهای آیفون تصویری",
-      "sectionId": "home-iphone",
-      "filter": { "category": "iphone-tasviri", "limit": 8 },
-      "seeAll": { "label": "مشاهده همه", "href": "iphone-tasviri.html" }
-    },
-    {
-      "title": "پیشنهادهای المنت",
-      "sectionId": "home-element",
-      "filter": { "category": "element", "limit": 8 },
-      "seeAll": { "label": "مشاهده همه", "href": "element.html" }
-    },
-    {
-      "title": "پیشنهادهای محافظ برق",
-      "sectionId": "home-mohafez",
-      "filter": { "category": "mohafez-bargh", "limit": 8 },
-      "seeAll": { "label": "مشاهده همه", "href": "mohafez-bargh.html" }
-    },
-    {
-      "title": "پیشنهادهای جک در پارکینگ",
-      "sectionId": "home-jack",
-      "filter": { "category": "jack-dar-parking", "limit": 8 },
-      "seeAll": { "label": "مشاهده همه", "href": "jack-dar-parking.html" }
-    }
   ]
 }

@@ -1,96 +1,72 @@
-<!doctype html>
-<html lang="fa" dir="rtl">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>فروشگاه الکتروصنعت امگا | صفحه اصلی</title>
-    <link rel="stylesheet" href="assets/css/cart.css" />
-    <link rel="stylesheet" href="assets/css/main.css" />
-    <link rel="stylesheet" href="assets/css/layout.css" />
-    <link rel="stylesheet" href="assets/css/components.css" />
-    <link rel="stylesheet" href="assets/css/pages.css?v=20260620-2" />
-    <link
-      rel="stylesheet"
-      href="bootstrap-pack/bootstrap-icons/bootstrap-icons.css"
-    />
-  </head>
-  <body data-page="home">
-    {% include 'loader.html' %}
-    <div id="site-header"></div>
+{% extends 'base/base.html' %}
+{% load static %}
 
-    <main class="page-shell">
-      <section
-        class="section-shortcuts container"
-        id="section-shortcuts"
-      ></section>
-      <div class="container" id="trust-strip-mount"></div>
+{% block title %}فروشگاه الکتروصنعت امگا | صفحه اصلی{% endblock %}
+{% block body_attrs %}data-page="home"{% endblock %}
 
-      <section class="hero-section container" id="hero-section">
-        <div class="hero-slider" id="hero-slider"></div>
-        <div class="hero-dots" id="hero-dots"></div>
-      </section>
+{% block content %}
+<main class="page-shell">
+  <section class="section-shortcuts container" id="section-shortcuts"></section>
+  <div class="container" id="trust-strip-mount"></div>
 
-      <section class="product-guides container" aria-labelledby="product-guides-title">
-        <div class="product-guides-heading">
-          <h2 id="product-guides-title">قدم‌به‌قدم تا چیزی که می‌خوای</h2>
-          <p>کنارت هستیم تا راحت‌تر انتخاب کنی و دقیقاً به محصول مناسب نیازت برسی.</p>
+  <section class="hero-section container" id="hero-section">
+    <div class="hero-slider" id="hero-slider"></div>
+    <div class="hero-dots" id="hero-dots"></div>
+  </section>
+
+  <section class="product-guides container" aria-labelledby="product-guides-title">
+    <div class="product-guides-heading">
+      <h2 id="product-guides-title">قدم‌به‌قدم تا چیزی که می‌خوای</h2>
+      <p>کنارت هستیم تا راحت‌تر انتخاب کنی و دقیقاً به محصول مناسب نیازت برسی.</p>
+    </div>
+
+    <div class="product-guides-grid">
+      <article class="product-guide-card product-guide-card--iphone">
+        <div class="product-guide-visual">
+          <img
+            src="{% static 'assets/images/iphone_tasviri_home.png' %}"
+            data-fallback="{% static 'assets/images/iphone-char.png' %}"
+            onerror="this.onerror=null;this.src=this.dataset.fallback"
+            alt="راهنمای انتخاب آیفون تصویری"
+          />
         </div>
-
-        <div class="product-guides-grid">
-          <article class="product-guide-card product-guide-card--iphone">
-            <div class="product-guide-visual">
-              <img
-                src="assets/images/iphone_tasviri_home.png"
-                data-fallback="assets/images/iphone-char.png"
-                onerror="this.onerror=null;this.src=this.dataset.fallback"
-                alt="راهنمای انتخاب آیفون تصویری"
-              />
-            </div>
-            <div class="product-guide-copy">
-              <span class="product-guide-kicker">راهنمای انتخاب <strong><span class="product-name-accent">آیفون</span> تصویری</strong></span>
-              <h3><span class="product-name-accent">آیفون</span> تصویری مناسب خونه‌ات رو انتخاب کن</h3>
-              <p>به چند سوال کوتاه جواب بده تا گزینه‌های مناسب رو بهت پیشنهاد بدیم.</p>
-              <a class="product-guide-btn" href="iphone-tasviri.html#wizard-root">
-                شروع انتخاب <i class="bi bi-arrow-left"></i>
-              </a>
-            </div>
-          </article>
-
-          <article class="product-guide-card product-guide-card--element">
-            <div class="product-guide-visual">
-              <img
-                src="assets/images/element.png"
-                data-fallback="assets/images/products/element.svg"
-                onerror="this.onerror=null;this.src=this.dataset.fallback"
-                alt="راهنمای سفارش المنت سفارشی"
-              />
-            </div>
-            <div class="product-guide-copy">
-              <span class="product-guide-kicker">سفارش <strong><span class="product-name-accent">المنت</span> اختصاصی</strong></span>
-              <h3><span class="product-name-accent">المنت</span> مدنظرت رو سفارش بده.</h3>
-              <p>از المنت مورد نظرت عکس بگیر و برامون بفرست؛ مشابهش رو برات می‌سازیم.</p>
-              <a class="product-guide-btn" href="element.html#element-wizard-root">
-                شروع سفارش <i class="bi bi-arrow-left"></i>
-              </a>
-            </div>
-          </article>
+        <div class="product-guide-copy">
+          <span class="product-guide-kicker">راهنمای انتخاب <strong><span class="product-name-accent">آیفون</span> تصویری</strong></span>
+          <h3><span class="product-name-accent">آیفون</span> تصویری مناسب خونه‌ات رو انتخاب کن</h3>
+          <p>به چند سوال کوتاه جواب بده تا گزینه‌های مناسب رو بهت پیشنهاد بدیم.</p>
+          <a class="product-guide-btn" href="{% url 'products:category_products' 'iphone-tasviri' %}#wizard-root">
+            شروع انتخاب <i class="bi bi-arrow-left"></i>
+          </a>
         </div>
-      </section>
-      <section class="home-sections container" id="home-sections"></section>
+      </article>
 
-      <section class="contact-section container" id="home-contact"></section>
-    </main>
+      <article class="product-guide-card product-guide-card--element">
+        <div class="product-guide-visual">
+          <img
+            src="{% static 'assets/images/element.png' %}"
+            data-fallback="{% static 'assets/images/products/element.svg' %}"
+            onerror="this.onerror=null;this.src=this.dataset.fallback"
+            alt="راهنمای سفارش المنت سفارشی"
+          />
+        </div>
+        <div class="product-guide-copy">
+          <span class="product-guide-kicker">سفارش <strong><span class="product-name-accent">المنت</span> اختصاصی</strong></span>
+          <h3><span class="product-name-accent">المنت</span> مدنظرت رو سفارش بده.</h3>
+          <p>از المنت مورد نظرت عکس بگیر و برامون بفرست؛ مشابهش رو برات می‌سازیم.</p>
+          <a class="product-guide-btn" href="{% url 'products:category_products' 'element' %}#element-wizard-root">
+            شروع سفارش <i class="bi bi-arrow-left"></i>
+          </a>
+        </div>
+      </article>
+    </div>
+  </section>
+  <section class="home-sections container" id="home-sections" data-server-rendered="true">
+    {% for section in home_sections %}
+      {% url 'products:category_products' section.category.slug as category_url %}
+      {% include 'products/_product_slider.html' with title=section.category.name products=section.products section_id=section.category.slug see_all_url=category_url %}
+    {% endfor %}
+  </section>
 
-    <div id="site-footer"></div>
-    <script src="assets/js/cart.js" defer></script>
-
-    <script src="assets/js/data-service.js" defer></script>
-    <script src="assets/js/components.js" defer></script>
-    <script src="assets/js/layout-loader.js" defer></script>
-    <script src="assets/js/page-home.js" defer></script>
-    <script src="assets/js/page-category.js" defer></script>
-    <script src="assets/js/page-product.js" defer></script>
-    <script src="assets/js/animate.js" defer></script>
-    <script src="assets/js/app.js" defer></script>
-  </body>
-</html>
+  <section class="contact-section container" id="home-contact"></section>
+</main>
+{% endblock %}

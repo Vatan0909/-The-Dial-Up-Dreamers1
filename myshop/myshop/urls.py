@@ -23,7 +23,7 @@ from myshop import settings
 from myshop.Views import home_page, contact_us_page
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path('', home_page, name='home'),
+    # path('', home_page, name='home'),
     path("contact-us/", contact_us_page, name="contact"),
     path("user/", include("users.urls")),
     path("element-order/", include("element_orders.urls")),

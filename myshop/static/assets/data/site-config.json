@@ -2,12 +2,6 @@
   "shop": {
     "name": "فروشگاه الکتروصنعت امگا"
   },
-  "stories": [
-    { "id": "story-1", "label": "راهنمای خرید", "thumb": "assets/images/Guide.png", "videoUrl": "https://drive.google.com/file/d/181QVtYLBIzSHx7V9iIGrRNgIk8oPrFQp/view?usp=drivesdk" },
-    { "id": "story-2", "label": "مانیتور", "thumb": "assets/images/iphone_tasviri_home.png", "videoUrl": "" },
-    { "id": "story-3", "label":"پنل دم در", "thumb": "assets/images/panel.png", "videoUrl": "" },
-    { "id": "story-4", "label":"...", "thumb": "assets/images/discount.png", "videoUrl": "" }
-  ],
   "header": {
     "authText": "ثبت نام / ورود",
     "cartText": "سبد خرید",

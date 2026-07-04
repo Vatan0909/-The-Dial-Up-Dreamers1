@@ -1,17 +1,18 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>فروشگاه الکتروصنعت امگا</title>
-  <link rel="stylesheet" href="/bootstrap-pack/bootstrap/css/bootstrap.rtl.min.css">
+  <title>{% block title %}فروشگاه الکتروصنعت امگا{% endblock %}</title>
+  <link rel="stylesheet" href="{% static 'assets/css/cart.css' %}">
+  <link rel="stylesheet" href="{% static 'assets/css/main.css' %}">
+  <link rel="stylesheet" href="{% static 'assets/css/layout.css' %}">
+  <link rel="stylesheet" href="{% static 'assets/css/components.css' %}">
+  <link rel="stylesheet" href="{% static 'assets/css/pages.css' %}?v=20260620-3">
+  <link rel="stylesheet" href="{% static 'bootstrap-pack/bootstrap-icons/bootstrap-icons.css' %}">
+  {% block extra_head %}{% endblock %}
 </head>
-<<<<<<< Updated upstream
-<body>
-  <div class="container mt-4">
-    {% block context %}{% endblock %}
-  </div>
-=======
 <body {% block body_attrs %}{% endblock %}>
   {% include 'loader.html' %}
   {% block site_header %}
@@ -38,6 +39,5 @@
   {% block extra_scripts %}{% endblock %}
   <script src="{% static 'assets/js/animate.js' %}" defer></script>
   <script src="{% static 'assets/js/app.js' %}" defer></script>
->>>>>>> Stashed changes
 </body>
 </html>

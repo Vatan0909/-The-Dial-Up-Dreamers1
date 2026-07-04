@@ -1,24 +1,10 @@
 (function () {
-  function selectProducts(allProducts, filter) {
-    var items = allProducts.slice();
-    if (filter.category) items = items.filter(function (i) { return i.category === filter.category; });
-    if (filter.group) items = items.filter(function (i) { return i.group === filter.group; });
-    if (filter.ids && filter.ids.length) {
-      items = filter.ids.map(function (id) {
-        return allProducts.find(function (i) { return i.id === id; });
-      }).filter(Boolean);
-    }
-    if (filter.limit) items = items.slice(0, filter.limit);
-    return items;
-  }
-
   async function init() {
     var page = document.body.dataset.page;
     if (page !== "home") return;
 
-    var [homeData, productData, siteConfig] = await Promise.all([
+    var [homeData, siteConfig] = await Promise.all([
       window.SiteDataService.request("assets/data/home-data.json"),
-      window.SiteDataService.request("assets/data/products.json"),
       window.SiteDataService.request("assets/data/site-config.json")
     ]);
 
@@ -45,21 +31,6 @@
       window.SiteComponents.renderTrustStrip(trustMount);
     }
 
-    /* Featured sections */
-    var sectionsMount = document.getElementById("home-sections");
-    if (sectionsMount) {
-      sectionsMount.innerHTML = "";
-      (homeData.featuredSections || []).forEach(function (section) {
-        var items = selectProducts(productData.products || [], section.filter || {});
-        window.SiteComponents.renderProductSlider(sectionsMount, {
-          title: section.title,
-          products: items,
-          sectionId: section.sectionId,
-          seeAll: section.seeAll || null
-        });
-      });
-    }
-
     /* Contact strip */
     var contact = document.getElementById("home-contact");
     if (contact) {
@@ -68,7 +39,7 @@
         '<div class="home-contact-about">' +
           '<div class="home-contact-badge"><i class="bi bi-shop"></i> درباره‌ی ما</div>' +
           '<p class="contact-text">' + (about.aboutText || "") + '</p>' +
-          '<a href="contact.html" class="contact-cta-link">' +
+          '<a href="#" class="contact-cta-link">' +
             '<i class="bi bi-headset"></i> تماس با ما' +
           '</a>' +
         '</div>' +
