@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
@@ -33,3 +34,167 @@
   <script src="assets/js/app.js" defer></script>
 </body>
 </html>
+=======
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block title %}{{ product.name }} | فروشگاه الکتروصنعت امگا{% endblock %}
+
+{% block body_attrs %}data-page="product"{% endblock %}
+
+{% block extra_css %}
+  <link rel="stylesheet" href="{% static 'products/css/product-detail.css' %}">
+  <style>
+    /* اضافه کردن استایل ضروری تب‌ها در صورتی که از CSS اصلی حذف شده باشد */
+    .tab-content { display: none; }
+    .tab-content.active { display: block; }
+  </style>
+{% endblock %}
+
+{% block content %}
+<main class="page-shell">
+  <section class="container product-page" id="product-page">
+    <article class="product-detail">
+      <div class="product-top">
+        <div>
+          <div class="product-gallery-main">
+            {% with images|first as main_image %}
+              {% if main_image %}
+                <img id="product-main-image" src="{{ main_image.image.url }}" alt="{{ product.name }}">
+              {% else %}
+                <img id="product-main-image" src="{% static 'products/images/products/package.svg' %}" alt="{{ product.name }}">
+              {% endif %}
+            {% endwith %}
+          </div>
+
+          <!-- رفع مشکل دوم: نمایش تصاویر کوچک فقط زمانی که بیشتر از 1 عکس داریم -->
+          {% if images|length > 1 %}
+            <div class="thumb-row">
+              {% for image in images %}
+                <button class="thumb-btn{% if forloop.first %} active{% endif %}" type="button" data-gallery-src="{{ image.image.url }}">
+                  <img src="{{ image.image.url }}" alt="{{ product.name }}">
+                </button>
+              {% endfor %}
+            </div>
+          {% endif %}
+        </div>
+
+        <div class="product-info">
+          <h1>{{ product.name }}</h1>
+
+          {% if features %}
+            <ul class="product-meta-list">
+              {% for feature in features %}
+                <li>{{ feature.description }}</li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+
+          {% if product_colors %}
+            <section class="option-block">
+              <h4>رنگ</h4>
+              <div class="option-row">
+                {% for color in product_colors %}
+                  <button class="chip-btn{% if color == default_color %} active{% endif %}" type="button" data-variant-color="{{ color }}">{{ color }}</button>
+                {% endfor %}
+              </div>
+            </section>
+          {% endif %}
+
+          {% if product_memories %}
+            <section class="option-block">
+              <h4>حافظه</h4>
+              <div class="option-row">
+                {% for memory in product_memories %}
+                  <button class="chip-btn{% if memory == default_storage %} active{% endif %}" type="button" data-variant-memory="{{ memory }}">{{ memory }}</button>
+                {% endfor %}
+              </div>
+            </section>
+          {% endif %}
+
+          <form class="purchase-row" method="post">
+            {% csrf_token %}
+            {{ form.product_id }}
+            <input type="hidden" name="color" id="selected-color" value="{{ default_color|default_if_none:'' }}">
+            <input type="hidden" name="memory" id="selected-memory" value="{{ default_storage|default_if_none:'' }}">
+            <input type="hidden" id="variant-price-url" value="{% url 'products:variant_price' %}">
+
+            <!-- رفع مشکل سوم: مخفی کردن فیلد فرم و قرار دادن تگ span مخصوص ظاهر جدید -->
+            <div class="qty-wrap">
+              <button class="qty-btn" type="button" data-qty-minus>-</button>
+              <span class="qty-value" id="ui-qty-value">1</span>
+              <div style="display: none;">
+                {{ form.quantity }}
+              </div>
+              <button class="qty-btn" type="button" data-qty-plus>+</button>
+            </div>
+
+            <button class="add-cart-btn" type="submit">افزودن به سبد خرید</button>
+            <span class="price-text" id="variant-price" data-product-id="{{ product.id }}">
+              {% if selected_variant %}
+                {{ selected_variant.price }} تومان
+              {% else %}
+                تماس بگیرید
+              {% endif %}
+            </span>
+          </form>
+        </div>
+      </div>
+
+<div class="product-tabs-wrap">
+        <!-- اضافه کردن استایل به‌صورت مستقیم برای رفع مشکل نمایش هم‌زمان تب‌ها -->
+        <style>
+          .product-tabs-wrap .tab-content { 
+            display: none !important; 
+          }
+          .product-tabs-wrap .tab-content.active { 
+            display: block !important; 
+          }
+        </style>
+        
+        <div class="tabs">
+          <div class="tab-head">
+            <button class="tab-btn active" type="button" data-tab-target="warranty">گارانتی</button>
+            <button class="tab-btn" type="button" data-tab-target="details">جزئیات بیشتر</button>
+            <button class="tab-btn" type="button" data-tab-target="specs">مشخصات فنی</button>
+          </div>
+          <div class="tab-content active" data-tab-panel="warranty">{{ product.warranty_info|default:"اطلاعات گارانتی ثبت نشده است." }}</div>
+          <div class="tab-content" data-tab-panel="details">{{ product.additional_details|default:"جزئیات بیشتری ثبت نشده است." }}</div>
+          <div class="tab-content" data-tab-panel="specs">{{ product.technical_specs|default:"مشخصات فنی ثبت نشده است." }}</div>
+        </div>
+      </div>
+    </article>
+  </section>
+
+  <section class="container suggested-products" id="suggested-products">
+    <section class="slider-section">
+      <div class="section-head">
+        <h3>محصولات پیشنهادی</h3>
+      </div>
+
+      {% if recommended_products %}
+        <div class="slider-wrap">
+          <div class="slider-track">
+            {% for product in recommended_products %}
+              <div class="slider-item">
+                {% include "products/_product_card.html" with product=product only %}
+              </div>
+            {% endfor %}
+          </div>
+          <div class="slider-nav">
+            <button type="button" aria-label="بعدی" data-slider-next><i class="bi bi-chevron-left"></i></button>
+            <button type="button" aria-label="قبلی" data-slider-prev><i class="bi bi-chevron-right"></i></button>
+          </div>
+        </div>
+      {% else %}
+        <div class="empty-state">محصول پیشنهادی برای این دسته ثبت نشده است.</div>
+      {% endif %}
+    </section>
+  </section>
+</main>
+{% endblock %}
+
+{% block extra_js %}
+  <script src="{% static 'products/js/product-detail.js' %}" defer></script>
+{% endblock %}
+>>>>>>> Stashed changes

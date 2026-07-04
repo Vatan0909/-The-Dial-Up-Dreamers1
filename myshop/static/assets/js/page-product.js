@@ -1,4 +1,5 @@
 (function () {
+<<<<<<< Updated upstream
   const categoryPageMap = {
     "iphone-tasviri": "iphone-tasviri.html",
     "jack-dar-parking": "jack-dar-parking.html",
@@ -146,59 +147,114 @@
   }
 
   async function init() {
+=======
+  function init() {
+>>>>>>> Stashed changes
     if (document.body.dataset.page !== "product") {
       return;
     }
 
-    const [productsData] = await Promise.all([
-      window.SiteDataService.request("assets/data/products.json")
-    ]);
+    // ۱. مدیریت گالری تصاویر
+    const mainImage = document.getElementById("product-main-image");
+    const thumbBtns = document.querySelectorAll(".thumb-btn");
 
-    const products = productsData.products || [];
-    const productId = window.SiteDataService.getQueryParam("id");
-    const product = findProductById(products, productId);
-    const page = document.getElementById("product-page");
-    if (!page) {
-      return;
+    if (thumbBtns.length > 0) {
+      thumbBtns.forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          const newSrc = this.getAttribute("data-gallery-src");
+          if (newSrc && mainImage) {
+            mainImage.src = newSrc;
+          }
+          
+          thumbBtns.forEach(function (node) {
+            node.classList.remove("active");
+          });
+          this.classList.add("active");
+        });
+      });
     }
 
-    if (!product) {
-      page.innerHTML = '<div class="empty-state">محصول مورد نظر پیدا نشد.</div>';
-      return;
+    // ۲. مدیریت دکمه‌های کم و زیاد کردن تعداد (هماهنگ با ظاهر جدید و فرم مخفی)
+    const realQtyInput = document.querySelector('input[name="quantity"]'); // فیلد فرم جنگو
+    const uiQtyValue = document.getElementById('ui-qty-value'); // عنصر نمایشی
+    const btnPlus = document.querySelector('[data-qty-plus]');
+    const btnMinus = document.querySelector('[data-qty-minus]');
+
+    if (realQtyInput && uiQtyValue) {
+      // مقدار اولیه عنصر نمایشی را بر اساس فیلد جنگو تنظیم کن
+      uiQtyValue.textContent = realQtyInput.value || "1";
+
+      if (btnPlus) {
+        btnPlus.addEventListener("click", function () {
+          let currentVal = Number(realQtyInput.value) || 1;
+          let newVal = currentVal + 1;
+          realQtyInput.value = newVal; // آپدیت فرم پنهان
+          uiQtyValue.textContent = newVal; // آپدیت ظاهر
+        });
+      }
+      if (btnMinus) {
+        btnMinus.addEventListener("click", function () {
+          let currentVal = Number(realQtyInput.value) || 1;
+          let newVal = Math.max(1, currentVal - 1);
+          realQtyInput.value = newVal; // آپدیت فرم پنهان
+          uiQtyValue.textContent = newVal; // آپدیت ظاهر
+        });
+      }
     }
 
-    document.title = product.name + " | فروشگاه الکتروصنعت امگا";
+    // ۳. مدیریت تب‌ها
+    const tabBtns = document.querySelectorAll(".tab-btn");
+    const tabContents = document.querySelectorAll(".tab-content");
 
-    const detail = document.createElement("article");
-    detail.className = "product-detail";
+    tabBtns.forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        const target = this.getAttribute("data-tab-target");
 
-    const top = document.createElement("div");
-    top.className = "product-top";
-    top.appendChild(createGallery(product));
-    top.appendChild(createProductInfo(product));
-    detail.appendChild(top);
+        tabBtns.forEach(b => b.classList.remove("active"));
+        tabContents.forEach(c => c.classList.remove("active"));
 
-    const tabsWrap = document.createElement("div");
-    tabsWrap.className = "product-tabs-wrap";
-    window.SiteComponents.renderTabs(tabsWrap, product.tabs || {});
-    detail.appendChild(tabsWrap);
-    page.appendChild(detail);
+        this.classList.add("active");
+        const content = document.querySelector('.tab-content[data-tab-panel="' + target + '"]');
+        if (content) {
+          content.classList.add("active");
+        }
+      });
+    });
 
-    const suggestedMount = document.getElementById("suggested-products");
-    if (suggestedMount) {
-      suggestedMount.innerHTML = "";
-      const suggestions = products
-        .filter(function (item) {
-          return item.category === product.category && item.id !== product.id;
-        })
-        .slice(0, 8);
+    // ۴. مدیریت انتخاب رنگ و حافظه
+    const colorChips = document.querySelectorAll('[data-variant-color]');
+    const memoryChips = document.querySelectorAll('[data-variant-memory]');
+    const selectedColorInput = document.getElementById('selected-color');
+    const selectedMemoryInput = document.getElementById('selected-memory');
 
+<<<<<<< Updated upstream
       window.SiteComponents.renderProductSlider(suggestedMount, {
         title: "محصولات پیشنهادی",
         products: suggestions,
         seeAll: { label: "مشاهده همه", href: categoryPageMap[product.category] || "index.html" }
       });
     }
+=======
+    colorChips.forEach(function (chip) {
+      chip.addEventListener("click", function () {
+        colorChips.forEach(c => c.classList.remove("active"));
+        this.classList.add("active");
+        if (selectedColorInput) {
+          selectedColorInput.value = this.getAttribute("data-variant-color");
+        }
+      });
+    });
+
+    memoryChips.forEach(function (chip) {
+      chip.addEventListener("click", function () {
+        memoryChips.forEach(c => c.classList.remove("active"));
+        this.classList.add("active");
+        if (selectedMemoryInput) {
+          selectedMemoryInput.value = this.getAttribute("data-variant-memory");
+        }
+      });
+    });
+>>>>>>> Stashed changes
   }
 
   window.PageProduct = {

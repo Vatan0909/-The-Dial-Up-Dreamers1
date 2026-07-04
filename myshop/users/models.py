@@ -26,10 +26,18 @@ class Address(models.Model):
 
 
 class PhoneOTP(models.Model):
+    PURPOSE_REGISTER = "register"
+    PURPOSE_LOGIN = "login"
+    PURPOSE_CHOICES = (
+        (PURPOSE_REGISTER, "ثبت‌نام"),
+        (PURPOSE_LOGIN, "ورود"),
+    )
+
     objects = models.Manager()
 
     phone_number = models.CharField(max_length=15)
     code = models.CharField(max_length=6)
+    purpose = models.CharField(max_length=20, choices=PURPOSE_CHOICES, default=PURPOSE_REGISTER)
     created_at = models.DateTimeField(auto_now_add=True)
     is_verified = models.BooleanField(default=False)
 

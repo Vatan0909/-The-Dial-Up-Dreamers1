@@ -1,0 +1,237 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block title %}ورود / ثبت‌نام | فروشگاه الکتروصنعت امگا{% endblock %}
+{% block site_header %}{% endblock %}
+{% block site_footer %}{% endblock %}
+{% block body_attrs %}class="auth-page auth-mode-{{ mode|default:'register' }}"{% endblock %}
+{% block extra_head %}
+<link rel="stylesheet" href="{% static 'assets/css/auth.css' %}">
+{% endblock %}
+{% block content %}
+<div class="auth-bg-shape auth-bg-shape--one"></div>
+<div class="auth-bg-shape auth-bg-shape--two"></div>
+<main class="auth-shell" id="auth-shell" data-auth-mode="{{ mode|default:'register' }}">
+  <aside class="auth-panel-brand">
+    <div class="auth-deco-ring auth-deco-ring--1"></div>
+    <div class="auth-deco-ring auth-deco-ring--2"></div>
+    <div class="auth-deco-ring auth-deco-ring--3"></div>
+
+    <div class="auth-brand-head">
+      <div class="auth-brand-logo">
+        <img src="{% static 'assets/images/OmegaLogo.jpg' %}" alt="لوگو امگا">
+      </div>
+      <div class="auth-brand-name">فروشگاه <span>الکتروصنعت امگا</span></div>
+      <p class="auth-brand-tagline">تجهیزات برق، امنیت و صوت‌تصویر<br>با پشتیبانی فنی و ارسال سریع</p>
+    </div>
+
+    <div class="auth-brand-showcase">
+      <div class="auth-showcase-copy">
+        <span>راهنمای خرید</span>
+        <strong>برای انتخاب مطمئن، کنار شما هستیم.</strong>
+      </div>
+      <img src="{% static 'assets/images/iphone-char.png' %}" alt="راهنمای خرید امگا" class="auth-showcase-img">
+      <div class="auth-showcase-pill auth-showcase-pill--bottom">
+        <i class="bi bi-shield-check-fill"></i>
+        <span>خرید مطمئن</span>
+      </div>
+    </div>
+
+    <div class="auth-features">
+      <div class="auth-feature-card">
+        <div class="afc-icon afc-blue"><i class="bi bi-camera-video-fill"></i></div>
+        <div class="afc-body"><strong>آیفون تصویری</strong><span>مانیتور، پنل، پکیج کامل</span></div>
+      </div>
+      <div class="auth-feature-card">
+        <div class="afc-icon afc-orange"><i class="bi bi-lightning-charge-fill"></i></div>
+        <div class="afc-body"><strong>المنت گرمایشی</strong><span>صنعتی، خانگی، هوشمند</span></div>
+      </div>
+      <div class="auth-feature-card">
+        <div class="afc-icon afc-purple"><i class="bi bi-shield-check-fill"></i></div>
+        <div class="afc-body"><strong>محافظ برق</strong><span>استابلایزر، کنتور اصلی</span></div>
+      </div>
+      <div class="auth-feature-card">
+        <div class="afc-icon afc-green"><i class="bi bi-door-open-fill"></i></div>
+        <div class="afc-body"><strong>جک پارکینگ</strong><span>اتوماتیک، ریموت، بازویی</span></div>
+      </div>
+    </div>
+
+    <div class="auth-social-proof">
+      <div class="auth-proof-avatars">
+        <div class="auth-proof-av" style="background:#2b6cb0">ا</div>
+        <div class="auth-proof-av" style="background:#ed8936">م</div>
+        <div class="auth-proof-av" style="background:#2f855a">ر</div>
+      </div>
+      <span>بیش از ۱۰۰۰ مشتری از ما خرید کردن</span>
+    </div>
+
+    <div class="auth-stats">
+      <div class="auth-stat"><strong>+۵۰۰</strong><span>محصول</span></div>
+      <div class="auth-stat-div"></div>
+      <div class="auth-stat"><strong>+۲۵</strong><span>سال تجربه</span></div>
+      <div class="auth-stat-div"></div>
+      <div class="auth-stat"><strong>+۱۰۰۰</strong><span>مشتری راضی</span></div>
+    </div>
+
+    <div class="auth-trust">
+      <div class="auth-trust-item"><i class="bi bi-truck"></i><span>ارسال سریع</span></div>
+      <div class="auth-trust-item"><i class="bi bi-patch-check-fill"></i><span>ضمانت اصالت</span></div>
+      <div class="auth-trust-item"><i class="bi bi-headset"></i><span>پشتیبانی فنی</span></div>
+    </div>
+  </aside>
+
+  <div class="auth-panel-form">
+    <div class="auth-card">
+      <div class="auth-card-head">
+        <span class="auth-mode-badge" id="auth-mode-badge">{% if mode == 'login' %}ورود امن{% else %}حساب جدید{% endif %}</span>
+        <h1 id="auth-mode-title">{% if mode == 'login' %}ورود به حساب امگا{% else %}ثبت‌نام در امگا{% endif %}</h1>
+        <p id="auth-mode-subtitle">{% if mode == 'login' %}با شماره موبایل و کد تایید یا رمز عبور وارد حساب خود شوید.{% else %}شماره موبایل را وارد کنید تا حساب شما با کد تایید ساخته شود.{% endif %}</p>
+      </div>
+
+      {% if messages %}
+      <div class="auth-messages">
+        {% for message in messages %}
+          <div class="auth-message auth-message--{{ message.tags|default:'info' }}">{{ message }}</div>
+        {% endfor %}
+      </div>
+      {% endif %}
+
+      <div class="auth-door-switch" id="auth-door-switch" data-mode="{{ mode|default:'register' }}">
+        <button class="auth-door-target auth-door-target--register{% if mode != 'login' %} active{% endif %}" type="button" data-tab="register">ثبت‌نام</button>
+        <button class="auth-door-target auth-door-target--login{% if mode == 'login' %} active{% endif %}" type="button" data-tab="login">ورود</button>
+        <button class="auth-door" id="auth-door" type="button" aria-label="تغییر فرم">
+          <i class="bi {% if mode == 'login' %}bi-box-arrow-in-right{% else %}bi-door-open-fill{% endif %}" id="auth-door-icon"></i>
+          <span id="auth-door-text">{% if mode == 'login' %}ورود{% else %}ثبت‌نام{% endif %}</span>
+        </button>
+      </div>
+
+      <div class="auth-flow-frame">
+        <div id="register-flow"{% if mode == 'login' %} style="display:none;"{% endif %}>
+          <form method="post" class="auth-step{% if register_step|default:1 == 1 %} active{% endif %}" id="reg-step-1">
+            {% csrf_token %}
+            <input type="hidden" name="action" value="register_send_otp">
+            <div class="step-progress">
+              <div class="step-dot active"></div><div class="step-line"></div><div class="step-dot"></div><div class="step-line"></div><div class="step-dot"></div>
+            </div>
+            <h2 class="auth-step-title">ایجاد حساب کاربری</h2>
+            <p class="auth-step-sub">شماره موبایل خود را وارد کنید تا کد تایید برایتان ارسال شود</p>
+            <div class="phone-field">
+              <label class="phone-field-label" for="reg-phone">شماره موبایل</label>
+              <div class="phone-input-wrap">
+                <div class="phone-flag" aria-hidden="true"><span class="flag-emoji">🇮🇷</span><span class="phone-prefix">+98</span></div>
+                <input class="phone-input-field" id="reg-phone" name="phone_number" type="tel" maxlength="11" placeholder="912 345 6789" inputmode="numeric" autocomplete="tel" value="{{ register_phone|default:'' }}">
+              </div>
+              <div class="phone-field-hint">شماره را بدون صفر اول وارد کنید</div>
+            </div>
+            <button class="auth-btn" type="submit"><i class="bi bi-send-fill"></i> دریافت کد تایید</button>
+            <p class="auth-note">با ثبت‌نام، <a href="#">قوانین و مقررات</a> را می‌پذیرید.</p>
+          </form>
+
+          <form method="post" class="auth-step{% if register_step|default:1 == 2 %} active{% endif %}" id="reg-step-2">
+            {% csrf_token %}
+            <input type="hidden" name="action" value="register_verify_otp">
+            <div class="step-progress">
+              <div class="step-dot done"></div><div class="step-line done"></div><div class="step-dot active"></div><div class="step-line"></div><div class="step-dot"></div>
+            </div>
+            <button class="auth-back" type="button" data-back="register">بازگشت</button>
+            <h2 class="auth-step-title">تایید شماره موبایل</h2>
+            <p class="auth-step-sub">کد ۶ رقمی ارسال شده را وارد کنید</p>
+            <div id="reg-otp-hint" class="otp-toast"{% if not register_otp_code %} style="display:none;"{% endif %}>
+              <i class="bi bi-info-circle-fill"></i> کد آزمایشی: <strong id="reg-otp-code">{{ register_otp_code|default:'------' }}</strong>
+            </div>
+            <div class="otp-wrapper">
+              <div class="otp-boxes" id="reg-otp-boxes" data-otp-target="reg">
+                <input class="otp-box" maxlength="1" inputmode="numeric" type="text" name="otp_1">
+                <input class="otp-box" maxlength="1" inputmode="numeric" type="text" name="otp_2">
+                <input class="otp-box" maxlength="1" inputmode="numeric" type="text" name="otp_3">
+                <input class="otp-box" maxlength="1" inputmode="numeric" type="text" name="otp_4">
+                <input class="otp-box" maxlength="1" inputmode="numeric" type="text" name="otp_5">
+                <input class="otp-box" maxlength="1" inputmode="numeric" type="text" name="otp_6">
+                <input type="hidden" name="code" id="reg-otp-code-input">
+              </div>
+              <div class="otp-check" id="reg-otp-check"><i class="bi bi-check-lg"></i></div>
+            </div>
+            <button class="auth-btn" type="submit"><i class="bi bi-check-lg"></i> تایید کد</button>
+          </form>
+
+          <form method="post" class="auth-step{% if register_step|default:1 == 3 %} active{% endif %}" id="reg-step-3">
+            {% csrf_token %}
+            <input type="hidden" name="action" value="register_complete">
+            <div class="step-progress">
+              <div class="step-dot done"></div><div class="step-line done"></div><div class="step-dot done"></div><div class="step-line done"></div><div class="step-dot active"></div>
+            </div>
+            <h2 class="auth-step-title">تعیین رمز عبور</h2>
+            <p class="auth-step-sub">یک رمز عبور قوی برای حساب خود انتخاب کنید</p>
+            <div class="auth-input-wrap"><i class="bi bi-lock-fill auth-input-icon"></i><input class="auth-input" id="reg-pass" name="password" type="password" placeholder="رمز عبور (حداقل ۶ کاراکتر)" minlength="6"></div>
+            <div class="auth-input-wrap"><i class="bi bi-lock auth-input-icon"></i><input class="auth-input" id="reg-pass2" name="password2" type="password" placeholder="تکرار رمز عبور" minlength="6"></div>
+            <button class="auth-btn auth-btn--green" type="submit"><i class="bi bi-person-check-fill"></i> ثبت‌نام و ورود به فروشگاه</button>
+          </form>
+        </div>
+
+        <div id="login-flow"{% if mode != 'login' %} style="display:none;"{% endif %}>
+          <div class="login-method-toggle" id="login-method-toggle">
+            <button class="method-btn{% if login_method|default:'otp' == 'otp' %} active{% endif %}" type="button" data-method="otp"><i class="bi bi-phone-fill"></i> کد تایید</button>
+            <button class="method-btn{% if login_method == 'password' %} active{% endif %}" type="button" data-method="password"><i class="bi bi-key-fill"></i> رمز عبور</button>
+          </div>
+
+          <form method="post" class="auth-step{% if login_step|default:1 == 1 %} active{% endif %}" id="login-step-1">
+            {% csrf_token %}
+            <input type="hidden" name="action" id="login-action" value="{% if login_method == 'password' %}login_password{% else %}login_send_otp{% endif %}">
+            <h2 class="auth-step-title">خوش برگشتید!</h2>
+            <p class="auth-step-sub" id="login-step-sub">شماره موبایل خود را وارد کنید</p>
+            <div class="phone-field">
+              <label class="phone-field-label" for="login-phone">شماره موبایل</label>
+              <div class="phone-input-wrap">
+                <div class="phone-flag" aria-hidden="true"><span class="flag-emoji">🇮🇷</span><span class="phone-prefix">+98</span></div>
+                <input class="phone-input-field" id="login-phone" name="phone_number" type="tel" maxlength="11" placeholder="912 345 6789" inputmode="numeric" autocomplete="tel" value="{{ login_phone|default:'' }}">
+              </div>
+              <div class="phone-field-hint">شماره را بدون صفر اول وارد کنید</div>
+            </div>
+            <div id="login-pass-field" style="display:none;">
+              <div class="auth-input-wrap"><i class="bi bi-lock-fill auth-input-icon"></i><input class="auth-input" id="login-pass" name="password" type="password" placeholder="رمز عبور"></div>
+            </div>
+            <button class="auth-btn" id="login-main-btn" type="submit"><i class="bi bi-box-arrow-in-right"></i> ادامه</button>
+          </form>
+
+          <form method="post" class="auth-step{% if login_step|default:1 == 2 %} active{% endif %}" id="login-step-2">
+            {% csrf_token %}
+            <input type="hidden" name="action" value="login_verify_otp">
+            <button class="auth-back" type="button" data-back="login">بازگشت</button>
+            <h2 class="auth-step-title">کد تایید</h2>
+            <p class="auth-step-sub">کد ۶ رقمی ارسال شده را وارد کنید</p>
+            <div id="login-otp-hint" class="otp-toast"{% if not login_otp_code %} style="display:none;"{% endif %}>
+              <i class="bi bi-info-circle-fill"></i> کد آزمایشی: <strong id="login-otp-code">{{ login_otp_code|default:'------' }}</strong>
+            </div>
+            <div class="otp-wrapper">
+              <div class="otp-boxes" id="login-otp-boxes" data-otp-target="login">
+                <input class="otp-box" maxlength="1" inputmode="numeric" type="text" name="otp_1">
+                <input class="otp-box" maxlength="1" inputmode="numeric" type="text" name="otp_2">
+                <input class="otp-box" maxlength="1" inputmode="numeric" type="text" name="otp_3">
+                <input class="otp-box" maxlength="1" inputmode="numeric" type="text" name="otp_4">
+                <input class="otp-box" maxlength="1" inputmode="numeric" type="text" name="otp_5">
+                <input class="otp-box" maxlength="1" inputmode="numeric" type="text" name="otp_6">
+                <input type="hidden" name="code" id="login-otp-code-input">
+              </div>
+              <div class="otp-check" id="login-otp-check"><i class="bi bi-check-lg"></i></div>
+            </div>
+            <button class="auth-btn" type="submit"><i class="bi bi-check-lg"></i> ورود با کد تایید</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div class="auth-footer-note">
+      <a href="{% url 'products:home' %}"><i class="bi bi-arrow-right"></i> بازگشت به فروشگاه</a>
+    </div>
+  </div>
+</main>
+{% endblock %}
+{% block extra_scripts %}
+<script>
+  window.AUTH_INITIAL_MODE = "{{ mode|default:'register' }}";
+  window.AUTH_REGISTER_STEP = {{ register_step|default:1 }};
+  window.AUTH_LOGIN_STEP = {{ login_step|default:1 }};
+  window.AUTH_LOGIN_METHOD = "{{ login_method|default:'otp' }}";
+</script>
+<script src="{% static 'assets/js/auth.js' %}" defer></script>
+{% endblock %}
