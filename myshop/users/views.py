@@ -195,7 +195,7 @@ def auth_page(request, mode="register"):
                     else:
                         request.session.pop("pending_login_phone", None)
                         login(request, user)
-                        return redirect("home")
+                        return redirect("products:home")
             else:
                 messages.error(request, "کد تایید باید ۶ رقم باشد.")
                 latest_otp = _latest_otp(phone, PhoneOTP.PURPOSE_LOGIN) if phone else None
