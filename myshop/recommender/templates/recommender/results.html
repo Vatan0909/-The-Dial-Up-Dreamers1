@@ -1,0 +1,83 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block title %}نتایج راهنمای خرید آیفون تصویری | فروشگاه الکتروصنعت امگا{% endblock %}
+{% block body_attrs %}data-page="category" data-category-page="iphone-tasviri"{% endblock %}
+
+{% block content %}
+<main class="page-shell">
+  <section class="wizard-results container" style="margin-top:2rem;">
+    <div class="wizard-results-head">
+      <i class="bi bi-stars"></i>
+      <div>
+        <h3>محصولات پیشنهادی برای شما</h3>
+        <p>{{ products|length }} محصول مطابق با انتخاب شما</p>
+      </div>
+      <a href="{% url 'products:category_products' 'iphone-tasviri' %}#wizard-root" class="wiz-restart-btn">
+        <i class="bi bi-arrow-clockwise"></i> شروع دوباره
+      </a>
+    </div>
+
+    {% if products %}
+      <div class="product-grid" id="wiz-results-grid">
+        {% for product in products %}
+          <article class="product-card anim-up">
+            <div class="product-img-wrap">
+              {% with image=product.images.first %}
+                {% if image %}
+                  <img class="product-image" src="{{ image.image.url }}" alt="{{ product.name }}" loading="lazy">
+                {% else %}
+                  <img class="product-image" src="{% static 'assets/images/products/iphone.svg' %}" alt="{{ product.name }}" loading="lazy">
+                {% endif %}
+              {% endwith %}
+              {% with pack_variant=product.variants.all|first %}
+                {% if pack_variant.is_pack %}
+                  <span class="product-badge bg-orange">پکیج کامل</span>
+                {% else %}
+                  <span class="product-badge bg-blue">مانیتور</span>
+                {% endif %}
+              {% endwith %}
+              <div class="card-overlay">
+                {% if product.slug %}
+                  <a href="{% url 'products:product_detail' product.slug %}" class="card-overlay-btn">
+                    <i class="bi bi-eye"></i> مشاهده
+                  </a>
+                {% endif %}
+              </div>
+            </div>
+            <div class="product-body">
+              <h4 class="product-title">{{ product.name }}</h4>
+              <div class="product-price-wrap">
+                <div class="price-label">قیمت</div>
+                <div class="price-amount">
+                  {% if product.min_price %}
+                    <span class="price-num">{{ product.min_price }}</span>
+                    <span class="price-cur">تومان</span>
+                  {% else %}
+                    <span class="price-num">تماس بگیرید</span>
+                  {% endif %}
+                </div>
+              </div>
+              <div class="product-actions">
+                {% if product.slug %}
+                  <a class="btn-outline" href="{% url 'products:product_detail' product.slug %}">
+                    <i class="bi bi-eye"></i><span>جزئیات</span>
+                  </a>
+                {% endif %}
+                <button class="btn-solid" type="button">
+                  <i class="bi bi-cart-plus"></i><span>سبد</span>
+                </button>
+              </div>
+            </div>
+          </article>
+        {% endfor %}
+      </div>
+    {% else %}
+      <div class="empty-state">
+        <i class="bi bi-inbox" style="font-size:2rem;opacity:.4;display:block;margin-bottom:.5rem"></i>
+        محصولی با این معیارها پیدا نشد.
+      </div>
+    {% endif %}
+  </section>
+</main>
+{% endblock %}

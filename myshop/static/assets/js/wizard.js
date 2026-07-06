@@ -49,7 +49,6 @@
 
   let currentStep = 0;
   let answers = {};
-  let allProducts = [];
   let isTransitioning = false;
   let hasStarted = false;
 
@@ -59,11 +58,6 @@
 
     wizardEl.classList.add('wizard-section--collapsed');
     wizardEl.setAttribute('aria-hidden', 'true');
-
-    try {
-      const data = await window.SiteDataService.request('assets/data/products.json');
-      allProducts = (data.products || []).filter(p => p.category === 'iphone-tasviri');
-    } catch (e) { allProducts = []; }
 
     document.querySelectorAll('[data-wizard-start]').forEach(function (btn) {
       btn.addEventListener('click', function (e) {
@@ -207,7 +201,7 @@
       setTimeout(() => {
         currentStep = nextStepIdx;
         if (currentStep >= STEPS.length) {
-          renderResults();
+          submitToResults();
         } else {
           renderStep(dir);
         }
@@ -237,49 +231,12 @@
     return v;
   }
 
-  function renderResults() {
-    const wizardEl = document.getElementById('wizard-root');
-    let results = allProducts.filter(p => {
-      if (answers.screenSize && p.screenSize !== answers.screenSize) return false;
-      if (answers.hasMemory !== undefined && p.hasMemory !== answers.hasMemory) return false;
-      if (answers.unitType && p.unitType !== answers.unitType) return false;
-      return true;
-    });
-    if (!results.length) results = allProducts.filter(p => {
-      if (answers.screenSize && p.screenSize !== answers.screenSize) return false;
-      if (answers.unitType && p.unitType !== answers.unitType) return false;
-      return true;
-    });
-    if (!results.length) results = allProducts.filter(p => {
-      if (answers.unitType && p.unitType !== answers.unitType) return false;
-      return true;
-    });
-    if (!results.length) results = allProducts.slice(0, 4);
-
-    wizardEl.innerHTML = `
-      <div class="wizard-results wiz-enter-forward">
-        <div class="wizard-results-head">
-          <i class="bi bi-stars"></i>
-          <div>
-            <h3>محصولات پیشنهادی برای شما</h3>
-            <p>${toPersianNum(results.length)} محصول مطابق با انتخاب شما</p>
-          </div>
-          <button type="button" class="wiz-restart-btn"
-            onclick="document.getElementById('wizard-root').dispatchEvent(new CustomEvent('wiz-restart'))">
-            <i class="bi bi-arrow-clockwise"></i> شروع دوباره
-          </button>
-        </div>
-        <div class="wizard-results-grid" id="wiz-results-grid"></div>
-      </div>`;
-
-    const grid = document.getElementById('wiz-results-grid');
-    if (grid) results.forEach(p => grid.appendChild(window.SiteComponents.createProductCard(p)));
-
-    wizardEl.addEventListener('wiz-restart', function () {
-      currentStep = 0; answers = {};
-      renderStep(1);
-      wizardEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }, { once: true });
+  function submitToResults() {
+    const params = new URLSearchParams();
+    if (answers.screenSize) params.set('screenSize', answers.screenSize);
+    if (answers.hasMemory !== undefined && answers.hasMemory !== '') params.set('hasMemory', answers.hasMemory);
+    if (answers.unitType) params.set('unitType', answers.unitType);
+    window.location.href = '/recommender/intercom-results/?' + params.toString();
   }
 
   function toPersianNum(n) {

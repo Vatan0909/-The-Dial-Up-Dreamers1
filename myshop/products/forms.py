@@ -1,7 +1,6 @@
 from django import forms
 from .models import ProductVariants
 
-
 class AddToCartForm(forms.Form):
     product_id = forms.IntegerField(widget=forms.HiddenInput())
 
@@ -10,7 +9,8 @@ class AddToCartForm(forms.Form):
         widget=forms.Select()
     )
 
-    memory = forms.CharField(
+    memory = forms.ChoiceField(
+        choices=[('true', 'حافظه‌دار'), ('false', 'بدون حافظه')],
         required=False,
         widget=forms.Select()
     )
@@ -30,16 +30,13 @@ class AddToCartForm(forms.Form):
         super().__init__(*args, **kwargs)
 
         if product:
-            colors = product.colors_available or []
-            memories = product.memories_available or []
-
-            self.fields["color"].widget.choices = [
-                (c, c) for c in colors
-            ]
-
-            self.fields["memory"].widget.choices = [
-                (m, m) for m in memories
-            ]
+            colors = list(
+                product.variants
+                .exclude(color__isnull=True)
+                .values_list('color__name', flat=True)
+                .distinct()
+            )
+            self.fields["color"].widget.choices = [(c, c) for c in colors]
 
     def clean(self):
         cleaned_data = super().clean()
@@ -48,11 +45,13 @@ class AddToCartForm(forms.Form):
         color = cleaned_data.get("color")
         memory = cleaned_data.get("memory")
 
-        variant = ProductVariants.objects.filter(
-            product_id=product_id,
-            color=color,
-            memory=memory
-        ).first()
+        filter_kwargs = {"product_id": product_id}
+        if color:
+            filter_kwargs["color__name"] = color
+        if memory in ("true", "false"):
+            filter_kwargs["has_recording_memory"] = (memory == "true")
+
+        variant = ProductVariants.objects.filter(**filter_kwargs).first()
 
         if not variant:
             raise forms.ValidationError("واریانت انتخاب شده وجود ندارد")
@@ -63,7 +62,6 @@ class AddToCartForm(forms.Form):
 
 
 class SearchForm(forms.Form):
-
     q = forms.CharField(
         max_length=100,
         required=False,

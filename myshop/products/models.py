@@ -1,14 +1,10 @@
 from django.db import models
 from django.core.exceptions import ValidationError
-from django.contrib.auth.models import User
-
-# Create your models here
 
 class Category(models.Model):
     name = models.CharField(max_length=100)
     slug = models.SlugField(unique=True)
-    #برای اینکه زیر کتگوری داشته باشیم
-    parent = models.ForeignKey("self", on_delete=models.PROTECT,null = True,blank = True,related_name='children' )
+    parent = models.ForeignKey("self", on_delete=models.PROTECT, null=True, blank=True, related_name='children')
 
     def clean(self):
         if self.parent == self:
@@ -16,51 +12,66 @@ class Category(models.Model):
     def __str__(self):
         return self.name
 
+# جدول جدید و کاملاً داینامیک برای مدیریت رنگ‌ها
+class Color(models.Model):
+    name = models.CharField(max_length=50, unique=True, verbose_name="color name")
+
+    class Meta:
+        verbose_name = "color"
+        verbose_name_plural = "colors"
+
+    def __str__(self):
+        return self.name
+
 class Product(models.Model):
     category = models.ForeignKey(Category, on_delete=models.PROTECT, related_name='products')
     name = models.CharField(max_length=200)
     warranty_info = models.CharField(max_length=200)
-    technical_specs = models.TextField( blank=True, null=True)
-    additional_details = models.TextField( blank=True, null=True)
+    technical_specs = models.TextField(blank=True, null=True)
+    additional_details = models.TextField(blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     slug = models.SlugField(unique=True, null=True)
-    #این لیست ها برای اضافه کردن generate variants هستن.
-    # میایم تمام حالت های موجود از محصول رو در این متغیر ها ذخیره میکنیم
-    # بعدا در فرانت هم برای نمایش گزینه های قابل انتخاب کاربر از این لیست استفاده میکنیم
-    colors_available = models.JSONField(default=list, blank=True)   # ["سفید","مشکی"]مثل
-    memories_available = models.JSONField(default=list, blank=True) # ["حافظه‌دار","بدون حافظه"]مثل
-    #برای اینکه محصولات به دسته بندی های کلی اضافه نشن در پنل ادمین
+    intercom_monitor_size = models.CharField(
+        max_length=10,
+        choices=[('4.3', '4.3 اینچ'), ('7', '7 اینچ')],
+        null=True, blank=True,
+        verbose_name="size"
+    )
+
     def clean(self):
         if self.category.children.exists():
             raise ValidationError(
-                "این دسته بندی خیلی کلی است. محصول را در زیردسته بندی مختص به خودش قرار بدید"
+                "این دسته‌بندی خیلی کلی است. محصول را در زیردسته‌بندی مختص به خودش قرار دهید."
             )
     def __str__(self):
         return self.name
     
-# برای توضیحاتی که در سایت با بولت گذاری نمایش داده میشه
 class ProductFeature(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='features')
-    # مثلا توصیفات کوتاه به این شکل :پشتیبانی از اتصال به پنل دوم
     description = models.CharField(max_length=300)
 
     def __str__(self):
         return f"{self.product.name} - {self.description}"
 
-# برای ویژگی های متغیر
 class ProductVariants(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='variants')
-     # برای گزینه های متفاوتی از محصول که کاربر میتونه انتخاب کنه
-    color = models.CharField(max_length=50, blank=True, null=True)
-    memory = models.CharField(max_length=50, blank=True, null=True)
+    
+    # فیلد رنگ حالا به صورت داینامیک از جدول Color خوانده می‌شود
+    color = models.ForeignKey(Color, on_delete=models.SET_NULL, blank=True, null=True, verbose_name="color", related_name="variants")
+    has_recording_memory = models.BooleanField(default=False, verbose_name="قابلیت ذخیره تصویر")
     
     price = models.PositiveIntegerField(default=0)
     stock = models.PositiveIntegerField(default=0)
-    is_pack = models.BooleanField(default=False)
+    is_pack = models.BooleanField(default=False, verbose_name="آیا پک است؟")
+    unit_count = models.PositiveSmallIntegerField(
+        null=True, blank=True,
+        choices=[(1, '1 واحدی'), (2, '2 واحدی'), (3, '3 واحدی'), (4, '4 واحدی')],
+        verbose_name="تعداد واحد (برای پک)"
+    )
+    
     def __str__(self):
-        # نمایش نام محصول، ویژگی‌ها، قیمت و موجودی در یک خط
-        return f"{self.product.name} | {self.color or ''} {self.memory or ''} {self.model or ''} | {self.price:,} price |stock {self.stock}"
-
+        color_name = self.color.name if self.color else ''
+        return f"{self.product.name} | {color_name} | {self.price:,} price | stock {self.stock}"
 
 class ProductImage(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='images')
@@ -68,7 +79,6 @@ class ProductImage(models.Model):
 
     def __str__(self):
         return f"Image for {self.product.name}"
-
 
 class Story(models.Model):
     title = models.CharField(max_length=100)
