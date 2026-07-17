@@ -8,9 +8,14 @@
 {% block extra_css %}
   <link rel="stylesheet" href="{% static 'products/css/product-detail.css' %}">
   <style>
-    /* اضافه کردن استایل ضروری تب‌ها در صورتی که از CSS اصلی حذف شده باشد */
     .tab-content { display: none; }
     .tab-content.active { display: block; }
+    /* استایل برای پیام‌های خطا/موفقیت */
+    .django-messages { margin-bottom: 15px; border-radius: 8px; overflow: hidden; }
+    .django-message { padding: 12px 15px; font-weight: bold; font-size: 0.9rem; }
+    .django-message.error { background: #ffebee; color: #c62828; border-right: 4px solid #c62828; }
+    .django-message.success { background: #e8f5e9; color: #2e7d32; border-right: 4px solid #2e7d32; }
+    .btn-disabled { background-color: #9e9e9e !important; cursor: not-allowed !important; opacity: 0.8; }
   </style>
 {% endblock %}
 
@@ -30,7 +35,6 @@
             {% endwith %}
           </div>
 
-          <!-- رفع مشکل دوم: نمایش تصاویر کوچک فقط زمانی که بیشتر از 1 عکس داریم -->
           {% if images|length > 1 %}
             <div class="thumb-row">
               {% for image in images %}
@@ -64,25 +68,32 @@
             </section>
           {% endif %}
 
-          {% if product_memories %}
+{% if product_memories %}
             <section class="option-block">
               <h4>حافظه</h4>
               <div class="option-row">
                 {% for memory in product_memories %}
-                  <button class="chip-btn{% if memory == default_storage %} active{% endif %}" type="button" data-variant-memory="{{ memory }}">{{ memory }}</button>
+                  <button class="chip-btn{% if memory == default_storage %} active{% endif %}" type="button" data-variant-memory="{% if memory == 'حافظه‌دار' %}true{% else %}false{% endif %}">{{ memory }}</button>
                 {% endfor %}
               </div>
             </section>
           {% endif %}
 
-          <form class="purchase-row" method="post">
+          {% if messages %}
+            <div class="django-messages">
+              {% for message in messages %}
+                <div class="django-message {{ message.tags }}">{{ message }}</div>
+              {% endfor %}
+            </div>
+          {% endif %}
+
+          <form class="purchase-row" method="post" action="{% url 'cart:cart_add' %}">
             {% csrf_token %}
             {{ form.product_id }}
             <input type="hidden" name="color" id="selected-color" value="{{ default_color|default_if_none:'' }}">
-            <input type="hidden" name="memory" id="selected-memory" value="{{ default_storage|default_if_none:'' }}">
+            <!-- اصلاح شده: تنظیم مقدار دیفالت به صورت true/false -->
+            <input type="hidden" name="memory" id="selected-memory" value="{% if default_has_recording_memory %}true{% else %}false{% endif %}">
             <input type="hidden" id="variant-price-url" value="{% url 'products:variant_price' %}">
-
-            <!-- رفع مشکل سوم: مخفی کردن فیلد فرم و قرار دادن تگ span مخصوص ظاهر جدید -->
             <div class="qty-wrap">
               <button class="qty-btn" type="button" data-qty-minus>-</button>
               <span class="qty-value" id="ui-qty-value">1</span>
@@ -92,7 +103,12 @@
               <button class="qty-btn" type="button" data-qty-plus>+</button>
             </div>
 
-            <button class="add-cart-btn" type="submit">افزودن به سبد خرید</button>
+            {% if selected_variant.stock > 0 %}
+                <button class="add-cart-btn" type="submit">افزودن به سبد خرید</button>
+            {% else %}
+                <button class="add-cart-btn btn-disabled" type="button" disabled>ناموجود - تماس بگیرید</button>
+            {% endif %}
+
             <span class="price-text" id="variant-price" data-product-id="{{ product.id }}">
               {% if selected_variant %}
                 {{ selected_variant.price }} تومان
@@ -104,15 +120,10 @@
         </div>
       </div>
 
-<div class="product-tabs-wrap">
-        <!-- اضافه کردن استایل به‌صورت مستقیم برای رفع مشکل نمایش هم‌زمان تب‌ها -->
+      <div class="product-tabs-wrap">
         <style>
-          .product-tabs-wrap .tab-content { 
-            display: none !important; 
-          }
-          .product-tabs-wrap .tab-content.active { 
-            display: block !important; 
-          }
+          .product-tabs-wrap .tab-content { display: none !important; }
+          .product-tabs-wrap .tab-content.active { display: block !important; }
         </style>
         
         <div class="tabs">
@@ -134,7 +145,6 @@
       <div class="section-head">
         <h3>محصولات پیشنهادی</h3>
       </div>
-
       {% if recommended_products %}
         <div class="slider-wrap">
           <div class="slider-track">

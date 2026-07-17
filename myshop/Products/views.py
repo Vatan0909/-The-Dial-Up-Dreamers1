@@ -87,23 +87,42 @@ def category_products(request, slug):
 
 
 def home(request):
+    # ۱. استخراج دسته‌بندی‌های اصلی (دسته‌هایی که والد ندارند) به ترتیب حروف الفبا
     main_categories = models.Category.objects.filter(parent__isnull=True).order_by("name")
+    
+    # لیستی برای نگهداری بخش‌های مختلف صفحه اصلی (هر بخش شامل یک دسته‌بندی و محصولات آن است)
     home_sections = []
 
     for cat in main_categories:
+        # ۲. پیدا کردن آیدیِ تمام زیردسته‌های مربوط به این دسته‌بندی اصلی
         sub_ids = cat.children.values_list("id", flat=True)
+        
+        # ۳. استخراج محصولاتِ این زیردسته‌ها
         products = (
             models.Product.objects
             .filter(category_id__in=sub_ids)
-            .annotate(min_price=Min("variants__price"))
+            .annotate(
+                # پیدا کردن ارزان‌ترین قیمت (min_price) برای نمایش روی کارت محصول
+                min_price=Min(
+                    "variants__price", 
+                    # شرط بسیار مهم: فقط واریانت‌هایی در محاسبه کمترین قیمت شرکت داده شوند که:
+                    # الف) قیمت آن‌ها بیشتر از صفر باشد (variants__price__gt=0)
+                    # ب) موجودی انبار آن‌ها بیشتر از صفر باشد (variants__stock__gt=0)
+                    filter=Q(variants__price__gt=0, variants__stock__gt=0)
+                )
+            )
+            # استفاده از prefetch_related برای بهینه‌سازی دیتابیس و جلوگیری از کوئری‌های اضافی برای عکس‌ها
             .prefetch_related("images")
             .order_by("name")
         )
+        
+        # ۴. اضافه کردن این دسته و محصولاتِ فیلترشده‌اش به لیست نهایی
         home_sections.append({
             "category": cat,
             "products": products
         })
 
+    # ۵. ارسال اطلاعات به قالب صفحه اصلی (index.html)
     context = {"home_sections": home_sections}
     return render(request, "index.html", context)
 

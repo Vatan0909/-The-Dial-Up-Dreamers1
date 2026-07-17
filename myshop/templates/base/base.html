@@ -20,11 +20,9 @@
   <div id="site-header">{% include 'header.html' %}</div>
   {% endblock %}
 
-
   {% block content %}
     {% block context %}{% endblock %}
   {% endblock %}
-
 
   {% block site_footer %}
   <div id="site-footer">{% include 'footer.html' %}</div>
@@ -32,8 +30,25 @@
 
   <script>
     window.STATIC_URL = "{% static '' %}";
+    
+    // گرفتن تعداد کالاهای سبد خرید از بک‌اند برای نمایش در هدر تمام صفحات
+    document.addEventListener('DOMContentLoaded', async () => {
+      try {
+        const response = await fetch('/cart/api/data/');
+        if (response.ok) {
+          const data = await response.json();
+          const badge = document.getElementById('cart-count');
+          if (badge) {
+            badge.textContent = data.total_count || 0;
+            badge.style.display = data.total_count > 0 ? 'inline-flex' : 'none';
+          }
+        }
+      } catch (err) {
+        console.error("خطا در دریافت تعداد سبد خرید:", err);
+      }
+    });
   </script>
-  <script src="{% static 'assets/js/cart.js' %}" defer></script>
+  
   <script src="{% static 'assets/js/data-service.js' %}" defer></script>
   <script src="{% static 'assets/js/components.js' %}" defer></script>
   <script src="{% static 'assets/js/layout-loader.js' %}" defer></script>
@@ -41,6 +56,7 @@
   <script src="{% static 'assets/js/page-category.js' %}" defer></script>
   <script src="{% static 'assets/js/page-product.js' %}" defer></script>
   {% block extra_scripts %}{% endblock %}
+  {% block extra_js %}{% endblock %}
   <script src="{% static 'assets/js/animate.js' %}" defer></script>
   <script src="{% static 'assets/js/app.js' %}" defer></script>
 </body>
